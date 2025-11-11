@@ -1,0 +1,231 @@
+/* partners.css */
+.partners-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partners-container {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Partners Hero Section - Left Side */
+.partners-hero {
+  padding: 2rem;
+}
+
+.partners-hero-content {
+  max-width: 600px;
+}
+
+.partners-title {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.partners-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e5e7eb;
+  text-align: left;
+}
+
+/* Partners Cards Section - Right Side */
+.partners-cards-section {
+  padding: 1rem;
+}
+
+.partners-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.partner-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  border-color: #667eea;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.partner-card-image {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.partner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover .partner-image {
+  transform: scale(1.05);
+}
+
+.partner-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.partner-card-description {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .partners-container {
+    gap: 2rem;
+  }
+
+  .partners-cards-grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .partners-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .partners-hero {
+    padding: 1rem;
+  }
+
+  .partners-hero-content {
+    max-width: 100%;
+  }
+
+  .partners-description {
+    text-align: center;
+  }
+
+  .partners-cards-section {
+    padding: 0;
+  }
+
+  .partners-cards-grid {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-section {
+    padding: 1rem;
+    padding-top: 8rem;
+  }
+
+  .partners-title {
+    font-size: 2.5rem;
+  }
+
+  .partners-description {
+    font-size: 1.1rem;
+  }
+
+  .partners-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-title {
+    font-size: 2rem;
+  }
+
+  .partners-description {
+    font-size: 1rem;
+  }
+
+  .partners-cards-grid {
+    gap: 0.875rem;
+  }
+
+  .partner-card-content {
+    padding: 1.25rem;
+  }
+
+  .partner-card-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Add these to your existing partners.css */
+
+/* Ensure initial state for animations */
+.partners-section {
+  /* existing styles */
+  overflow: hidden;
+}
+
+.partner-card {
+  /* existing styles */
+  opacity: 0; /* Initial state for GSAP */
+  transform: translateY(50px); /* Initial state for GSAP */
+}
+
+.partners-title,
+.partners-description {
+  opacity: 0; /* Initial state for GSAP */
+  transform: translateY(50px); /* Initial state for GSAP */
+}
+
+/* Enhanced hover effects */
+.partner-card {
+  transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #667eea;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}

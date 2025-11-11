@@ -1,0 +1,253 @@
+/* about.css */
+.about-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* About Hero Section */
+.about-hero {
+  padding: 2rem;
+  padding-top: 6rem;
+}
+
+.about-hero-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  color: #e5e7eb;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* Split Layout */
+.content-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e5e7eb;
+  text-align: left;
+  margin: 0;
+}
+
+/* Sadeem Logo Styles */
+.sadeem-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sadeem-logo-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sadeem-logo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Sadeem Medical Section */
+.sadeem-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+.sadeem-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.sadeem-description h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.sadeem-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.sadeem-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .about-container {
+    gap: 3rem;
+  }
+
+  .content-split {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .about-description {
+    text-align: center;
+  }
+
+  .sadeem-logo-placeholder {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 1rem;
+    padding-top: 6rem;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .about-description {
+    font-size: 1.1rem;
+  }
+
+  .sadeem-section {
+    padding: 2rem;
+  }
+
+  .sadeem-description h3 {
+    font-size: 1.7rem;
+  }
+
+  .sadeem-description p {
+    font-size: 1rem;
+  }
+
+  .content-split {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+
+  .sadeem-section {
+    padding: 1.5rem;
+  }
+
+  .sadeem-logo-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Animation Initial States */
+.about-section {
+  overflow: hidden;
+}
+
+.about-title,
+.about-subtitle,
+.about-description,
+.sadeem-section,
+.sadeem-logo-container,
+.sadeem-description {
+  opacity: 0;
+}
+
+/* Enhanced hover effects */
+.sadeem-logo-placeholder {
+  transition: all 0.3s ease;
+}
+
+.sadeem-logo-placeholder:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+}

@@ -1,0 +1,446 @@
+/* clean-tech-hero.css */
+
+/* ==========================
+   Color Variables
+========================== */
+:root {
+  --primary-color: #069f0a;
+  --primary-dark: #058008;
+  --primary-light: #e8f5e9;
+  --secondary-color: #2563eb;
+  --accent-color: #10b981;
+  --text-dark: #1f2937;
+  --text-gray: #6b7280;
+  --text-light: #9ca3af;
+  --white-color: #ffffff;
+  --bg-light: #f8fafc;
+  --bg-lighter: #f1f5f9;
+  --border-light: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--accent-color) 100%
+  );
+  --gradient-subtle: linear-gradient(
+    135deg,
+    var(--bg-light) 0%,
+    var(--white-color) 100%
+  );
+}
+
+.top-dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 87px; /* height of dark section */
+  background: #00a000d1;
+  z-index: 1;
+}
+
+/* ==========================
+   Hero Section
+========================== */
+.clean-tech-hero-section {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  padding-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--white-color);
+}
+
+/* Quarter circle element */
+.clean-tech-hero-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 159, 11, 0.363) 0%,
+    rgba(16, 185, 129, 0.05) 100%
+  );
+  border-top-right-radius: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.clean-tech-hero-container {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================
+   Content Section
+========================== */
+.clean-tech-hero-content {
+  padding: 3rem 2rem 3rem 0;
+}
+
+.clean-tech-logo-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.clean-tech-logo {
+  height: 68px;
+  width: auto;
+}
+
+.clean-tech-subtitle {
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.clean-tech-subtitle strong {
+  color: var(--primary-color);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.clean-tech-description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+  text-align: left;
+  font-weight: 400;
+  border-left: 4px solid var(--primary-light);
+  padding-left: 1.5rem;
+}
+
+.clean-tech-additional {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin-bottom: 3rem;
+  text-align: left;
+  font-weight: 400;
+  background: var(--bg-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+}
+
+.clean-tech-cta {
+  background: var(--gradient-primary);
+  color: var(--white-color);
+  border: none;
+  padding: 1.25rem 3rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.clean-tech-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.clean-tech-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.clean-tech-cta:hover::before {
+  left: 100%;
+}
+
+/* ==========================
+   Image Section
+========================== */
+.clean-tech-hero-image {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 650px;
+  background: var(--white-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.hero-platform-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.image-container:hover .hero-platform-image {
+  transform: scale(1.03);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 159, 10, 0.05) 0%,
+    transparent 50%,
+    rgba(16, 185, 129, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* ==========================
+   Background Elements
+========================== */
+.hero-background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-circle-1 {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+.bg-circle-2 {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bg-lighter) 0%, transparent 70%);
+  opacity: 0.8;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+.bg-circle-3 {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0.4;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1.05);
+  }
+}
+
+/* Grid Pattern */
+.bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(6, 159, 10, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 159, 10, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+}
+
+/* ==========================
+   Responsive Design
+========================== */
+@media (max-width: 1200px) {
+  .clean-tech-hero-container {
+    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .clean-tech-hero-content {
+    padding: 2rem 1rem 2rem 0;
+  }
+}
+
+@media (max-width: 968px) {
+  .clean-tech-hero-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+
+  .clean-tech-hero-content {
+    padding: 2rem 1rem;
+    padding-top: 2rem;
+  }
+
+  .clean-tech-description,
+  .clean-tech-additional {
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
+    border-top: 4px solid var(--primary-light);
+    padding-top: 1.5rem;
+  }
+
+  .clean-tech-hero-image {
+    padding: 0 2rem;
+  }
+
+  .image-container {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clean-tech-hero-section {
+    padding: 3rem 1rem;
+    padding-top: 6rem;
+  }
+
+  .clean-tech-subtitle {
+    font-size: 2rem;
+  }
+
+  .clean-tech-description {
+    font-size: 1.125rem;
+  }
+
+  .clean-tech-additional {
+    font-size: 1rem;
+  }
+
+  .clean-tech-cta {
+    padding: 1.125rem 2.5rem;
+    font-size: 1.0625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clean-tech-hero-section {
+    padding: 2rem 1rem;
+    padding-top: 8rem;
+  }
+
+  .clean-tech-subtitle {
+    font-size: 1.75rem;
+  }
+
+  .clean-tech-description {
+    font-size: 1rem;
+  }
+
+  .clean-tech-additional {
+    font-size: 0.9rem;
+    padding: 1.25rem;
+  }
+
+  .image-container {
+    border-radius: 16px;
+  }
+
+  .bg-circle-1,
+  .bg-circle-2,
+  .bg-circle-3 {
+    display: none;
+  }
+}
+
+/* ==========================
+   Initial Animation State
+========================== */
+.clean-tech-title,
+.clean-tech-subtitle,
+.clean-tech-description,
+.clean-tech-additional,
+.clean-tech-cta,
+.clean-tech-hero-image {
+  opacity: 0;
+}
+
+/* ==========================
+   Smooth Scrolling
+========================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================
+   Focus States for Accessibility
+========================== */
+.clean-tech-cta:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

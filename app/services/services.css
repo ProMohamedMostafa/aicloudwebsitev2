@@ -1,0 +1,396 @@
+/* services.css */
+.services-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Services Main Content Layout */
+.services-main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 6rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* Left Side Description */
+.services-description {
+  padding-right: 2rem;
+}
+
+.services-description h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  margin-bottom: 2rem;
+}
+
+.key-benefits h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f3f4f6;
+}
+
+.key-benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.key-benefits li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #d1d5db;
+}
+
+.key-benefits li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #3b2ed0;
+  font-weight: bold;
+}
+
+/* Vertical Carousel Styles */
+.vertical-carousel-wrapper {
+  border-radius: 20px;
+  padding: 2rem;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carousel__item {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  opacity: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  will-change: transform, opacity;
+  animation: carousel-animate-vertical 18s linear infinite;
+}
+
+/* Animation delays for each item */
+.carousel__item:nth-child(1) {
+  animation-delay: calc(18s / 6 * 0);
+}
+.carousel__item:nth-child(2) {
+  animation-delay: calc(18s / 6 * -1);
+}
+.carousel__item:nth-child(3) {
+  animation-delay: calc(18s / 6 * -2);
+}
+.carousel__item:nth-child(4) {
+  animation-delay: calc(18s / 6 * -3);
+}
+.carousel__item:nth-child(5) {
+  animation-delay: calc(18s / 6 * -4);
+}
+.carousel__item:nth-child(6) {
+  animation-delay: calc(18s / 6 * -5);
+}
+
+.carousel__item-head {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 80px;
+  height: 80px;
+  padding: 16px;
+  position: relative;
+  margin-right: -40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  z-index: 2;
+  border: 3px solid white;
+}
+
+.carousel__item-body {
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 20px 20px 20px 60px;
+  border-left: 4px solid #3b2ed0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.carousel__item-body .title {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1e293b;
+  letter-spacing: 0.5px;
+}
+
+.carousel__item-body .description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Updated Vertical Carousel Animation for Infinite Circular Flow */
+@keyframes carousel-animate-vertical {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+  5%,
+  16.67% {
+    transform: translateY(100%) scale(0.7);
+    opacity: 0.4;
+    visibility: visible;
+  }
+  19.67%,
+  33.33% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  36.33%,
+  50% {
+    transform: translateY(-100%) scale(0.7);
+    opacity: 0.4;
+    visibility: visible;
+  }
+  53% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+    visibility: visible;
+  }
+  53.1% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Hover pause effect */
+.vertical-carousel:hover .carousel__item {
+  animation-play-state: paused;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .services-main-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 8rem 2rem;
+  }
+
+  .services-description {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .vertical-carousel-wrapper {
+    min-height: 450px;
+    padding: 1.5rem;
+  }
+
+  .vertical-carousel {
+    height: 400px;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-main-content {
+    padding: 8rem 2rem;
+    gap: 2rem;
+  }
+
+  .vertical-carousel-wrapper {
+    min-height: 400px;
+    padding: 1rem;
+  }
+
+  .vertical-carousel {
+    height: 350px;
+    max-width: 350px;
+  }
+
+  .carousel__item-head {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: -30px;
+  }
+
+  .carousel__item-body {
+    padding: 16px 16px 16px 45px;
+  }
+
+  .carousel__item-body .title {
+    font-size: 16px;
+  }
+
+  .services-description h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-main-content {
+    padding: 6.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .vertical-carousel-wrapper {
+    min-height: 350px;
+    padding: 0.5rem;
+  }
+
+  .vertical-carousel {
+    height: 300px;
+    max-width: 300px;
+  }
+
+  .carousel__item {
+    padding: 0 10px;
+  }
+
+  .carousel__item-head {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin-right: -25px;
+  }
+
+  .carousel__item-body {
+    padding: 12px 12px 12px 35px;
+  }
+
+  .carousel__item-body .title {
+    font-size: 14px;
+  }
+
+  .carousel__item-body .description {
+    font-size: 12px;
+  }
+
+  .services-description h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Add to your existing services.css */
+
+/* Animation initial states */
+.services-page {
+  overflow: hidden;
+}
+
+.services-description h2,
+.services-description p,
+.key-benefits {
+  opacity: 0;
+}
+
+.vertical-carousel-wrapper {
+  opacity: 0;
+}
+
+.carousel__item {
+  opacity: 0;
+}
+
+/* Enhanced hover effects for carousel items */
+.carousel__item {
+  transition: all 0.3s ease;
+}
+
+.carousel__item:hover {
+  transform: translateX(10px) scale(1.02);
+  filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.3));
+}
+
+.carousel__item:hover .carousel__item-head {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.carousel__item-head {
+  transition: all 0.3s ease;
+}
+
+.carousel__item-body {
+  transition: all 0.3s ease;
+}
+
+.carousel__item:hover .carousel__item-body {
+  transform: translateX(5px);
+  border-left-color: #667eea;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* CTA button enhancements */
+.cta-container {
+  opacity: 0;
+}
+
+/* services.css */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ccc;
+  border-top-color: #0a74da;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
