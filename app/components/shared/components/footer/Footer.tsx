@@ -29,17 +29,30 @@ export default function Footer() {
                 />
               </Link>
 
-              <h6 className="fw-bold">Address</h6>
+              {/* KSA Location */}
+              <h6 className="fw-bold">KSA Address</h6>
               <p>
                 Office No.6 , 6th Floor Al Rossais Commercial Center – Al Olaya.
                 Riyadh, 12211
               </p>
-
-              <h6 className="fw-bold">Contact</h6>
               <p>
                 <FontAwesomeIcon icon={faPhone} className="me-2" />
                 920013760
               </p>
+
+              {/* Egypt Location */}
+              <h6 className="fw-bold">Egypt Address</h6>
+              <p>
+                Office No.5 , 13 Ibrahim Nawar, branching off from Ahmed Fakhry,
+                Nasr City, Cairo
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faPhone} className="me-2" />
+                +20 10 24982487
+              </p>
+
+              <h6 className="fw-bold">Contact</h6>
+
               <p>
                 <FontAwesomeIcon icon={faEnvelope} className="me-2" />
                 info&#64;ai-cloud.sa
