@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import "./services.css";
 import ContactUsButton from "../../shared/components/ContactUsButton/ContactUsButton";
-import { services } from "@/app/data/servicesData";
+import { services } from "@/data/servicesData";
 import { useRouter } from "next/navigation";
 
 export default function Services() {

@@ -175,7 +175,7 @@ export default function CleanTechContact() {
     }
 
     // Phone validation (basic)
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const phoneRegex = /^\+?[0-9\s\-\(\)]{7,20}$/;
     if (
       formData.phone &&
       !phoneRegex.test(formData.phone.replace(/[\s\-\(\)]/g, ""))

@@ -1,4 +1,4 @@
-import { features } from "@/app/data/cleanTechFeturesData";
+import { features } from "@/data/cleanTechFeturesData";
 
 export default function CleanTechFeatures() {
   return (

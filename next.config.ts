@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    optimizeCss: true,
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  swcMinify: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  // Enable gzip compression
+  compress: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;

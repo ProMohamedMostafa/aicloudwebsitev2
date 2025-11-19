@@ -7,7 +7,7 @@ export interface Feature {
 export const features: Feature[] = [
   {
     title: "home",
-    img: new URL("../../public/assets/images/home-desktop.png", import.meta.url)
+    img: new URL("../public/assets/images/home-desktop.png", import.meta.url)
       .href,
     description:
       "The main dashboard gives a quick overview of key metrics through charts and insights. Accessible on both desktop and mobile, it helps users make informed decisions at a glance.",
@@ -15,7 +15,7 @@ export const features: Feature[] = [
   {
     title: "user-management",
     img: new URL(
-      "../../public/assets/images/user-management-desktop.png",
+      "../public/assets/images/user-management-desktop.png",
       import.meta.url
     ).href,
     description:
@@ -23,7 +23,7 @@ export const features: Feature[] = [
   },
   {
     title: "task",
-    img: new URL("../../public/assets/images/task-desktop.png", import.meta.url)
+    img: new URL("../public/assets/images/task-desktop.png", import.meta.url)
       .href,
     description:
       "Create, assign, and track tasks across your team. View progress, set priorities, and ensure smooth workflow management from any device.",
@@ -31,7 +31,7 @@ export const features: Feature[] = [
   {
     title: "stock-management",
     img: new URL(
-      "../../public/assets/images/stock-management-desktop.png",
+      "../public/assets/images/stock-management-desktop.png",
       import.meta.url
     ).href,
     description:

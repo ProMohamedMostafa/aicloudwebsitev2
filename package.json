@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "export": "next export"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "analyze:dev": "ANALYZE=true next dev --turbopack"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
@@ -30,6 +31,7 @@
     "three": "^0.181.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.0.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
