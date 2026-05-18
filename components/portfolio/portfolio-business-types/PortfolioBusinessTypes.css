@@ -1,0 +1,137 @@
+/* PortfolioBusinessTypes.css */
+
+.portfolio-business-types {
+  width: 100%;
+  background: #ffffff;
+  padding: 57px 64px 64px;
+}
+
+.business-inner {
+  max-width: 1392px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── Header ── */
+.business-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.business-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 66px;
+  color: #0f172a;
+  margin: 0;
+}
+
+.business-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ── Cards Grid ── */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.business-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.business-card:hover {
+  box-shadow: 0px 8px 24px rgba(0, 97, 183, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Image area */
+.business-card-image {
+  position: relative;
+  height: 128px;
+  background: linear-gradient(180deg, #0061b7 0%, #423471 100%);
+  overflow: hidden;
+}
+
+.business-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.business-image-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.business-card-icon-overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Label area */
+.business-card-label {
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #0f172a;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .business-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-business-types {
+    padding: 48px 20px;
+  }
+
+  .business-title {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  .business-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-grid {
+    grid-template-columns: 1fr;
+  }
+}
