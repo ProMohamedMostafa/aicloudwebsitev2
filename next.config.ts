@@ -1,12 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  compress: true,
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  compress: true,
+  experimental: {
+    optimizePackageImports: ["framer-motion", "lucide-react"],
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

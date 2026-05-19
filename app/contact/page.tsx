@@ -175,7 +175,7 @@ export default function Contact() {
     }
 
     // Phone validation (basic)
-    const phoneRegex = /^\+?[0-9\s\-\(\)]{7,20}$/;
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
     if (
       formData.phone &&
       !phoneRegex.test(formData.phone.replace(/[\s\-\(\)]/g, ""))

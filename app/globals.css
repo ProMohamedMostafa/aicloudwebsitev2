@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* === Critical CSS Only === */
+/* === Global Reset & Base Styles === */
 *,
 *::before,
 *::after {
@@ -13,28 +13,68 @@ body {
   margin: 0;
   min-height: 100vh;
   height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  scroll-behavior: smooth;
+  font-family: var(--font-geist-sans), system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Switch to custom fonts when loaded */
-.fonts-loaded body {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
+/* Ensure the root element takes full height */
 #__next {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* === Layout Container (controls shared width + spacing) === */
 .layout-container {
   width: 100%;
-  max-width: 100%;
+  max-width: 100%; /* equals Tailwind's max-w-6xl */
   margin-left: auto;
   margin-right: auto;
 }
 
+/* === Structure === */
 main {
   flex: 1;
 }
 
+/* === Dark Mode === */
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    color: theme("colors.zinc.50");
+  }
+
+  a {
+    color: theme("colors.blue.400");
+  }
+
+  a:hover {
+    color: theme("colors.blue.300");
+  }
+}
+
+/* body transition removed — was running a style recalc on every page load */
+
+/* === Optional scrollbar styling === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: theme("colors.zinc.400");
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.zinc.600");
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.zinc.600");
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.zinc.500");
+  }
+}
+/* loading-active / loading-complete classes removed — loaders are disabled */

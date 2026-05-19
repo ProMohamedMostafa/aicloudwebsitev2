@@ -1,0 +1,188 @@
+:root {
+  --primary-color: #069f0a;
+  --text-dark: #1f2937;
+  --text-gray: #6b7280;
+  --white-color: #ffffff;
+  --bg-light: #f8fafc;
+  --border-light: #e5e7eb;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.clean-tech-about-section {
+  min-height: 100vh;
+  background: var(--white-color);
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.clean-tech-section-borders {
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.clean-tech-about-container {
+  max-width: 1400px;
+  width: 100%;
+}
+
+.clean-tech-about-content {
+  padding: 3rem 2rem;
+}
+
+.clean-tech-about-title {
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+  background: linear-gradient(
+    135deg,
+    var(--text-dark) 0%,
+    var(--primary-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.clean-tech-content-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.clean-tech-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* New mission styles */
+.clean-tech-mission-container {
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--bg-light) 0%, #f0fdf0 100%);
+  border-left: 4px solid var(--primary-color);
+}
+
+.clean-tech-mission-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.clean-tech-mission-text {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.clean-tech-about-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  background: var(--bg-light);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+}
+
+.clean-tech-feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.clean-tech-logo-container,
+.clean-tech-image-container {
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .clean-tech-green-line {
+    left: 3%;
+    width: 3px;
+  }
+
+  .clean-tech-content-layout {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .clean-tech-about-title {
+    font-size: 2.75rem;
+  }
+
+  .clean-tech-section-borders {
+    padding: 2rem 1rem;
+  }
+
+  .clean-tech-about-content {
+    padding: 2rem 1rem;
+  }
+
+  .clean-tech-mission-container {
+    padding: 1.25rem;
+  }
+
+  .clean-tech-mission-title {
+    font-size: 1.35rem;
+  }
+
+  .clean-tech-mission-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clean-tech-green-line {
+    left: 2%;
+    width: 2px;
+  }
+
+  .clean-tech-about-title {
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .clean-tech-about-description {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .clean-tech-content-layout {
+    gap: 3rem;
+  }
+
+  .clean-tech-left-column {
+    gap: 3rem;
+  }
+
+  .clean-tech-mission-container {
+    padding: 1rem;
+  }
+
+  .clean-tech-mission-title {
+    font-size: 1.25rem;
+  }
+
+  .clean-tech-mission-text {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,640 @@
+.hero-container {
+  position: relative;
+  min-height: 70vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0179ba 50%, #1e40af 100%);
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.mouse-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.animated-background {
+  position: absolute;
+  inset: 0;
+}
+
+.circle-1 {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 16rem;
+  height: 16rem;
+  background-color: #0179ba;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(64px);
+  opacity: 0.2;
+}
+
+.circle-2 {
+  position: absolute;
+  top: 33.333%;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  background-color: #0079b9;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(64px);
+  opacity: 0.2;
+}
+
+.circle-3 {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  width: 20rem;
+  height: 20rem;
+  background-color: #1d4ed8;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(64px);
+  opacity: 0.2;
+}
+
+.circle-4 {
+  position: absolute;
+  top: 50%;
+  left: 33.333%;
+  width: 8rem;
+  height: 8rem;
+  background-color: #22d3ee;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(40px);
+  opacity: 0.15;
+}
+
+.circle-5 {
+  position: absolute;
+  bottom: 33.333%;
+  right: 33.333%;
+  width: 10rem;
+  height: 10rem;
+  background-color: #a855f7;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(40px);
+  opacity: 0.15;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+}
+
+.grid-pattern {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.content-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.text-content {
+  text-align: center;
+  padding-top: 7rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #67e8f9, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #e5e7eb;
+  margin-bottom: 2rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.visual-section {
+  position: relative;
+}
+
+.visual-container {
+  position: relative;
+  width: 100%;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-preview {
+  position: relative;
+  width: 20rem;
+  height: 12rem;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: 0.75rem;
+  border: 2px solid rgba(51, 65, 85, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.dashboard-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem;
+  background: linear-gradient(to right, #1e293b, #0f172a);
+  border-bottom: 1px solid #374151;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.control-red {
+  background-color: #ef4444;
+}
+.control-yellow {
+  background-color: #eab308;
+}
+.control-green {
+  background-color: #22c55e;
+}
+
+.address-bar {
+  flex: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 1.25rem;
+  background: rgba(51, 65, 85, 0.5);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
+.address-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #475569;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.address-text {
+  height: 0.5rem;
+  width: 8rem;
+  background-color: #475569;
+  border-radius: 0.25rem;
+}
+
+.dashboard-content {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.analytics-card {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.3),
+    rgba(147, 51, 234, 0.3)
+  );
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.card-label {
+  height: 0.5rem;
+  width: 2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-value {
+  height: 0.75rem;
+  width: 3rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.25rem;
+}
+
+.chart-area {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 4rem;
+  gap: 0.25rem;
+}
+
+.chart-bar {
+  flex: 1;
+  background: linear-gradient(to top, #3b82f6, #22d3ee);
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.activity-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.activity-indicator {
+  flex: 1;
+  height: 0.375rem;
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  border-radius: 0.75rem;
+}
+
+.floating-card {
+  position: absolute;
+  width: 7rem;
+  height: 5rem;
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-right {
+  right: -4rem;
+  top: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(147, 51, 234, 0.9),
+    rgba(219, 39, 119, 0.9)
+  );
+}
+
+.card-left {
+  left: -4rem;
+  bottom: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.9),
+    rgba(37, 99, 235, 0.9)
+  );
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: white;
+}
+
+.card-icon-bg {
+  height: 0.5rem;
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0.25rem;
+}
+
+.card-value-large {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.card-value-medium {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+}
+
+.card-indicator {
+  height: 0.375rem;
+  border-radius: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.indicator-white {
+  width: 4rem;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.indicator-green {
+  width: 5rem;
+  background-color: rgba(34, 197, 94, 0.6);
+}
+
+.data-particle {
+  position: absolute;
+  width: 0.375rem;
+  height: 0.375rem;
+  background-color: #22d3ee;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+}
+
+/* Responsive styles */
+@media (min-width: 640px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .visual-container {
+    height: 20rem;
+  }
+
+  .cta-container {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .text-content {
+    text-align: left;
+  }
+
+  .subtitle {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .cta-container {
+    justify-content: flex-start;
+  }
+
+  .visual-container {
+    height: 24rem;
+  }
+
+  .title {
+    font-size: 3.75rem;
+  }
+}
+
+.content-container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .content-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ===== PERFORMANCE: CSS-only animations replacing framer-motion & particles.js ===== */
+
+/* Fade-in for text/visual sections */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-fade-in {
+  opacity: 0;
+  animation: heroFadeIn 0.7s ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Dashboard float */
+@keyframes dashFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+.dashboard-float {
+  animation: dashFloat 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Dashboard glow pulse */
+@keyframes dashGlow {
+  0%, 100% { box-shadow: 0 0 0px rgba(59,130,246,0.2), 0 25px 50px -12px rgba(0,0,0,0.25); }
+  50%       { box-shadow: 0 0 28px rgba(59,130,246,0.5), 0 25px 50px -12px rgba(0,0,0,0.25); }
+}
+.dashboard-glow {
+  animation: dashGlow 3s ease-in-out infinite;
+}
+
+/* Chart bars grow */
+@keyframes barGrow {
+  0%   { height: 0; }
+  60%  { height: var(--bar-height); }
+  75%  { height: calc(var(--bar-height) * 1.1); }
+  100% { height: var(--bar-height); }
+}
+.chart-bar-grow {
+  height: 0;
+  animation: barGrow 1.2s ease-out forwards;
+  animation-fill-mode: forwards;
+}
+
+/* Analytics card pulse */
+@keyframes cardPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.04); }
+}
+.card-pulse {
+  animation: cardPulse 2s ease-in-out infinite;
+}
+
+/* Activity bar sweep */
+@keyframes activitySweep {
+  0%         { transform: scaleX(0); opacity: 0; }
+  40%, 60%   { transform: scaleX(1); opacity: 1; }
+  100%       { transform: scaleX(0); opacity: 0; }
+}
+.activity-sweep {
+  transform-origin: left;
+  animation: activitySweep 2s ease-in-out infinite;
+}
+
+/* Floating cards */
+@keyframes floatRight {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(8px) rotate(2deg); }
+}
+@keyframes floatLeft {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50%       { transform: translateY(-8px) rotate(-2deg); }
+}
+.card-float-right { animation: floatRight 4s ease-in-out infinite; }
+.card-float-left  { animation: floatLeft 3.5s ease-in-out infinite; }
+
+/* Value pulse */
+@keyframes valuePulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+.value-pulse { animation: valuePulse 2s ease-in-out infinite; }
+
+@keyframes opacityPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+.opacity-pulse { animation: opacityPulse 1.5s ease-in-out infinite; }
+
+/* Orb drift — GPU-only (transform), replaces spring-animated motion.div */
+@keyframes orbDrift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(12px, 8px); }
+}
+@keyframes orbDrift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-18px, 12px); }
+}
+@keyframes orbDrift3 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(10px, -15px); }
+}
+.circle-1 { animation: orbDrift1 8s ease-in-out infinite; will-change: transform; }
+.circle-2 { animation: orbDrift2 10s ease-in-out infinite; will-change: transform; }
+.circle-3 { animation: orbDrift3 12s ease-in-out infinite; will-change: transform; }
+
+/* CSS-only particle system — replaces particles.js CDN script */
+.css-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.css-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: particleFloat linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes particleFloat {
+  0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+}
+/* Stagger and randomize each particle via nth-child */
+.css-particle:nth-child(1)  { left:5%;   animation-duration:12s; animation-delay:0s;    width:2px; height:2px; }
+.css-particle:nth-child(2)  { left:10%;  animation-duration:18s; animation-delay:1s; }
+.css-particle:nth-child(3)  { left:18%;  animation-duration:14s; animation-delay:3s;    width:4px; height:4px; }
+.css-particle:nth-child(4)  { left:25%;  animation-duration:20s; animation-delay:0.5s; }
+.css-particle:nth-child(5)  { left:33%;  animation-duration:16s; animation-delay:2s; }
+.css-particle:nth-child(6)  { left:40%;  animation-duration:13s; animation-delay:4s;    width:2px; height:2px; }
+.css-particle:nth-child(7)  { left:48%;  animation-duration:19s; animation-delay:1.5s; }
+.css-particle:nth-child(8)  { left:55%;  animation-duration:15s; animation-delay:0s;    width:4px; height:4px; }
+.css-particle:nth-child(9)  { left:62%;  animation-duration:17s; animation-delay:2.5s; }
+.css-particle:nth-child(10) { left:70%;  animation-duration:11s; animation-delay:1s;    width:2px; height:2px; }
+.css-particle:nth-child(11) { left:78%;  animation-duration:21s; animation-delay:3.5s; }
+.css-particle:nth-child(12) { left:85%;  animation-duration:14s; animation-delay:0.8s;  width:4px; height:4px; }
+.css-particle:nth-child(13) { left:92%;  animation-duration:16s; animation-delay:2.2s; }
+.css-particle:nth-child(14) { left:8%;   animation-duration:22s; animation-delay:4.5s; }
+.css-particle:nth-child(15) { left:15%;  animation-duration:13s; animation-delay:1.8s;  width:2px; height:2px; }
+.css-particle:nth-child(16) { left:30%;  animation-duration:18s; animation-delay:3s; }
+.css-particle:nth-child(17) { left:52%;  animation-duration:15s; animation-delay:5s;    width:3px; height:3px; }
+.css-particle:nth-child(18) { left:67%;  animation-duration:20s; animation-delay:0.3s; }
+.css-particle:nth-child(19) { left:80%;  animation-duration:12s; animation-delay:2.8s;  width:2px; height:2px; }
+.css-particle:nth-child(20) { left:95%;  animation-duration:17s; animation-delay:1.2s; }

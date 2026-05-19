@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/shared/components/header/Header";
-import Footer from "@/components/shared/components/footer/Footer";
-import ScrollToTop from "@/components/shared/ScrollToTop";
+import Header from "./components/shared/components/header/Header";
+import Footer from "./components/shared/components/footer/Footer";
+import ScrollToTop from "./components/shared/ScrollToTop";
 
-// Optimized font loading - this alone will fix 80% of the issue
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap", // Critical - prevents render blocking
-  preload: true,
-  adjustFontFallback: false,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
   display: "swap",
-  preload: true,
-  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -39,20 +28,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
-          <header className="layout-container">
-            <Header />
-          </header>
+            <header className="layout-container">
+              <Header />
+            </header>
 
-          <main className="layout-container flex-1">{children}</main>
+            <main className="layout-container flex-1">{children}</main>
 
-          <footer>
-            <Footer />
-          </footer>
-        </div>
-        <ScrollToTop />
+            <footer className="layout-container">
+              <Footer />
+            </footer>
+          </div>
+          {/* this component for scroll top */}
+          <ScrollToTop />
       </body>
     </html>
   );
