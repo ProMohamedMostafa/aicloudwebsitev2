@@ -85,9 +85,6 @@ export default function PortfolioFeatures() {
         <div className="features-cards">
           {featureColumns.map((col) => (
             <div className="feature-card" key={col.key}>
-              {/* Subtle top gradient accent */}
-              <div className="feature-card-accent" />
-
               {/* Icon */}
               <div className="feature-card-icon-wrap">
                 <div className="feature-card-icon-bg">{col.icon}</div>

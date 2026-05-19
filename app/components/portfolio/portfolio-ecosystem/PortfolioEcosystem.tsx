@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import "./PortfolioEcosystem.css";
 
 const services = [
@@ -18,7 +20,15 @@ const services = [
           strokeWidth="2"
           fill="none"
         />
-        <line x1="12" y1="18" x2="12" y2="18" stroke="#0061B7" strokeWidth="2.5" strokeLinecap="round" />
+        <line
+          x1="12"
+          y1="18"
+          x2="12"
+          y2="18"
+          stroke="#0061B7"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -27,7 +37,16 @@ const services = [
     description: "Modern scalable online stores.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="3" width="20" height="18" rx="2" stroke="#0061B7" strokeWidth="2" fill="none" />
+        <rect
+          x="2"
+          y="3"
+          width="20"
+          height="18"
+          rx="2"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
         <line x1="2" y1="8" x2="22" y2="8" stroke="#0061B7" strokeWidth="2" />
       </svg>
     ),
@@ -37,10 +56,46 @@ const services = [
     description: "Advanced analytics & management.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="2" width="9" height="9" rx="1" stroke="#0061B7" strokeWidth="2" fill="none" />
-        <rect x="13" y="2" width="9" height="9" rx="1" stroke="#0061B7" strokeWidth="2" fill="none" />
-        <rect x="13" y="13" width="9" height="9" rx="1" stroke="#0061B7" strokeWidth="2" fill="none" />
-        <rect x="2" y="13" width="9" height="9" rx="1" stroke="#0061B7" strokeWidth="2" fill="none" />
+        <rect
+          x="2"
+          y="2"
+          width="9"
+          height="9"
+          rx="1"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
+        <rect
+          x="13"
+          y="2"
+          width="9"
+          height="9"
+          rx="1"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
+        <rect
+          x="13"
+          y="13"
+          width="9"
+          height="9"
+          rx="1"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
+        <rect
+          x="2"
+          y="13"
+          width="9"
+          height="9"
+          rx="1"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
       </svg>
     ),
   },
@@ -49,7 +104,16 @@ const services = [
     description: "Seamless checkout systems.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="5" width="20" height="14" rx="2" stroke="#0061B7" strokeWidth="2" fill="none" />
+        <rect
+          x="2"
+          y="5"
+          width="20"
+          height="14"
+          rx="2"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
         <line x1="2" y1="10" x2="22" y2="10" stroke="#0061B7" strokeWidth="2" />
       </svg>
     ),
@@ -59,7 +123,14 @@ const services = [
     description: "Improve sales with smart user experiences.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12" stroke="#0061B7" strokeWidth="2" fill="none" strokeLinejoin="round" strokeLinecap="round" />
+        <polyline
+          points="22,12 18,12 15,21 9,3 6,12 2,12"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -68,14 +139,36 @@ const services = [
     description: "Advanced scalable marketplace platforms.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#0061B7" strokeWidth="2" fill="none" />
-        <polyline points="9,22 9,12 15,12 15,22" stroke="#0061B7" strokeWidth="2" fill="none" />
+        <path
+          d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
+        <polyline
+          points="9,22 9,12 15,12 15,22"
+          stroke="#0061B7"
+          strokeWidth="2"
+          fill="none"
+        />
       </svg>
     ),
   },
 ];
 
+  const ecosystemImages = [
+    "/assets/images/ecosystem-1.webp",
+    "/assets/images/ecosystem-2.webp",
+    "/assets/images/ecosystem-3.webp",
+  ];
+
 export default function PortfolioEcosystem() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
   return (
     <section className="portfolio-ecosystem">
       <div className="ecosystem-inner">
@@ -90,15 +183,30 @@ export default function PortfolioEcosystem() {
         </div>
 
         <div className="ecosystem-grid-layout">
-          {/* Left: image / mockup placeholder */}
+          {/* Left: image carousel */}
           <div className="ecosystem-mockup">
             <div className="ecosystem-mockup-placeholder">
-              <span className="mockup-label">App Mockup / Device Image</span>
-              {/* Pager dots */}
+              <div className="mockup-image-container">
+                <Image
+                  src={ecosystemImages[currentImageIndex]}
+                  alt={`Ecosystem mockup ${currentImageIndex + 1}`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                  className="mockup-image"
+                  priority={currentImageIndex === 0}
+                />
+              </div>
+              {/* Image navigation dots */}
               <div className="pager-dots">
-                <span className="dot dot--active" />
-                <span className="dot" />
-                <span className="dot" />
+                {ecosystemImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`dot ${currentImageIndex === index ? "dot--active" : ""}`}
+                    onClick={() => goToImage(index)}
+                    aria-label={`View image ${index + 1}`}
+                    type="button"
+                  />
+                ))}
               </div>
             </div>
           </div>

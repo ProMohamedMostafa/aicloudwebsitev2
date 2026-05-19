@@ -1,9 +1,21 @@
 /* PortfolioMobileCommerce.css */
 
+/* ─── Preload sink ─────────────────────────────────────────────────────────── */
+.preload-sink {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ─── Section ──────────────────────────────────────────────────────────────── */
 .portfolio-mobile-commerce {
   width: 100%;
   background: #ffffff;
   padding: 64px 158px;
+  position: relative;
 }
 
 .mobile-commerce-inner {
@@ -14,7 +26,7 @@
   gap: 56px;
 }
 
-/* ── Header ── */
+/* ─── Header ───────────────────────────────────────────────────────────────── */
 .mobile-commerce-header {
   display: flex;
   flex-direction: column;
@@ -35,173 +47,247 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 29px;
-  color: #000000;
+  color: #000;
   margin: 0;
   max-width: 592px;
 }
 
-/* ── Mockup Display ── */
+/* ─── Mockup wrapper ────────────────────────────────────────────────────────── */
 .mobile-commerce-mockups {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
 }
 
-/* Arrow buttons */
+/* ─── Arrows ────────────────────────────────────────────────────────────────── */
 .mockup-arrow {
   position: absolute;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease;
   flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+.mockup-arrow:hover  { opacity: 0.6; transform: scale(1.08); }
+.mockup-arrow:active { transform: scale(0.94); }
+.mockup-arrow--left  { left:  -56px; }
+.mockup-arrow--right { right: -56px; }
+
+/* ─── Stage ──────────────────────────────────────────────────────────────────
+   Fixed container. All cards are absolute inside it.
+   overflow:hidden clips the off-screen sliding cards.
+────────────────────────────────────────────────────────────────────────────── */
+.mockup-stage {
+  position: relative;
+  width: 700px;
+  height: 460px;
+  overflow: hidden;
 }
 
-.mockup-arrow:hover {
-  opacity: 0.6;
+/* ─── Cards ──────────────────────────────────────────────────────────────────
+   KEY PERFORMANCE DECISIONS:
+
+   1. will-change: transform, opacity
+      Tells the browser to promote this element to its own compositor layer
+      BEFORE any animation starts. Without this the browser promotes lazily
+      on the first animation frame → causes the 1-frame freeze.
+
+   2. transform: translateZ(0)  (applied via will-change implicitly in most
+      browsers, but translateZ ensures it on older ones too)
+
+   3. NO width/height in the transition list.
+      Width and height changes trigger Layout → Paint → Composite — the full
+      browser pipeline. We removed them entirely: all cards share a fixed
+      BASE_W × BASE_H and visual resizing is done via scale() in JS.
+
+   4. transform-origin: center center
+      Scale grows symmetrically. No Y-axis drift when scale changes.
+
+   5. Only `transform` and `opacity` are transitioned.
+      Both are compositor-only properties. The GPU handles them entirely
+      without involving the main thread or layout engine.
+────────────────────────────────────────────────────────────────────────────── */
+.mockup-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* ✅ GPU layer promoted eagerly — no lazy-promotion freeze */
+  will-change: transform, opacity;
+
+  /* ✅ Only compositor properties — zero layout reflow on every frame */
+  transition:
+    transform 0.48s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.48s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mockup-arrow--left {
-  left: -56px;
+.mockup-card--center {
+  border-radius: 36px;
 }
 
-.mockup-arrow--right {
-  right: -56px;
-}
-
-/* Screens row */
-.mockup-screens {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 16px 0 24px;
-}
-
-/* Screen placeholders */
-.screen-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  background: #f1f5f9;
-  border: 1px dashed #cbd5e1;
-  color: #94a3b8;
-  font-size: 12px;
-  font-weight: 500;
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-/* Small screens - far sides */
-.screen-placeholder--sm {
-  width: 100px;
-  height: 210px;
-}
-
-/* Medium screens */
-.screen-placeholder--md {
-  width: 150px;
-  height: 310px;
-}
-
-/* Main centre phone */
-.screen-placeholder--main {
-  width: 190px;
-  height: 390px;
-  background: #e8f0fb;
-  border: 2px dashed #0061b7;
-  color: #0061b7;
-  font-size: 13px;
-  z-index: 2;
-  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.18);
-  border-radius: 32px;
-}
-
-.phone-frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ─── Card image ─────────────────────────────────────────────────────────────
+   object-fit: cover fills the card without distortion.
+   padding removed — scale() handles the visual size, not padding.
+────────────────────────────────────────────────────────────────────────────── */
+.mockup-card__img {
+  display: block;
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: inherit;
+  pointer-events: none;
+  user-select: none;
+  /* promote image itself to GPU layer for ultra-smooth first paint */
+  will-change: transform;
+  padding: 8px;
 }
 
-/* Depth effect for side screens */
-.screen-placeholder--left,
-.screen-placeholder--right {
-  opacity: 0.7;
+/* ─── Frame overlay ──────────────────────────────────────────────────────────
+   Absolutely centred on the stage. Never moves. Always on top (z-index: 10).
+   Sized to match the centre card slot (210 × 420).
+────────────────────────────────────────────────────────────────────────────── */
+.mockup-frame-overlay {
+  position: absolute;
+  left: 50%;
+  top:  50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:  210px;
+  height: 420px;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+  display: block;
 }
 
-.screen-placeholder--secondary-left,
-.screen-placeholder--secondary-right {
-  opacity: 0.85;
+/* ─── Dots ──────────────────────────────────────────────────────────────────── */
+.mockup-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -24px;
 }
 
-/* ── Responsive ── */
+.mockup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.mockup-dot--active {
+  background: #0061b7;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.mockup-dot:hover:not(.mockup-dot--active) {
+  background: #94a3b8;
+  transform: scale(1.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   CSS scale() on the stage element itself — proportionally shrinks everything
+   (card sizes driven by JS, frame overlay, tx offsets) without any JS change.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ≤ 1200px — reduce padding, pull arrows inward */
 @media (max-width: 1200px) {
   .portfolio-mobile-commerce {
     padding: 64px 40px;
   }
-
-  .mockup-arrow--left {
-    left: -12px;
-  }
-
-  .mockup-arrow--right {
-    right: -12px;
-  }
+  .mockup-arrow--left  { left:  -44px; }
+  .mockup-arrow--right { right: -44px; }
 }
 
+/* ≤ 900px — scale stage ~0.82 */
 @media (max-width: 900px) {
-  .portfolio-mobile-commerce {
-    padding: 48px 20px;
-  }
+  .portfolio-mobile-commerce { padding: 48px 20px; }
+  .mobile-commerce-inner     { gap: 40px; }
 
   .mobile-commerce-title {
     font-size: 28px;
     line-height: 40px;
   }
-
-  /* Hide side screens on small viewports */
-  .screen-placeholder--sm {
-    display: none;
+  .mobile-commerce-subtitle {
+    font-size: 16px;
+    line-height: 26px;
   }
 
-  .screen-placeholder--md {
-    width: 120px;
-    height: 250px;
+  .mockup-stage {
+    transform: scale(0.82);
+    transform-origin: center center;
+    margin-top:    calc(460px * (0.82 - 1) / 2);
+    margin-bottom: calc(460px * (0.82 - 1) / 2);
   }
 
-  .screen-placeholder--main {
-    width: 160px;
-    height: 330px;
-  }
-
-  .mockup-arrow--left {
-    left: 0;
-  }
-
-  .mockup-arrow--right {
-    right: 0;
-  }
+  .mockup-arrow--left  { left:  -12px; }
+  .mockup-arrow--right { right: -12px; }
+  .mockup-arrow svg    { width: 40px; height: 40px; }
 }
 
-@media (max-width: 560px) {
-  .screen-placeholder--secondary-left,
-  .screen-placeholder--secondary-right {
-    display: none;
+/* ≤ 680px — scale to 0.62 */
+@media (max-width: 680px) {
+  .mockup-stage {
+    transform: scale(0.62);
+    transform-origin: center center;
+    margin-top:    calc(460px * (0.62 - 1) / 2);
+    margin-bottom: calc(460px * (0.62 - 1) / 2);
   }
 
-  .screen-placeholder--main {
-    width: 180px;
-    height: 360px;
+  .mockup-arrow--left  { left:  -8px; }
+  .mockup-arrow--right { right: -8px; }
+  .mockup-arrow svg    { width: 36px; height: 36px; }
+}
+
+/* ≤ 480px — mobile */
+@media (max-width: 480px) {
+  .portfolio-mobile-commerce { padding: 40px 16px; }
+
+  .mobile-commerce-title {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  .mobile-commerce-subtitle {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .mockup-stage {
+    transform: scale(0.50);
+    transform-origin: center center;
+    margin-top:    calc(460px * (0.50 - 1) / 2);
+    margin-bottom: calc(460px * (0.50 - 1) / 2);
+  }
+
+  .mockup-arrow--left  { left:  -4px; }
+  .mockup-arrow--right { right: -4px; }
+  .mockup-arrow svg    { width: 32px; height: 32px; }
+}
+
+/* ≤ 360px — very small phones */
+@media (max-width: 360px) {
+  .mockup-stage {
+    transform: scale(0.42);
+    transform-origin: center center;
+    margin-top:    calc(460px * (0.42 - 1) / 2);
+    margin-bottom: calc(460px * (0.42 - 1) / 2);
   }
 }

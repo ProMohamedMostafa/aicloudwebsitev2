@@ -75,7 +75,9 @@
   flex-direction: column;
   gap: 0;
   overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .why-us-card:hover {
@@ -132,29 +134,142 @@
   margin: 0;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
+/* ── Responsive Breakpoints ── */
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
   .why-us-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .why-us-card {
+    padding: 28px;
+  }
+
+  .why-us-card-title {
+    font-size: 18px;
+    line-height: 26px;
   }
 }
 
+/* Mobile Landscape & Tablet Portrait (480px - 768px) */
 @media (max-width: 768px) {
   .portfolio-why-us {
     padding: 48px 20px;
   }
 
+  .why-us-inner {
+    gap: 40px;
+  }
+
   .why-us-title {
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -0.8px;
+  }
+
+  .why-us-subtitle {
+    font-size: 18px;
+    line-height: 28px;
   }
 
   .why-us-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .why-us-card {
-    border-radius: 20px;
-    padding: 24px;
+    padding: 28px;
+    border-radius: 28px;
+  }
+
+  .why-us-card-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* Mobile Small (320px - 480px) */
+@media (max-width: 480px) {
+  .portfolio-why-us {
+    padding: 40px 16px;
+  }
+
+  .why-us-inner {
+    gap: 32px;
+  }
+
+  .why-us-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .why-us-title {
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+  }
+
+  .why-us-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .why-us-grid {
+    gap: 16px;
+  }
+
+  .why-us-card {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  .why-us-icon-wrap {
+    margin-bottom: 20px;
+  }
+
+  .why-us-icon-bg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .why-us-card-title {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 10px;
+  }
+
+  .why-us-card-desc {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .why-us-card-gradient {
+    height: 3px;
+  }
+}
+
+/* Extra Large Screens (1400px and above) */
+@media (min-width: 1400px) {
+  .why-us-inner {
+    max-width: 1400px;
+  }
+
+  .why-us-grid {
+    gap: 32px;
+  }
+
+  .why-us-card {
+    padding: 40px;
+  }
+
+  .why-us-card-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .why-us-card-desc {
+    font-size: 15px;
+    line-height: 24px;
   }
 }

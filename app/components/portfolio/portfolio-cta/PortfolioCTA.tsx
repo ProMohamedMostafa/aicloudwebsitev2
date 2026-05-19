@@ -5,12 +5,7 @@ import "./PortfolioCTA.css";
 export default function PortfolioCTA() {
   return (
     <section className="portfolio-cta">
-      {/* Background decorative image placeholder */}
-      <div className="cta-bg-decoration" aria-hidden="true">
-        <div className="cta-bg-placeholder">
-          <span>CTA Background / Product Image</span>
-        </div>
-      </div>
+     
 
       {/* Radial glow */}
       <div className="cta-glow" aria-hidden="true" />
@@ -38,11 +33,13 @@ export default function PortfolioCTA() {
           </div>
         </div>
 
-        {/* Right image placeholder */}
+        {/* Right image */}
         <div className="cta-image-area">
-          <div className="cta-image-placeholder">
-            <span>Product / Dashboard Image</span>
-          </div>
+          <img 
+            src="/assets/images/CTA-image.webp" 
+            alt="Product Dashboard Preview"
+            className="cta-image"
+          />
         </div>
       </div>
     </section>

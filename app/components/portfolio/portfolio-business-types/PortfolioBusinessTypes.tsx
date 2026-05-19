@@ -3,14 +3,14 @@
 import "./PortfolioBusinessTypes.css";
 
 const businessTypes = [
-  { label: "Fashion Store" },
-  { label: "Electronics Store" },
-  { label: "Restaurant & Food" },
-  { label: "Beauty & Cosmetics" },
-  { label: "Furniture Store" },
-  { label: "Grocery Store" },
-  { label: "Pharmacy" },
-  { label: "Multi-Vendor" },
+  { label: "Fashion Store", image: "/assets/images/fashionStore.webp" },
+  { label: "Electronics Store", image: "/assets/images/electronics.webp" },
+  { label: "Restaurant & Food", image: "/assets/images/resturant.webp" },
+  { label: "Beauty & Cosmetics", image: "/assets/images/beauty.webp" },
+  { label: "Furniture Store", image: "/assets/images/furnuture.webp" },
+  { label: "Grocery Store", image: "/assets/images/grocery.webp" },
+  { label: "Pharmacy", image: "/assets/images/pharmacy.webp" },
+  { label: "Multi-Vendor", image: "/assets/images/vendors.webp" },
 ];
 
 export default function PortfolioBusinessTypes() {
@@ -30,19 +30,18 @@ export default function PortfolioBusinessTypes() {
         <div className="business-grid">
           {businessTypes.map((item) => (
             <div className="business-card" key={item.label}>
-              {/* Image placeholder area */}
+              {/* Image area */}
               <div className="business-card-image">
-                <div className="business-image-placeholder">
-                  <span className="business-image-label">Image</span>
+                <div className="business-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.label}
+                    className="business-image"
+                  />
                 </div>
                 {/* Small icon overlay */}
                 <div className="business-card-icon-overlay">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <rect
                       x="1"
                       y="1"
