@@ -16,7 +16,7 @@ const services = [
           width="14"
           height="22"
           rx="2"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -25,7 +25,7 @@ const services = [
           y1="18"
           x2="12"
           y2="18"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2.5"
           strokeLinecap="round"
         />
@@ -43,11 +43,18 @@ const services = [
           width="20"
           height="18"
           rx="2"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
-        <line x1="2" y1="8" x2="22" y2="8" stroke="#0061B7" strokeWidth="2" />
+        <line
+          x1="2"
+          y1="8"
+          x2="22"
+          y2="8"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
       </svg>
     ),
   },
@@ -62,7 +69,7 @@ const services = [
           width="9"
           height="9"
           rx="1"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -72,7 +79,7 @@ const services = [
           width="9"
           height="9"
           rx="1"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -82,7 +89,7 @@ const services = [
           width="9"
           height="9"
           rx="1"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -92,7 +99,7 @@ const services = [
           width="9"
           height="9"
           rx="1"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -110,11 +117,18 @@ const services = [
           width="20"
           height="14"
           rx="2"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
-        <line x1="2" y1="10" x2="22" y2="10" stroke="#0061B7" strokeWidth="2" />
+        <line
+          x1="2"
+          y1="10"
+          x2="22"
+          y2="10"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
       </svg>
     ),
   },
@@ -125,7 +139,7 @@ const services = [
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <polyline
           points="22,12 18,12 15,21 9,3 6,12 2,12"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
           strokeLinejoin="round"
@@ -141,13 +155,13 @@ const services = [
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path
           d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
         <polyline
           points="9,22 9,12 15,12 15,22"
-          stroke="#0061B7"
+          stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
@@ -156,23 +170,55 @@ const services = [
   },
 ];
 
-  const ecosystemImages = [
-    "/assets/images/ecosystem-1.webp",
-    "/assets/images/ecosystem-2.webp",
-    "/assets/images/ecosystem-3.webp",
-  ];
+const ecosystemImages = [
+  "/assets/images/ecosystem-1.webp",
+  "/assets/images/ecosystem-2.webp",
+  "/assets/images/ecosystem-3.webp",
+];
+
+// Star positions (updated to use star shapes and adjusted styling)
+const stars = [
+  { cls: "star-1", w: 20, h: 20, l: 254, t: 37 },
+  { cls: "star-2", w: 20, h: 20, l: 46, t: 32 },
+  { cls: "star-3", w: 15, h: 15, l: 79, t: 8 },
+  { cls: "star-4", w: 15, h: 15, l: 295, t: 88 },
+  { cls: "star-5", w: 20, h: 20, l: 8, t: 113 },
+  { cls: "star-6", w: 15, h: 15, l: 39, t: 92 },
+  { cls: "star-7", w: 10, h: 10, l: 101, t: 42 },
+  { cls: "star-8", w: 10, h: 10, l: 214, t: 47 },
+  { cls: "star-9", w: 15, h: 15, l: 11, t: 16 },
+  { cls: "star-10", w: 15, h: 15, l: 218, t: 13 },
+  { cls: "star-11", w: 10, h: 10, l: 19, t: 67 },
+  { cls: "star-12", w: 10, h: 10, l: 295, t: 13 },
+  { cls: "star-13", w: 10, h: 10, l: 295, t: 120 },
+  { cls: "star-14", w: 15, h: 15, l: 288, t: 52 },
+];
+
+// Star SVG component (4-point sparkle star)
+const StarShape = ({ size }: { size: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z"
+      fill="#ACD8FF"
+      stroke="#ACD8FF"
+      strokeWidth="1"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export default function PortfolioEcosystem() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const goToImage = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
   return (
     <section className="portfolio-ecosystem">
       <div className="ecosystem-inner">
-        {/* Section Header */}
         <div className="ecosystem-header">
           <h2 className="ecosystem-title">Complete E-commerce Ecosystem</h2>
           <p className="ecosystem-subtitle">
@@ -196,13 +242,12 @@ export default function PortfolioEcosystem() {
                   priority={currentImageIndex === 0}
                 />
               </div>
-              {/* Image navigation dots */}
               <div className="pager-dots">
                 {ecosystemImages.map((_, index) => (
                   <button
                     key={index}
                     className={`dot ${currentImageIndex === index ? "dot--active" : ""}`}
-                    onClick={() => goToImage(index)}
+                    onClick={() => setCurrentImageIndex(index)}
                     aria-label={`View image ${index + 1}`}
                     type="button"
                   />
@@ -215,6 +260,27 @@ export default function PortfolioEcosystem() {
           <div className="ecosystem-services">
             {services.map((service) => (
               <div className="service-card" key={service.title}>
+                {/* Decorative stars - now using StarShape component */}
+                {stars.map((s) => (
+                  <span
+                    key={s.cls}
+                    className={`star ${s.cls}`}
+                    style={{
+                      width: s.w,
+                      height: s.h,
+                      left: s.l,
+                      top: s.t,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    aria-hidden="true"
+                  >
+                    <StarShape size={s.w} />
+                  </span>
+                ))}
+
                 <div className="service-card-icon">
                   <div className="service-icon-bg">{service.icon}</div>
                 </div>

@@ -72,12 +72,23 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.15s ease;
 }
-.mockup-arrow:hover  { opacity: 0.6; transform: scale(1.08); }
-.mockup-arrow:active { transform: scale(0.94); }
-.mockup-arrow--left  { left:  -56px; }
-.mockup-arrow--right { right: -56px; }
+.mockup-arrow:hover {
+  opacity: 0.6;
+  transform: scale(1.08);
+}
+.mockup-arrow:active {
+  transform: scale(0.94);
+}
+.mockup-arrow--left {
+  left: -56px;
+}
+.mockup-arrow--right {
+  right: -56px;
+}
 
 /* ─── Stage ──────────────────────────────────────────────────────────────────
    Fixed container. All cards are absolute inside it.
@@ -128,7 +139,7 @@
   /* ✅ Only compositor properties — zero layout reflow on every frame */
   transition:
     transform 0.48s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity   0.48s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 0.48s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mockup-card--center {
@@ -160,9 +171,9 @@
 .mockup-frame-overlay {
   position: absolute;
   left: 50%;
-  top:  50%;
+  top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width:  210px;
+  width: 210px;
   height: 420px;
   object-fit: fill;
   pointer-events: none;
@@ -188,7 +199,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    width 0.25s ease;
 }
 
 .mockup-dot--active {
@@ -213,14 +227,22 @@
   .portfolio-mobile-commerce {
     padding: 64px 40px;
   }
-  .mockup-arrow--left  { left:  -44px; }
-  .mockup-arrow--right { right: -44px; }
+  .mockup-arrow--left {
+    left: -44px;
+  }
+  .mockup-arrow--right {
+    right: -44px;
+  }
 }
 
 /* ≤ 900px — scale stage ~0.82 */
 @media (max-width: 900px) {
-  .portfolio-mobile-commerce { padding: 48px 20px; }
-  .mobile-commerce-inner     { gap: 40px; }
+  .portfolio-mobile-commerce {
+    padding: 48px 20px;
+  }
+  .mobile-commerce-inner {
+    gap: 40px;
+  }
 
   .mobile-commerce-title {
     font-size: 28px;
@@ -234,13 +256,20 @@
   .mockup-stage {
     transform: scale(0.82);
     transform-origin: center center;
-    margin-top:    calc(460px * (0.82 - 1) / 2);
+    margin-top: calc(460px * (0.82 - 1) / 2);
     margin-bottom: calc(460px * (0.82 - 1) / 2);
   }
 
-  .mockup-arrow--left  { left:  -12px; }
-  .mockup-arrow--right { right: -12px; }
-  .mockup-arrow svg    { width: 40px; height: 40px; }
+  .mockup-arrow--left {
+    left: -12px;
+  }
+  .mockup-arrow--right {
+    right: -12px;
+  }
+  .mockup-arrow svg {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* ≤ 680px — scale to 0.62 */
@@ -248,18 +277,27 @@
   .mockup-stage {
     transform: scale(0.62);
     transform-origin: center center;
-    margin-top:    calc(460px * (0.62 - 1) / 2);
+    margin-top: calc(460px * (0.62 - 1) / 2);
     margin-bottom: calc(460px * (0.62 - 1) / 2);
   }
 
-  .mockup-arrow--left  { left:  -8px; }
-  .mockup-arrow--right { right: -8px; }
-  .mockup-arrow svg    { width: 36px; height: 36px; }
+  .mockup-arrow--left {
+    left: -8px;
+  }
+  .mockup-arrow--right {
+    right: -8px;
+  }
+  .mockup-arrow svg {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* ≤ 480px — mobile */
 @media (max-width: 480px) {
-  .portfolio-mobile-commerce { padding: 40px 16px; }
+  .portfolio-mobile-commerce {
+    padding: 40px 16px;
+  }
 
   .mobile-commerce-title {
     font-size: 22px;
@@ -271,15 +309,22 @@
   }
 
   .mockup-stage {
-    transform: scale(0.50);
+    transform: scale(0.5);
     transform-origin: center center;
-    margin-top:    calc(460px * (0.50 - 1) / 2);
-    margin-bottom: calc(460px * (0.50 - 1) / 2);
+    margin-top: calc(460px * (0.5 - 1) / 2);
+    margin-bottom: calc(460px * (0.5 - 1) / 2);
   }
 
-  .mockup-arrow--left  { left:  -4px; }
-  .mockup-arrow--right { right: -4px; }
-  .mockup-arrow svg    { width: 32px; height: 32px; }
+  .mockup-arrow--left {
+    left: -4px;
+  }
+  .mockup-arrow--right {
+    right: -4px;
+  }
+  .mockup-arrow svg {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 /* ≤ 360px — very small phones */
@@ -287,7 +332,7 @@
   .mockup-stage {
     transform: scale(0.42);
     transform-origin: center center;
-    margin-top:    calc(460px * (0.42 - 1) / 2);
+    margin-top: calc(460px * (0.42 - 1) / 2);
     margin-bottom: calc(460px * (0.42 - 1) / 2);
   }
 }
