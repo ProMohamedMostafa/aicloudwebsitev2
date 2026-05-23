@@ -6,9 +6,6 @@ import "./PortfolioHero.css";
 export default function PortfolioHero() {
   return (
     <section className="portfolio-hero">
-      {/* White top overlay */}
-      <div className="top-white-overlay"></div>
-
       {/* SVG image on the right side - hidden on medium and small screens */}
       <div className="hero-decore" aria-hidden="true">
         <Image

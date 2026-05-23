@@ -35,15 +35,7 @@
   );
 }
 
-.top-dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 87px; /* height of dark section */
-  background: #00a000d1;
-  z-index: 1;
-}
+/* top-dark-overlay removed — no longer needed with solid white header */
 
 /* ==========================
    Hero Section
@@ -51,7 +43,7 @@
 .clean-tech-hero-section {
   min-height: 100vh;
   padding: 4rem 2rem;
-  padding-top: 6rem;
+  padding-top: calc(var(--header-height) + 2rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -367,7 +359,7 @@
 @media (max-width: 768px) {
   .clean-tech-hero-section {
     padding: 3rem 1rem;
-    padding-top: 6rem;
+    padding-top: calc(var(--header-height) + 1.5rem);
   }
 
   .clean-tech-subtitle {
@@ -391,7 +383,7 @@
 @media (max-width: 480px) {
   .clean-tech-hero-section {
     padding: 2rem 1rem;
-    padding-top: 8rem;
+    padding-top: calc(var(--header-height) + 1rem);
   }
 
   .clean-tech-subtitle {

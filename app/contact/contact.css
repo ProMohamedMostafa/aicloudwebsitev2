@@ -13,7 +13,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  padding: 8rem 2rem;
+  padding: 4rem 2rem;
+  padding-top: calc(var(--header-height) + 3rem);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -175,7 +176,8 @@
   .contact-main-content {
     grid-template-columns: 1fr;
     gap: 3rem;
-    padding: 8rem 2rem;
+    padding: 3rem 2rem;
+    padding-top: calc(var(--header-height) + 2rem);
   }
 
   .contact-hero {
@@ -190,7 +192,8 @@
 
 @media (max-width: 768px) {
   .contact-main-content {
-    padding: 8rem 2rem;
+    padding: 2rem 2rem;
+    padding-top: calc(var(--header-height) + 1.5rem);
     gap: 2rem;
   }
 
@@ -205,7 +208,8 @@
 
 @media (max-width: 480px) {
   .contact-main-content {
-    padding: 6.5rem 1rem;
+    padding: 1.5rem 1rem;
+    padding-top: calc(var(--header-height) + 1rem);
     gap: 1.5rem;
   }
 

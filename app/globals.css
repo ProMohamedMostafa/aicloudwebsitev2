@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* === Header Height Token === */
+:root {
+  --header-height: 80px; /* matches the fixed header height */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 88px;
+  }
+}
+
+/* === Page Offset — apply to first section of every page === */
+/* This class pushes content below the fixed white header */
+.page-hero-offset {
+  padding-top: var(--header-height);
+}
+
 /* === Global Reset & Base Styles === */
 *,
 *::before,

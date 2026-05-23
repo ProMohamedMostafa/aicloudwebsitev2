@@ -1,6 +1,6 @@
 /* ---------- Global Header Styles ---------- */
 .header {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 50;
   background-color: #fff;

@@ -22,12 +22,13 @@ export default function Header() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // Keep scrolled state only for enhanced shadow depth
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 50);
+          setScrolled(window.scrollY > 10);
           ticking = false;
         });
         ticking = true;
@@ -53,11 +54,16 @@ export default function Header() {
 
   const handleProductsClick = () => { if (isMobile) setProductsOpen(!productsOpen); };
 
-  const closeMobileMenu = () => { setMenuOpen(false); setProductsOpen(false); };
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    setProductsOpen(false);
+    document.body.style.overflow = "unset";
+  };
 
   const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-    document.body.style.overflow = !menuOpen ? "hidden" : "unset";
+    const nextState = !menuOpen;
+    setMenuOpen(nextState);
+    document.body.style.overflow = nextState ? "hidden" : "unset";
   };
 
   return (

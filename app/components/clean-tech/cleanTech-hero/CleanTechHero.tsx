@@ -138,7 +138,6 @@ export default function CleanTechHero() {
 
   return (
     <div className="clean-tech-hero-section" ref={sectionRef}>
-      <div className="top-dark-overlay"></div>
 
       <div className="clean-tech-hero-container" ref={containerRef}>
         {/* Content Section */}

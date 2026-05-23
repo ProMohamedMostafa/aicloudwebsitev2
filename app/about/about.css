@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   padding: 2rem;
+  padding-top: calc(var(--header-height) + 2rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +20,6 @@
 /* About Hero Section */
 .about-hero {
   padding: 2rem;
-  padding-top: 6rem;
 }
 
 .about-hero-content {
@@ -173,7 +173,7 @@
 @media (max-width: 768px) {
   .about-section {
     padding: 1rem;
-    padding-top: 6rem;
+    padding-top: calc(var(--header-height) + 1.5rem);
   }
 
   .about-title {
