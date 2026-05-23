@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/app/i18n/context";
 
 interface ContactUsButtonProps {
   onClick?: () => void;
@@ -21,12 +22,12 @@ export default function ContactUsButton({
   href = "/contact",
 }: ContactUsButtonProps) {
   const router = useRouter();
+  const { t, dir } = useI18n();
 
   const handleClick = () => {
     if (onClick) {
       onClick();
     } else {
-      // Default behavior: navigate to contact page
       router.push(href);
     }
   };
@@ -48,12 +49,14 @@ export default function ContactUsButton({
 
   const buttonClasses = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
+  // Arrow flips direction for RTL
   const arrowIcon = (
     <svg
       className="w-5 h-5"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
+      style={{ transform: dir === "rtl" ? "scaleX(-1)" : "none" }}
     >
       <path
         strokeLinecap="round"
@@ -71,7 +74,7 @@ export default function ContactUsButton({
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
     >
-      Contact Us
+      {t("hero.contactUs")}
       {showIcon && arrowIcon}
     </motion.button>
   );

@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { useI18n } from "@/app/i18n/context";
 import "./Header.css";
 
 export default function Header() {
+  const { t, lang, setLang, dir } = useI18n();
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +24,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Keep scrolled state only for enhanced shadow depth
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -66,6 +67,10 @@ export default function Header() {
     document.body.style.overflow = nextState ? "hidden" : "unset";
   };
 
+  const toggleLang = () => {
+    setLang(lang === "en" ? "ar" : "en");
+  };
+
   return (
     <header className={`header ${scrolled ? "scrolled" : ""} ${isMounted ? "mounted" : ""}`}>
       <nav className="navbar">
@@ -77,8 +82,18 @@ export default function Header() {
           </Link>
 
           <div className="nav-actions">
+            {/* Language Switcher */}
+            <button
+              className="lang-btn"
+              onClick={toggleLang}
+              aria-label={`Switch to ${lang === "en" ? "Arabic" : "English"}`}
+            >
+              <span className="lang-globe" aria-hidden="true">🌐</span>
+              <span className="lang-label">{t("lang.switchTo")}</span>
+            </button>
+
             <Link href="/contact" className="contact-btn">
-              <span className="btn-text">Contact Us</span>
+              <span className="btn-text">{t("header.contact")}</span>
               <div className="btn-hover-effect"></div>
             </Link>
             <button onClick={handleMenuToggle} className={`menu-btn ${menuOpen ? "open" : ""}`} aria-label="Toggle menu" aria-expanded={menuOpen}>
@@ -90,14 +105,14 @@ export default function Header() {
             <ul className="menu-list">
               <li className="menu-item">
                 <Link href="/" onClick={closeMobileMenu} className="menu-link">
-                  <span className="link-text">Home</span>
+                  <span className="link-text">{t("header.home")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
 
               <li className="dropdown menu-item" ref={dropdownRef}>
                 <button onClick={handleProductsClick} className="dropdown-btn menu-link" aria-expanded={productsOpen}>
-                  <span className="link-text">Products</span>
+                  <span className="link-text">{t("header.products")}</span>
                   <svg className={`dropdown-icon ${productsOpen ? "open" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
@@ -122,7 +137,7 @@ export default function Header() {
                               <rect x="1" y="13" width="8" height="8" rx="1.5" stroke="#0061B7" strokeWidth="1.8" fill="none"/>
                             </svg>
                           </div>
-                          <span className="portfolio-nav-label">E-Commerce Portfolio</span>
+                          <span className="portfolio-nav-label">{t("header.ecommercePortfolio")}</span>
                         </div>
                         <div className="dropdown-link-underline"></div>
                       </Link>
@@ -133,19 +148,19 @@ export default function Header() {
 
               <li className="menu-item">
                 <Link href="/services" onClick={closeMobileMenu} className="menu-link">
-                  <span className="link-text">Services</span>
+                  <span className="link-text">{t("header.services")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
               <li className="menu-item">
                 <Link href="/partners" onClick={closeMobileMenu} className="menu-link">
-                  <span className="link-text">Partners</span>
+                  <span className="link-text">{t("header.partners")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
               <li className="menu-item">
                 <Link href="/about" onClick={closeMobileMenu} className="menu-link">
-                  <span className="link-text">About Us</span>
+                  <span className="link-text">{t("header.about")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>

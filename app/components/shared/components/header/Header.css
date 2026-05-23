@@ -623,3 +623,89 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* ---------- Language Switcher ---------- */
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #f0f5ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.lang-globe {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-label {
+  font-family: inherit;
+}
+
+/* RTL: flip hover translateX directions so slide animations feel natural */
+[dir="rtl"] .menu-link:hover {
+  transform: translateX(-8px);
+}
+
+[dir="rtl"] .menu-link:hover .link-text {
+  transform: translateX(-4px);
+}
+
+[dir="rtl"] .contact-btn:hover .btn-text {
+  transform: translateX(-2px);
+}
+
+[dir="rtl"] .dropdown-link:hover {
+  transform: translateX(-8px);
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+}
+
+[dir="rtl"] .dropdown-icon {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .menu-item {
+  animation-name: slideInRight;
+}
+
+[dir="rtl"] .cleantech-logo {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* RTL menu slide animation */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Mobile: smaller lang button */
+@media (max-width: 640px) {
+  .lang-btn {
+    padding: 0.4rem 0.625rem;
+    font-size: 0.8rem;
+  }
+
+  .lang-globe {
+    display: none;
+  }
+}
