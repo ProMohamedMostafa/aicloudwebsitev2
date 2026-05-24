@@ -3,23 +3,10 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import "./services.css";
 import ContactUsButton from "../../shared/components/ContactUsButton/ContactUsButton";
-import { useI18n } from "@/app/i18n/context";
+import { services } from "@/app/data/servicesData";
 import Link from "next/link";
 
-// Service icons — keep static since features/icons don't change with lang
-const serviceIcons = ["🌐", "📱", "🔗", "🤖", "☁️", "🎨"];
-const serviceFeatures = [
-  ["React/Next.js", "TypeScript", "Responsive Design", "SEO Optimized"],
-  ["iOS & Android", "Cross-Platform", "Native Performance", "App Store Ready"],
-  ["Smart Devices", "Real-time Data", "Cloud Integration", "Analytics Dashboard"],
-  ["Machine Learning", "AI Models", "Data Analysis", "Automation"],
-  ["AWS/Azure", "Scalable Infrastructure", "DevOps", "CI/CD Pipelines"],
-  ["User Research", "Prototyping", "UI Design", "Usability Testing"],
-];
-const serviceKeys = ["webDev", "appDev", "iot", "ai", "cloud", "design"] as const;
-
 export default function Services() {
-  const { t } = useI18n();
   const [activeService, setActiveService] = useState(0);
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,30 +35,32 @@ export default function Services() {
       <div className="services-container">
         <div className={`services-header scroll-fade ${visible ? "visible" : ""}`}>
           <h2 className="services-title">
-            {t("services.title")}{" "}
-            <span className="gradient-text">{t("services.titleHighlight")}</span>
+            Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="services-subtitle">{t("services.subtitle")}</p>
+          <p className="services-subtitle">
+            Comprehensive digital solutions designed to elevate your business
+            and deliver exceptional user experiences
+          </p>
         </div>
 
         <div className="services-grid">
-          {serviceKeys.map((key, index) => (
+          {services.map((service, index) => (
             <div
-              key={key}
+              key={service.title}
               className={`service-card scroll-fade ${visible ? "visible" : ""} ${activeService === index ? "active" : ""}`}
               style={{ transitionDelay: `${index * 80}ms` }}
               onMouseEnter={() => handleServiceHover(index)}
               onFocus={() => handleServiceHover(index)}
             >
               <div className="service-header">
-                <div className="service-icon">{serviceIcons[index]}</div>
-                <h3 className="service-title">{t(`services.items.${key}.title`)}</h3>
+                <div className="service-icon">{service.icon}</div>
+                <h3 className="service-title">{service.title}</h3>
               </div>
 
-              <p className="service-description">{t(`services.items.${key}.description`)}</p>
+              <p className="service-description">{service.description}</p>
 
               <div className="service-features">
-                {serviceFeatures[index].map((feature, fi) => (
+                {service.features.map((feature, fi) => (
                   <span key={fi} className="feature-tag">{feature}</span>
                 ))}
               </div>
@@ -79,9 +68,9 @@ export default function Services() {
               <Link
                 href="/contact"
                 className="learn-more-btn"
-                aria-label={`Learn more about ${t(`services.items.${key}.title`)}`}
+                aria-label={`Learn more about ${service.title}`}
               >
-                {t("services.learnMore")}
+                Learn More
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>

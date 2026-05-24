@@ -62,9 +62,9 @@ main {
     color: theme("colors.zinc.50");
   }
 
-  a {
+  /* a {
     color: theme("colors.blue.400");
-  }
+  } */
 
   a:hover {
     color: theme("colors.blue.300");
@@ -95,107 +95,3 @@ main {
   }
 }
 /* loading-active / loading-complete classes removed — loaders are disabled */
-
-/* ============================================================
-   RTL / Direction-aware global overrides
-   Applied when <html dir="rtl"> is set by i18n context
-   ============================================================ */
-
-/* Arabic font stack — renders Arabic script correctly */
-[dir="rtl"] body {
-  font-family: "Geist", "Noto Sans Arabic", "Tahoma", "Arial", sans-serif;
-}
-
-/* Text alignment flips */
-[dir="rtl"] .text-left  { text-align: right; }
-[dir="rtl"] .text-right { text-align: left; }
-
-/* Flexbox row-reverse for RTL layouts */
-[dir="rtl"] .footer-content {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .footer-bottom {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .social-icons {
-  flex-direction: row-reverse;
-}
-
-/* Footer me-2 (margin-end) becomes margin-start in RTL */
-[dir="rtl"] .me-2 {
-  margin-right: 0;
-  margin-left: 0.5rem;
-}
-
-/* Services page: reverse the two-column layout */
-[dir="rtl"] .services-main-content {
-  flex-direction: row-reverse;
-}
-
-/* Contact page: reverse hero + form layout */
-[dir="rtl"] .contact-main-content {
-  flex-direction: row-reverse;
-}
-
-/* About page: reverse content split */
-[dir="rtl"] .content-split {
-  flex-direction: row-reverse;
-}
-
-/* Partners: reverse hero + cards */
-[dir="rtl"] .partners-container {
-  flex-direction: row-reverse;
-}
-
-/* Hero grid */
-[dir="rtl"] .grid-layout {
-  direction: rtl;
-}
-
-/* Nav-actions order in RTL: lang btn still left of contact btn visually */
-[dir="rtl"] .nav-actions {
-  flex-direction: row-reverse;
-}
-
-/* Dropdown menu aligns to end in RTL */
-[dir="rtl"] .dropdown-menu {
-  left: auto;
-  right: 0;
-}
-
-/* Learn-more arrow flip in service cards */
-[dir="rtl"] .learn-more-btn svg {
-  transform: scaleX(-1);
-}
-
-/* Contact/hero arrow in RTL */
-[dir="rtl"] .cta-container svg {
-  transform: scaleX(-1);
-}
-
-/* Key-benefits list: text starts from right */
-[dir="rtl"] .key-benefits ul {
-  padding-right: 1.25rem;
-  padding-left: 0;
-}
-
-/* Vertical carousel: align text right in RTL */
-[dir="rtl"] .carousel__item-body {
-  text-align: right;
-}
-
-/* Service cards: text align */
-[dir="rtl"] .service-card {
-  text-align: right;
-}
-
-[dir="rtl"] .service-header {
-  flex-direction: row-reverse;
-}
-
-/* Feature tags: reverse wrap */
-[dir="rtl"] .service-features {
-  direction: rtl;
-}

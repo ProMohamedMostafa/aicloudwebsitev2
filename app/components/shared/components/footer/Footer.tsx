@@ -10,12 +10,9 @@ import {
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useI18n } from "@/app/i18n/context";
 import "./Footer.css";
 
 export default function Footer() {
-  const { t } = useI18n();
-
   return (
     <footer className="footer">
       {/* Middle Links Section */}
@@ -32,10 +29,13 @@ export default function Footer() {
                 />
               </Link>
 
-              <h6 className="fw-bold">{t("footer.address")}</h6>
-              <p>{t("footer.addressValue")}</p>
+              <h6 className="fw-bold">Address</h6>
+              <p>
+                Office No.6 , 6th Floor Al Rossais Commercial Center – Al Olaya.
+                Riyadh, 12211
+              </p>
 
-              <h6 className="fw-bold">{t("footer.contact")}</h6>
+              <h6 className="fw-bold">Contact</h6>
               <p>
                 <FontAwesomeIcon icon={faPhone} className="me-2" />
                 920013760
@@ -47,19 +47,49 @@ export default function Footer() {
 
               {/* Social Media Icons */}
               <div className="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61566523726522" className="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61566523726522"
+                  className="facebook"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={faFacebook} />
                 </a>
-                <a href="https://x.com/AICloudTechAds" className="twitter" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://x.com/AICloudTechAds"
+                  className="twitter"
+                  aria-label="Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={faTwitter} />
                 </a>
-                <a href="https://www.linkedin.com/company/ai-cloud-tech-ads/?viewAsMember=true" className="linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/company/ai-cloud-tech-ads/?viewAsMember=true"
+                  className="linkedin"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={faLinkedin} />
                 </a>
-                <a href="https://www.instagram.com/aicloudtechads/" className="instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.instagram.com/aicloudtechads/"
+                  className="instagram"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
-                <a href="https://www.tiktok.com/@aicloudtechads" className="tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.tiktok.com/@aicloudtechads"
+                  className="tiktok"
+                  aria-label="TikTok"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={faTiktok} />
                 </a>
               </div>
@@ -68,16 +98,24 @@ export default function Footer() {
             {/* Right Column (Quick Links) */}
             <div className="footer-right">
               <p className="text-uppercase fw-bold">
-                <Link href="/" className="text-decoration-none">{t("footer.home")}</Link>
+                <Link href="/" className="text-decoration-none">
+                  Home
+                </Link>
               </p>
               <p className="text-uppercase fw-bold">
-                <Link href="/services" className="text-decoration-none">{t("footer.services")}</Link>
+                <Link href="/services" className="text-decoration-none">
+                  Services
+                </Link>
               </p>
               <p className="text-uppercase fw-bold">
-                <Link href="/partners" className="text-decoration-none">{t("footer.partners")}</Link>
+                <Link href="/partners" className="text-decoration-none">
+                  Partners
+                </Link>
               </p>
               <p className="text-uppercase fw-bold">
-                <Link href="/about" className="text-decoration-none">{t("footer.about")}</Link>
+                <Link href="/about" className="text-decoration-none">
+                  About
+                </Link>
               </p>
             </div>
           </div>
@@ -87,13 +125,21 @@ export default function Footer() {
       {/* Bottom Bar Section */}
       <section className="footer-bottom">
         <div className="footer-copyright">
-          <span>© {new Date().getFullYear()} {t("footer.copyright")}</span>
+          <span>
+            © {new Date().getFullYear()} AI Cloud. All rights reserved.
+          </span>
         </div>
 
         <div className="footer-links">
-          <Link href="#" className="text-decoration-none">{t("footer.privacy")}</Link>
-          <Link href="#" className="text-decoration-none">{t("footer.terms")}</Link>
-          <Link href="#" className="text-decoration-none">{t("footer.cookies")}</Link>
+          <Link href="#" className="text-decoration-none">
+            Privacy
+          </Link>
+          <Link href="#" className="text-decoration-none">
+            Terms
+          </Link>
+          <Link href="#" className="text-decoration-none">
+            Cookies
+          </Link>
         </div>
       </section>
     </footer>

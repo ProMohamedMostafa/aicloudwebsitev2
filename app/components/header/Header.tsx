@@ -2,17 +2,16 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { useI18n } from "@/app/i18n/context";
 import "./Header.css";
 
 export default function Header() {
-  const { t, lang, setLang } = useI18n();
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
+  // Detect mobile screen size
   useEffect(() => {
     const checkScreenSize = () => setIsMobile(window.innerWidth < 1024);
     checkScreenSize();
@@ -20,15 +19,23 @@ export default function Header() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // Handle scroll for background transparency
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setProductsOpen(false);
       }
     };
@@ -36,52 +43,119 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close mobile menu when resizing to desktop
   useEffect(() => {
     if (!isMobile && menuOpen) setMenuOpen(false);
   }, [isMobile, menuOpen]);
 
-  const handleProductsClick = () => { if (isMobile) setProductsOpen(!productsOpen); };
-  const closeMobileMenu = () => { setMenuOpen(false); setProductsOpen(false); };
+  const handleProductsClick = () => {
+    if (isMobile) setProductsOpen(!productsOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    setProductsOpen(false);
+  };
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <nav className="navbar">
         <div className="navbar-container">
+          {/* Logo */}
           <Link href="/" className="logo-link" onClick={closeMobileMenu}>
-            <img src="/assets/images/ai_logo.svg" className="logo" alt="AI Cloud Logo" />
+            <img
+              src="/assets/images/ai_logo.svg"
+              className="logo"
+              alt="AI Cloud Logo"
+            />
           </Link>
 
+          {/* Right side buttons */}
           <div className="nav-actions">
-            <button className="lang-btn" onClick={() => setLang(lang === "en" ? "ar" : "en")}>
-              🌐 {t("lang.switchTo")}
-            </button>
-            <Link href="/contact" className="contact-btn">{t("header.contact")}</Link>
-            <button onClick={() => setMenuOpen(!menuOpen)} className={`menu-btn ${menuOpen ? "open" : ""}`} aria-label="Toggle menu" aria-expanded={menuOpen}>
-              <div className="menu-icon"><span></span><span></span><span></span></div>
+            <Link href="/contact" className="contact-btn">
+              Contact Us
+            </Link>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className={`menu-btn ${menuOpen ? "open" : ""}`}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <div className="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </button>
           </div>
 
+          {/* Menu links */}
           <div className={`menu ${menuOpen ? "open" : ""}`}>
             <ul className="menu-list">
-              <li><Link href="/" onClick={closeMobileMenu}>{t("header.home")}</Link></li>
+              <li>
+                <Link href="/" onClick={closeMobileMenu}>
+                  Home
+                </Link>
+              </li>
               <li className="dropdown" ref={dropdownRef}>
-                <button onClick={handleProductsClick} className="dropdown-btn" aria-expanded={productsOpen}>
-                  {t("header.products")}
-                  <svg className={`dropdown-icon ${productsOpen ? "open" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                <button
+                  onClick={handleProductsClick}
+                  className="dropdown-btn"
+                  aria-expanded={productsOpen}
+                >
+                  Products
+                  <svg
+                    className={`dropdown-icon ${productsOpen ? "open" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
                 <div className={`dropdown-menu ${productsOpen ? "open" : ""}`}>
                   <ul>
-                    <li><Link href="/products/ai" onClick={closeMobileMenu}>{t("header.aiTools")}</Link></li>
-                    <li><Link href="/products/cloud" onClick={closeMobileMenu}>{t("header.cloudServices")}</Link></li>
-                    <li><Link href="/products/analytics" onClick={closeMobileMenu}>{t("header.analytics")}</Link></li>
+                    <li>
+                      <Link href="/products/ai" onClick={closeMobileMenu}>
+                        AI Tools
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/products/cloud" onClick={closeMobileMenu}>
+                        Cloud Services
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/products/analytics"
+                        onClick={closeMobileMenu}
+                      >
+                        Analytics
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </li>
-              <li><Link href="/services" onClick={closeMobileMenu}>{t("header.services")}</Link></li>
-              <li><Link href="/partners" onClick={closeMobileMenu}>{t("header.partners")}</Link></li>
-              <li><Link href="/about" onClick={closeMobileMenu}>{t("header.about")}</Link></li>
+              <li>
+                <Link href="/services" onClick={closeMobileMenu}>
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/partners" onClick={closeMobileMenu}>
+                  Partners
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" onClick={closeMobileMenu}>
+                  About Us
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

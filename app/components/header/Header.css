@@ -422,24 +422,3 @@
 .navbar {
   transition: background-color 0.4s ease;
 }
-
-/* Language button */
-.lang-btn {
-  background: transparent;
-  border: 1.5px solid #d1d5db;
-  border-radius: 8px;
-  padding: 0.5rem 0.875rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #374151;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-.lang-btn:hover {
-  border-color: #2563eb;
-  color: #2563eb;
-  background-color: #f0f5ff;
-}
-[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
-[dir="rtl"] .menu-link:hover { transform: translateX(-8px); }
