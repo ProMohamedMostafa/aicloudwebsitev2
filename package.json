@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "export": "next export"
+    "lint": "eslint"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
@@ -24,7 +23,6 @@
     "lottie-react": "^2.4.1",
     "next": "16.0.1",
     "next-intl": "^4.5.0",
-    "particles.js": "^2.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "three": "^0.181.0"

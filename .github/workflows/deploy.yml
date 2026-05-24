@@ -1,0 +1,68 @@
+# ─────────────────────────────────────────────────────────────
+# CI/CD: build → lint → deploy to production server
+# Triggers on every push to the `main` branch.
+#
+# Required GitHub Secrets (Settings → Secrets → Actions):
+#   SSH_HOST                  — your server IP or hostname
+#   SSH_USER                  — SSH user (e.g. ubuntu or deploy)
+#   SSH_PRIVATE_KEY           — private key matching your server's authorized_keys
+#   SSH_PORT                  — SSH port (default 22, change if you hardened it)
+#   NEXT_PUBLIC_API_BASE_URL  — your backend API base URL
+# ─────────────────────────────────────────────────────────────
+name: Deploy to production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Build & deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --omit=dev
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+        run: npm run build
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            cd /var/www/aicloud
+
+            echo "→ Pulling latest code"
+            git pull origin main
+
+            echo "→ Installing production dependencies"
+            npm ci --omit=dev
+
+            echo "→ Building"
+            NEXT_PUBLIC_API_BASE_URL="${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" npm run build
+
+            echo "→ Restarting app with PM2"
+            pm2 reload aicloud --update-env || pm2 start npm --name aicloud -- start
+
+            echo "✓ Deployment complete"

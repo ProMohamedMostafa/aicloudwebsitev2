@@ -1,2 +1,2 @@
-// src/config/api.ts
-export const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+// config/config/api.ts — re-exports from parent to avoid broken imports
+export { BASE_URL } from "../api";

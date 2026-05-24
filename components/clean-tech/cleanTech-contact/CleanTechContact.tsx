@@ -24,6 +24,12 @@ export default function CleanTechContact() {
     message: string;
   }>({ type: null, message: "" });
 
+  // Honeypot field — bots fill this in, humans never see it (visually hidden)
+  const [honeypot, setHoneypot] = useState("");
+
+  // Track form render timestamp to detect instant bot submissions
+  const formRenderedAt = useRef<number>(Date.now());
+
   // Refs for animations
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
@@ -35,78 +41,44 @@ export default function CleanTechContact() {
   );
 
   useLayoutEffect(() => {
+    formRenderedAt.current = Date.now();
+
     const ctx = gsap.context(() => {
-      // Initial hide elements
       gsap.set(
         [titleRef.current, descriptionRef.current, ...formElementsRef.current],
-        {
-          opacity: 0,
-          y: 30,
-        }
+        { opacity: 0, y: 30 }
       );
 
-      // Main timeline
-      const mainTl = gsap.timeline({
-        defaults: { ease: "power3.out" },
-      });
+      const mainTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Section entrance
       mainTl.fromTo(
         sectionRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.8 }
       );
 
-      // Hero section animation
       mainTl
-        .to(
-          titleRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-          },
-          "+=0.2"
-        )
+        .to(titleRef.current, { opacity: 1, y: 0, duration: 1 }, "+=0.2")
         .to(
           descriptionRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
+          { opacity: 1, y: 0, duration: 0.8 },
           "-=0.3"
         );
 
-      // Form container animation
       mainTl.fromTo(
         formRef.current,
-        {
-          opacity: 0,
-          scale: 0.9,
-          rotationY: -10,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          rotationY: 0,
-          duration: 1.2,
-          ease: "back.out(1.4)",
-        },
+        { opacity: 0, scale: 0.9, rotationY: -10 },
+        { opacity: 1, scale: 1, rotationY: 0, duration: 1.2, ease: "back.out(1.4)" },
         "-=0.5"
       );
 
-      // Form elements staggered animation
       mainTl.to(
         formElementsRef.current,
         {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          stagger: {
-            amount: 0.8,
-            from: "start",
-          },
+          stagger: { amount: 0.8, from: "start" },
           ease: "power2.out",
         },
         "-=0.3"
@@ -126,36 +98,21 @@ export default function CleanTechContact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user starts typing
     if (errors[name as keyof typeof errors]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
 
-    // Clear submit status when user starts typing again
     if (submitStatus.type) {
       setSubmitStatus({ type: null, message: "" });
     }
   };
 
   const validateForm = () => {
-    const newErrors = {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    };
-
+    const newErrors = { name: "", email: "", phone: "", message: "" };
     let isValid = true;
 
-    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
       isValid = false;
@@ -164,7 +121,6 @@ export default function CleanTechContact() {
       isValid = false;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -174,8 +130,7 @@ export default function CleanTechContact() {
       isValid = false;
     }
 
-    // Phone validation (basic)
-    const phoneRegex = /^\+?[0-9\s\-\(\)]{7,20}$/;
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
     if (
       formData.phone &&
       !phoneRegex.test(formData.phone.replace(/[\s\-\(\)]/g, ""))
@@ -184,7 +139,6 @@ export default function CleanTechContact() {
       isValid = false;
     }
 
-    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
       isValid = false;
@@ -200,9 +154,26 @@ export default function CleanTechContact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    // Honeypot check — if filled, silently drop the submission (bot detected)
+    if (honeypot) {
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you for your message! We'll get back to you soon.",
+      });
       return;
     }
+
+    // Timing check — legitimate users take at least 3 seconds to fill a form
+    const elapsed = Date.now() - formRenderedAt.current;
+    if (elapsed < 3000) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please take a moment to fill in the form completely.",
+      });
+      return;
+    }
+
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
@@ -210,9 +181,7 @@ export default function CleanTechContact() {
     try {
       const response = await fetch(`${BASE_URL}/api/message`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           source: "cleantech" as const,
@@ -223,22 +192,19 @@ export default function CleanTechContact() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
+      await response.json();
 
       setSubmitStatus({
         type: "success",
         message: "Thank you for your message! We'll get back to you soon.",
       });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
-      console.error("Error submitting form:", error);
+      // Only log in development — never expose errors in production
+      if (process.env.NODE_ENV !== "production") {
+        console.error("Error submitting form:", error);
+      }
       setSubmitStatus({
         type: "error",
         message:
@@ -281,7 +247,6 @@ export default function CleanTechContact() {
 
         {/* Right Side - Contact Form */}
         <div className="cleantech-contact-form-wrapper" ref={formRef}>
-          {/* Status Message */}
           {submitStatus.type && (
             <div
               className={`cleantech-submit-status ${submitStatus.type}`}
@@ -292,6 +257,31 @@ export default function CleanTechContact() {
           )}
 
           <form className="cleantech-contact-form" onSubmit={handleSubmit}>
+            {/* Honeypot — hidden from real users, bots fill it in */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
+                opacity: 0,
+                pointerEvents: "none",
+                tabIndex: -1,
+              } as React.CSSProperties}
+            >
+              <label htmlFor="website_ct">Website</label>
+              <input
+                type="text"
+                id="website_ct"
+                name="website_ct"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                autoComplete="off"
+                tabIndex={-1}
+              />
+            </div>
+
             <div className="cleantech-form-row">
               <div className="cleantech-form-group" ref={addToFormRefs}>
                 <label htmlFor="name">Full Name *</label>
