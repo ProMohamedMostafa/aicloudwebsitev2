@@ -423,3 +423,13 @@
     font-size: 20px;
   }
 }
+/* === RTL Portfolio CTA === */
+.cta-inner--rtl {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .cta-content {
+  text-align: right;
+}
+[dir="rtl"] .cta-buttons {
+  justify-content: flex-end;
+}

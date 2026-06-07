@@ -397,3 +397,29 @@
 .cleantech-form-group textarea:hover {
   border-color: #d1d5db;
 }
+
+/* === RTL CleanTech Contact === */
+[dir="rtl"] .cleantech-contact-intro h1,
+[dir="rtl"] .cleantech-contact-intro p {
+  text-align: right;
+}
+
+[dir="rtl"] .cleantech-contact-hero h2,
+[dir="rtl"] .cleantech-contact-hero p {
+  text-align: right;
+}
+
+[dir="rtl"] .cleantech-form-group label {
+  text-align: right;
+  display: block;
+}
+
+[dir="rtl"] .cleantech-form-group input,
+[dir="rtl"] .cleantech-form-group textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .cleantech-contact-main-content {
+  flex-direction: row-reverse;
+}

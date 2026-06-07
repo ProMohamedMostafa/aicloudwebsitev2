@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/shared/components/header/Header";
 import Footer from "./components/shared/components/footer/Footer";
 import ScrollToTop from "./components/shared/ScrollToTop";
+import { I18nProvider } from "./i18n/context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,22 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} antialiased`}
-      >
-        <div className="min-h-screen flex flex-col">
+      <body className={`${geistSans.variable} antialiased`}>
+        <I18nProvider>
+          <div className="min-h-screen flex flex-col">
             <header className="layout-container">
               <Header />
             </header>
-
             <main className="layout-container flex-1">{children}</main>
-
             <footer className="layout-container">
               <Footer />
             </footer>
           </div>
-          {/* this component for scroll top */}
           <ScrollToTop />
+        </I18nProvider>
       </body>
     </html>
   );

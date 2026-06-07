@@ -140,3 +140,7 @@
     grid-template-columns: 1fr;
   }
 }
+/* === RTL Portfolio Business Types === */
+[dir="rtl"] .business-header {
+  text-align: right;
+}

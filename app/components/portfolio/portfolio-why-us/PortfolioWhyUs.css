@@ -273,3 +273,11 @@
     line-height: 24px;
   }
 }
+
+/* === RTL Portfolio Why Us === */
+[dir="rtl"] .why-us-header {
+  text-align: right;
+}
+[dir="rtl"] .why-us-card {
+  text-align: right;
+}

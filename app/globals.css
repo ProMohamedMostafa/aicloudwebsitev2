@@ -95,3 +95,106 @@ main {
   }
 }
 /* loading-active / loading-complete classes removed — loaders are disabled */
+
+/* === RTL / Arabic Support === */
+[dir="rtl"] {
+  font-family: "Segoe UI", "Tahoma", "Arial", system-ui, -apple-system, sans-serif;
+}
+
+/* Flip arrow icons in RTL */
+[dir="rtl"] .learn-more-btn svg,
+[dir="rtl"] .btn-arrow svg,
+[dir="rtl"] .contact-btn-arrow {
+  transform: scaleX(-1);
+}
+
+/* RTL dropdown positioning fix */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* RTL text alignment helpers */
+[dir="rtl"] .text-content {
+  text-align: right;
+}
+
+[dir="rtl"] .subtitle {
+  margin-right: auto;
+  margin-left: unset;
+}
+
+/* RTL menu list spacing fix */
+[dir="rtl"] .menu-list {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+/* Hero visual flip for RTL */
+[dir="rtl"] .visual-section {
+  direction: ltr; /* keep the dashboard widget visually correct */
+}
+
+[dir="rtl"] .grid-layout {
+  direction: rtl;
+}
+
+/* Services section */
+[dir="rtl"] .services-header {
+  text-align: right;
+}
+
+[dir="rtl"] .services-subtitle {
+  text-align: right;
+}
+
+/* Flip card hover translate in RTL */
+[dir="rtl"] .dropdown-menu li a:hover {
+  transform: translateX(-4px);
+}
+
+/* Footer RTL */
+[dir="rtl"] .footer-content {
+  text-align: right;
+}
+
+[dir="rtl"] .social-links {
+  justify-content: flex-start;
+}
+
+/* === RTL Tailwind component fixes === */
+[dir="rtl"] .prose p {
+  text-align: right;
+}
+
+/* WhyChooseUs RTL */
+[dir="rtl"] .text-center {
+  /* Keep text-center sections centered in RTL too */
+  text-align: center;
+}
+
+/* Footer RTL column titles */
+[dir="rtl"] .footer-column-title,
+[dir="rtl"] .footer-list,
+[dir="rtl"] .footer-description,
+[dir="rtl"] .footer-copyright {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-legal {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-bottom {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-content {
+  /* Keep the multi-column layout but flip order */
+  /* flex-direction: row-reverse; */
+}
+
+/* Smooth dir transition */
+html {
+  transition: none;
+}

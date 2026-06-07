@@ -259,3 +259,66 @@
     gap: 1rem;
   }
 }
+
+/* ══════════════════════════════════════════════
+   RTL Footer Layout
+   ── LTR desktop layout ──────────────────────
+     [logo / address / contact / social]  |  [nav links]
+     bottom-bar: [copyright text]          [privacy | terms | cookies]
+
+   ── RTL desktop layout (exact mirror) ──
+     [nav links]  |  [logo / address / contact / social]
+     bottom-bar: [privacy | terms | cookies]  [copyright text]
+   ══════════════════════════════════════════════ */
+
+/* Always right-align all text in RTL */
+[dir="rtl"] .footer-left,
+[dir="rtl"] .footer-left h6,
+[dir="rtl"] .footer-left p {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-right,
+[dir="rtl"] .footer-right p,
+[dir="rtl"] .footer-right a {
+  text-align: right;
+}
+
+/* Social icons start from right edge on RTL */
+[dir="rtl"] .social-icons {
+  justify-content: flex-start;
+}
+
+/* Phone/email icon spacing fix */
+[dir="rtl"] .me-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem;
+}
+
+/* Desktop: reverse the two-column order */
+@media (min-width: 768px) {
+  [dir="rtl"] .footer-content {
+    /* flex-direction: row-reverse; */
+  }
+
+  /* Right column links: align-items to flex-start (left side of its box)
+     because in RTL it is now the first/leftmost column */
+  [dir="rtl"] .footer-right {
+    align-items: flex-start;
+  }
+
+  /* Copyright text: left-aligned in RTL (it sits on the right side) */
+  [dir="rtl"] .footer-copyright {
+    text-align: right;
+  }
+
+  /* Bottom-bar: reverse order so legal links come first (left) */
+  [dir="rtl"] .footer-bottom {
+    flex-direction: row-reverse;
+  }
+
+  /* Legal links row direction */
+  [dir="rtl"] .footer-links {
+    flex-direction: row-reverse;
+  }
+}

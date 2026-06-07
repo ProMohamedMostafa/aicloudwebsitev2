@@ -436,3 +436,39 @@ html {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
+
+/* === RTL CleanTech Hero === */
+[dir="rtl"] .clean-tech-hero-container {
+  direction: rtl;
+}
+
+.clean-tech-hero-container--rtl {
+  /* Flip column order so image goes to left, text to right */
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+[dir="rtl"] .clean-tech-hero-content {
+  padding: 3rem 0 3rem 2rem;
+  text-align: right;
+}
+
+[dir="rtl"] .clean-tech-description {
+  text-align: right;
+  border-left: none;
+  border-right: 4px solid var(--primary-light);
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+[dir="rtl"] .clean-tech-additional {
+  text-align: right;
+}
+
+@media (max-width: 968px) {
+  [dir="rtl"] .clean-tech-description {
+    border-right: none;
+    border-top: 4px solid var(--primary-light);
+    padding-right: 0;
+    padding-top: 1.5rem;
+  }
+}

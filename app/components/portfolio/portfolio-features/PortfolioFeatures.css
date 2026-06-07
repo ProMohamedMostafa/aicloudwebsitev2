@@ -305,3 +305,13 @@
     line-height: 22px;
   }
 }
+/* === RTL Portfolio Features === */
+[dir="rtl"] .features-header {
+  text-align: right;
+}
+[dir="rtl"] .feature-card {
+  text-align: right;
+}
+[dir="rtl"] .feature-list-item {
+  flex-direction: row-reverse;
+}

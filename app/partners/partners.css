@@ -230,3 +230,25 @@
   box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* === RTL Partners Page ===
+   LTR: [title / description text]  |  [partner logo cards]
+   RTL: [partner logo cards]        |  [title / description text]
+*/
+
+/* Reverse the two-column container grid */
+[dir="rtl"] .partners-container {
+  direction: rtl;
+}
+
+/* Right-align text content */
+[dir="rtl"] .partners-title,
+[dir="rtl"] .partners-description {
+  text-align: right;
+}
+
+/* The hero content max-width box aligns right */
+[dir="rtl"] .partners-hero-content {
+  margin-right: 0;
+  margin-left: auto;
+}

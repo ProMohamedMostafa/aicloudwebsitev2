@@ -336,3 +336,14 @@
     margin-bottom: calc(460px * (0.42 - 1) / 2);
   }
 }
+
+/* === RTL Mobile Commerce === */
+/* Header text alignment - but NOT the carousel mockup area (has dir="ltr") */
+[dir="rtl"] .mobile-commerce-header {
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-commerce-title,
+[dir="rtl"] .mobile-commerce-subtitle {
+  text-align: right;
+}

@@ -251,3 +251,30 @@
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
 }
+
+/* === RTL About Page ===
+   LTR: [description text]  |  [sadeem logo]
+   RTL: [sadeem logo]       |  [description text]
+*/
+[dir="rtl"] .about-title,
+[dir="rtl"] .about-subtitle {
+  text-align: right;
+}
+
+[dir="rtl"] .about-description {
+  text-align: right;
+}
+
+/* Reverse the two-column split so logo moves left, text moves right */
+[dir="rtl"] .content-split {
+  direction: rtl;
+}
+
+[dir="rtl"] .sadeem-description h3,
+[dir="rtl"] .sadeem-description p {
+  text-align: right;
+}
+
+[dir="rtl"] .sadeem-content {
+  text-align: right;
+}

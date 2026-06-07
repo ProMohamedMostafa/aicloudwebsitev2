@@ -186,3 +186,17 @@
     font-size: 0.95rem;
   }
 }
+
+/* === RTL CleanTech About === */
+[dir="rtl"] .clean-tech-about-content {
+  text-align: right;
+}
+
+[dir="rtl"] .clean-tech-content-layout {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .clean-tech-mission-container,
+[dir="rtl"] .clean-tech-about-description {
+  text-align: right;
+}

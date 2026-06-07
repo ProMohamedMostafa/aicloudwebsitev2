@@ -425,3 +425,25 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* === RTL Services Home Section === */
+[dir="rtl"] .services-title,
+[dir="rtl"] .services-subtitle {
+  text-align: right;
+}
+
+[dir="rtl"] .service-card {
+  text-align: right;
+}
+
+[dir="rtl"] .service-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .service-features {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .learn-more-btn {
+  flex-direction: row-reverse;
+}

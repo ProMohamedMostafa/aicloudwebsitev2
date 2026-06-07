@@ -1,56 +1,47 @@
 "use client";
 
 import { useServicesAnimation } from "@/hooks/useServicesAnimation";
-import { services } from "../../data/servicesData";
-import "./services.css"; // Your CSS imported here
+import "./services.css";
+import { useI18n } from "@/app/i18n/context";
 
 export default function ServicesClient() {
-  const {
-    sectionRef,
-    titleRef,
-    descriptionRef,
-    benefitsRef,
-    carouselRef,
-    addToCarouselRefs,
-  } = useServicesAnimation();
+  const { sectionRef, titleRef, descriptionRef, benefitsRef, carouselRef, addToCarouselRefs } = useServicesAnimation();
+  const { t, tArr } = useI18n();
+
+  const serviceKeys = [
+    { key: "services.webDev", icon: "🌐" },
+    { key: "services.appDev", icon: "📱" },
+    { key: "services.iot", icon: "🔗" },
+    { key: "services.ai", icon: "🤖" },
+    { key: "services.cloud", icon: "☁️" },
+    { key: "services.ux", icon: "🎨" },
+  ];
 
   return (
     <div className="services-page" ref={sectionRef}>
-      {/* Main Content Section */}
       <section className="services-main-content">
-        {/* Left Side - Description */}
         <div className="services-description">
-          <h2 ref={titleRef}>What We Offer</h2>
-          <p ref={descriptionRef}>
-            We provide cutting-edge digital solutions tailored to your business
-            needs. Our comprehensive services are designed to drive innovation
-            and deliver exceptional results that propel your business forward in
-            the digital landscape.
-          </p>
+          <h2 ref={titleRef}>{t("servicesPage.title")}</h2>
+          <p ref={descriptionRef}>{t("servicesPage.description")}</p>
           <div className="key-benefits" ref={benefitsRef}>
-            <h3>Why Choose Us?</h3>
+            <h3>{t("servicesPage.whyChooseUs")}</h3>
             <ul>
-              <li>Expert team with proven track record</li>
-              <li>Custom solutions for your unique needs</li>
-              <li>Cutting-edge technology stack</li>
-              <li>Timely delivery and ongoing support</li>
+              <li>{t("servicesPage.reason1")}</li>
+              <li>{t("servicesPage.reason2")}</li>
+              <li>{t("servicesPage.reason3")}</li>
+              <li>{t("servicesPage.reason4")}</li>
             </ul>
           </div>
         </div>
 
-        {/* Right Side - Vertical Carousel */}
         <div className="vertical-carousel-wrapper" ref={carouselRef}>
           <div className="vertical-carousel">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className="carousel__item"
-                ref={addToCarouselRefs}
-              >
-                <div className="carousel__item-head">{service.icon}</div>
+            {serviceKeys.map((svc) => (
+              <div key={svc.key} className="carousel__item" ref={addToCarouselRefs}>
+                <div className="carousel__item-head">{svc.icon}</div>
                 <div className="carousel__item-body">
-                  <p className="title">{service.title}</p>
-                  <p className="description">{service.description}</p>
+                  <p className="title">{t(`${svc.key}.title`)}</p>
+                  <p className="description">{t(`${svc.key}.description`)}</p>
                 </div>
               </div>
             ))}

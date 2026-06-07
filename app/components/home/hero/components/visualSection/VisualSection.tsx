@@ -1,10 +1,17 @@
-// VisualSection.tsx — CSS animations replacing framer-motion infinite loops
+"use client";
+
+import { useI18n } from "@/app/i18n/context";
+
 export default function VisualSection() {
+  const { dir } = useI18n();
+  const isRTL = dir === "rtl";
+
   return (
     <div className="visual-section hero-fade-in" style={{ "--delay": "200ms" } as React.CSSProperties}>
       <div className="visual-container">
         <div className="w-full h-full flex items-center justify-center">
-          <div className="relative">
+          {/* Wrapper that flips horizontally in RTL so background perspective mirrors */}
+          <div className={`visual-scene ${isRTL ? "visual-scene--rtl" : ""}`}>
             {/* Dashboard floats via CSS keyframe */}
             <div className="dashboard-float">
               <div className="dashboard-preview dashboard-glow">
@@ -64,8 +71,8 @@ export default function VisualSection() {
               </div>
             </div>
 
-            {/* Floating Cards — CSS only */}
-            <div className="floating-card card-right card-float-right">
+            {/* Floating Cards — positions swap in RTL via CSS */}
+            <div className={`floating-card ${isRTL ? "card-left" : "card-right"} card-float-right`}>
               <div className="card-header">
                 <div className="card-icon">
                   <svg fill="currentColor" viewBox="0 0 20 20">
@@ -74,11 +81,11 @@ export default function VisualSection() {
                 </div>
                 <div className="card-icon-bg" />
               </div>
-              <div className="card-value-large value-pulse">+127%</div>
+              <div className="card-value-large value-pulse"></div>
               <div className="card-indicator indicator-white" />
             </div>
 
-            <div className="floating-card card-left card-float-left">
+            <div className={`floating-card ${isRTL ? "card-right" : "card-left"} card-float-left`}>
               <div className="card-header">
                 <div className="card-icon">
                   <svg fill="currentColor" viewBox="0 0 20 20">

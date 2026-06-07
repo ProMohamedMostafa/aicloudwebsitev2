@@ -526,3 +526,27 @@
     min-height: 180px;
   }
 }
+
+/* === RTL Portfolio Ecosystem === */
+[dir="rtl"] .ecosystem-header {
+  text-align: right;
+}
+
+/* Reverse mockup/cards columns in RTL */
+.ecosystem-grid-layout--rtl {
+  direction: rtl;
+}
+
+/* Keep card content direction neutral inside RTL grid */
+[dir="rtl"] .service-card {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .service-card-body {
+  text-align: right;
+}
+
+[dir="rtl"] .ecosystem-subtitle {
+  text-align: right;
+}

@@ -277,3 +277,38 @@
   cursor: not-allowed;
   background-color: #f5f5f5;
 }
+
+/* === RTL Contact Page ===
+   LTR: [hero text / description]  |  [form]
+   RTL: [form]                     |  [hero text / description]
+*/
+
+/* Reverse the two-column grid */
+[dir="rtl"] .contact-main-content {
+  direction: rtl;
+}
+
+/* Right-align the hero text column */
+[dir="rtl"] .contact-hero h2,
+[dir="rtl"] .contact-hero p {
+  text-align: right;
+}
+
+/* Labels right-aligned */
+[dir="rtl"] .form-group label {
+  text-align: right;
+  display: block;
+}
+
+/* Input text flows right-to-left */
+[dir="rtl"] .form-group input,
+[dir="rtl"] .form-group textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Placeholder text alignment */
+[dir="rtl"] .form-group input::placeholder,
+[dir="rtl"] .form-group textarea::placeholder {
+  text-align: right;
+}

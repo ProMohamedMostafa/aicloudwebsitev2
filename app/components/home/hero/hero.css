@@ -639,3 +639,76 @@
 .css-particle:nth-child(18) { left:67%;  animation-duration:20s; animation-delay:0.3s; }
 .css-particle:nth-child(19) { left:80%;  animation-duration:12s; animation-delay:2.8s;  width:2px; height:2px; }
 .css-particle:nth-child(20) { left:95%;  animation-duration:17s; animation-delay:1.2s; }
+
+/* === RTL Hero Visual Flip === */
+.visual-scene {
+  position: relative;
+  display: inline-block;
+}
+
+/* Mirror the entire visual scene so dashboard perspective flips to the right */
+.visual-scene--rtl {
+  transform: scaleX(-1);
+}
+
+/* Counter-flip ALL visible content inside the mirrored scene so it stays readable */
+.visual-scene--rtl .card-value-large,
+.visual-scene--rtl .card-value-medium,
+.visual-scene--rtl .card-label,
+.visual-scene--rtl .address-text,
+.visual-scene--rtl .card-indicator,
+.visual-scene--rtl .card-header,
+.visual-scene--rtl .card-icon,
+.visual-scene--rtl .card-icon svg,
+.visual-scene--rtl .card-icon-bg,
+.visual-scene--rtl .dashboard-header,
+.visual-scene--rtl .window-controls,
+.visual-scene--rtl .address-bar,
+.visual-scene--rtl .analytics-card,
+.visual-scene--rtl .chart-bar,
+.visual-scene--rtl .activity-indicator {
+  transform: scaleX(-1);
+}
+
+/* ── RTL Hero Layout ──
+   On desktop the grid is 2 columns: [text | visual]
+   In RTL we reverse it to:          [visual | text]
+   so the visual sits on the LEFT and text on the RIGHT.
+*/
+@media (min-width: 1024px) {
+  [dir="rtl"] .grid-layout {
+    direction: rtl;           /* CSS grid column order follows dir */
+  }
+}
+
+/* Text-content alignment */
+[dir="rtl"] .text-content {
+  text-align: right;
+}
+
+[dir="rtl"] .subtitle {
+  text-align: right;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+[dir="rtl"] .title {
+  text-align: right;
+}
+
+/* CTA button row: flush right on mobile, flush right on desktop in RTL */
+[dir="rtl"] .cta-container {
+  justify-content: flex-end;
+}
+
+@media (min-width: 1024px) {
+  [dir="rtl"] .text-content {
+    text-align: right;
+  }
+
+  /* On desktop in RTL the text column is on the right,
+     so the button row should align to the right as well */
+  [dir="rtl"] .cta-container {
+    justify-content: flex-start;
+  }
+}

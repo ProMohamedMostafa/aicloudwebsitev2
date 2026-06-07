@@ -5,6 +5,326 @@
     "services": "Services",
     "partners": "Partners",
     "about": "About Us",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "ecommerce": "E-Commerce"
+  },
+  "footer": {
+    "description": "Leading provider of AI and cloud solutions for modern businesses.",
+    "navigation": "Navigation",
+    "products": "Products",
+    "support": "Support",
+    "legal": "Legal",
+    "home": "Home",
+    "services": "Services",
+    "partners": "Partners",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "aiTools": "AI Tools",
+    "cloudServices": "Cloud Services",
+    "analytics": "Analytics",
+    "helpCenter": "Help Center",
+    "documentation": "Documentation",
+    "systemStatus": "System Status",
+    "technicalSupport": "Technical Support",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "compliance": "Compliance",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "sitemap": "Sitemap",
+    "rights": "All rights reserved.",
+    "address": "Address",
+    "addressText": "Office No.6, 6th Floor Al Rossais Commercial Center – Al Olaya. Riyadh, 12211",
+    "contactLabel": "Contact",
+    "cookies": "Cookies"
+  },
+  "hero": {
+    "title": "Advanced Solutions to manage",
+    "titleHighlight": "your business",
+    "subtitle": "Advanced solutions to manage your business and provide services powered by artificial intelligence.",
+    "contactUs": "Contact Us"
+  },
+  "about": {
+    "label": "About AI Cloud",
+    "title1": "Transforming Operations",
+    "title2": "with Intelligence",
+    "description": "At AI Cloud, we are reimagining how operations are managed across sectors. Our intelligent platforms like Clean Tech bring together IoT sensors, AI-powered analytics, and user-friendly dashboards to optimize cleanliness, maintenance, and resource management in real-time.",
+    "iot": "IoT Sensors",
+    "iotDesc": "Real-time monitoring",
+    "ai": "AI Analytics",
+    "aiDesc": "Smart insights",
+    "dashboard": "Dashboards",
+    "dashboardDesc": "User-friendly interface"
+  },
+  "services": {
+    "title": "Our",
+    "titleHighlight": "Services",
+    "subtitle": "Comprehensive digital solutions designed to elevate your business and deliver exceptional user experiences",
+    "learnMore": "Learn More",
+    "webDev": {
+      "title": "Web Development",
+      "description": "Custom, responsive web applications built with cutting-edge technologies for optimal performance and user experience.",
+      "features": [
+        "React/Next.js",
+        "TypeScript",
+        "Responsive Design",
+        "SEO Optimized"
+      ]
+    },
+    "appDev": {
+      "title": "App Development",
+      "description": "Native and cross-platform mobile applications that deliver seamless experiences across all devices.",
+      "features": [
+        "iOS & Android",
+        "Cross-Platform",
+        "Native Performance",
+        "App Store Ready"
+      ]
+    },
+    "iot": {
+      "title": "IoT Solutions",
+      "description": "Smart connected devices and IoT ecosystems that transform data into actionable insights.",
+      "features": [
+        "Smart Devices",
+        "Real-time Data",
+        "Cloud Integration",
+        "Analytics Dashboard"
+      ]
+    },
+    "ai": {
+      "title": "AI Integration",
+      "description": "Intelligent solutions powered by machine learning and artificial intelligence.",
+      "features": [
+        "Machine Learning",
+        "AI Models",
+        "Data Analysis",
+        "Automation"
+      ]
+    },
+    "cloud": {
+      "title": "Cloud Services",
+      "description": "Scalable cloud infrastructure and deployment solutions for modern applications.",
+      "features": [
+        "AWS/Azure",
+        "Scalable Infrastructure",
+        "DevOps",
+        "CI/CD Pipelines"
+      ]
+    },
+    "ux": {
+      "title": "UX/UI Design",
+      "description": "Human-centered design solutions that create intuitive and engaging digital products.",
+      "features": [
+        "User Research",
+        "Prototyping",
+        "UI Design",
+        "Usability Testing"
+      ]
+    }
+  },
+  "whyUs": {
+    "title": "Why Choose Our",
+    "titleHighlight": "Software Solutions",
+    "subtitle": "We deliver cutting-edge software that drives your business forward with innovation, quality, and exceptional user experiences.",
+    "agile": "Agile Development",
+    "agileDesc": "Iterative approach ensuring fast delivery and continuous improvement throughout development cycles.",
+    "secure": "Secure & Scalable",
+    "secureDesc": "Enterprise-grade security with architecture designed to scale with your growing business needs.",
+    "performance": "High Performance",
+    "performanceDesc": "Optimized code and modern frameworks ensuring lightning-fast applications and optimal user experience.",
+    "custom": "Custom Solutions",
+    "customDesc": "Tailored software development addressing your unique business challenges and specific requirements.",
+    "crossPlatform": "Cross-Platform",
+    "crossPlatformDesc": "Seamless experiences across all devices and platforms with responsive design and native capabilities.",
+    "support": "Continuous Support",
+    "supportDesc": "Comprehensive maintenance, updates, and technical support long after project delivery."
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Ready to take your business to the next level? We're here to help. Reach out to us and let's start a conversation about how we can transform your digital presence and drive your success forward.",
+    "namePlaceholder": "Enter your full name",
+    "nameLabel": "Full Name *",
+    "emailLabel": "Email Address *",
+    "emailPlaceholder": "Enter your email address",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "messageLabel": "Your Message *",
+    "messagePlaceholder": "Tell us about your project or inquiry...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "Thank you for your message! We'll get back to you soon.",
+    "errorMessage": "Sorry, there was an error sending your message. Please try again later.",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 2 characters",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email address",
+    "phoneInvalid": "Please enter a valid phone number",
+    "messageRequired": "Message is required",
+    "messageMinLength": "Message must be at least 10 characters",
+    "slowDown": "Please take a moment to fill in the form completely."
+  },
+  "aboutPage": {
+    "title": "About AI Cloud",
+    "subtitle": "Smart Technology Powered by Sadeem Medical",
+    "description": "AI Cloud is a smart technology provider powered by Sadeem Medical, one of Saudi Arabia's leading healthcare companies. Backed by over 15 years of expertise, this partnership brings together Sadeem's reliability and AI Cloud's innovation to deliver intelligent solutions across sectors.",
+    "foundationTitle": "Our Foundation",
+    "foundation1": "AI Cloud is proud to be a subsidiary of Sadeem Medical — a trusted name in the healthcare sector with over 15 years of experience in the Saudi market.",
+    "foundation2": "This strong foundation empowers AI Cloud to extend Sadeem's legacy of excellence into the fields of smart facility management and AI-powered IoT platforms.",
+    "foundation3": "Our collaboration ensures that clients benefit from the reliability of a well-established medical leader, combined with the innovation and agility of a next-generation technology provider."
+  },
+  "servicesPage": {
+    "title": "What We Offer",
+    "description": "We provide cutting-edge digital solutions tailored to your business needs. Our comprehensive services are designed to drive innovation and deliver exceptional results that propel your business forward in the digital landscape.",
+    "whyChooseUs": "Why Choose Us?",
+    "reason1": "Expert team with proven track record",
+    "reason2": "Custom solutions for your unique needs",
+    "reason3": "Cutting-edge technology stack",
+    "reason4": "Timely delivery and ongoing support"
+  },
+  "partnersPage": {
+    "title": "Our Valued Partners",
+    "description": "At AI Cloud, we're proud to support a diverse network of valued clients — from government authorities and smart cities to universities and innovation districts. Their trust empowers us to deliver smarter, more impactful solutions that drive sustainable progress across the Kingdom."
+  },
+  "cleanTech": {
+    "hero": {
+      "subtitle": "Smart operating solutions for more productive facilities",
+      "description": "An intelligent platform for cleaning and facility management — combining sensors, real-time dashboards, and automation tools to track attendance, shifts, tasks, and stock from one central hub.",
+      "additional": "We offer an integrated facility management system that goes beyond mere cleaning, to include meticulously organizing every detail of daily work.",
+      "cta": "Book a Service"
+    },
+    "about": {
+      "title": "About CleanTech",
+      "missionTitle": "Our Mission",
+      "missionText": "Revolutionizing hygiene through smart technology",
+      "description": "Clean Tech is an intelligent system designed to enhance hygiene management in both public and private spaces. By using smart sensors, it continuously monitors cleanliness levels and automatically sends notifications to cleaners or supervisors when action is needed ensuring timely and efficient cleaning operations."
+    },
+    "features": {
+      "badge": "Clean Technology Features",
+      "title": "Innovative Solutions for a",
+      "titleHighlight": "Sustainable Future",
+      "featureSuffix": "Feature"
+    },
+    "contact": {
+      "badge": "Contact Us",
+      "headerTitle": "Let's Build a Sustainable Future Together",
+      "headerDesc": "Get in touch with our clean technology experts to discuss how we can help transform your energy infrastructure and drive your sustainability goals forward.",
+      "title": "Get In Touch",
+      "description": "Ready to embrace sustainable solutions? We're here to help. Reach out to us and let's start a conversation about how we can transform your energy footprint and drive your green initiatives forward.",
+      "namePlaceholder": "Enter your full name",
+      "nameLabel": "Full Name *",
+      "emailLabel": "Email Address *",
+      "emailPlaceholder": "Enter your email address",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "messageLabel": "Your Message *",
+      "messagePlaceholder": "Tell us about your clean energy project or inquiry...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you for your message! We'll get back to you soon.",
+      "error": "Sorry, there was an error sending your message. Please try again later.",
+      "slowDown": "Please take a moment to fill in the form completely.",
+      "nameRequired": "Name is required",
+      "nameMin": "Name must be at least 2 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneInvalid": "Please enter a valid phone number",
+      "messageRequired": "Message is required",
+      "messageMin": "Message must be at least 10 characters"
+    },
+    "featuresData": {
+      "home": {
+        "label": "Home",
+        "title": "Home",
+        "description": "The main dashboard gives a quick overview of key metrics through charts and insights. Accessible on both desktop and mobile, it helps users make informed decisions at a glance."
+      },
+      "userManagement": {
+        "label": "User Management",
+        "title": "User-Management",
+        "description": "Easily manage users, roles, and access permissions. Add new users, edit profiles, and monitor account statuses — all from a clean, organized interface."
+      },
+      "task": {
+        "label": "Task",
+        "title": "Task",
+        "description": "Create, assign, and track tasks across your team. View progress, set priorities, and ensure smooth workflow management from any device."
+      },
+      "stockManagement": {
+        "label": "Stock Management",
+        "title": "Stock-Management",
+        "description": "Monitor and control your inventory in real time. View available quantities, item details, and improve supply accuracy with smart stock tracking."
+      }
+    }
+  },
+  "portfolio": {
+    "hero": {
+      "title": "Transform Your Store into a Smart Commerce Experience",
+      "description": "We design and develop scalable e-commerce platforms, mobile apps, and intelligent commerce systems that help brands sell faster, manage smarter, and grow digitally.",
+      "cta": "Start Your Project",
+      "dashboard": "Dashboard",
+      "application": "Application",
+      "website": "Website"
+    },
+    "mobileCommerce": {
+      "title": "Modern Mobile Commerce Experience",
+      "subtitle": "From product discovery to secure checkout, our mobile applications deliver fast, scalable, and user-focused shopping experiences."
+    },
+    "features": {
+      "websiteHeading": "Website Features",
+      "websiteDesc": "Deliver a lightning-fast, highly optimized shopping experience to your customers.",
+      "dashboardHeading": "Dashboard Features",
+      "dashboardDesc": "Manage your entire business from a single, powerful command center.",
+      "mobileHeading": "Mobile App Features",
+      "mobileDesc": "Engage users on the go with a native, seamless mobile shopping app."
+    },
+    "whyUs": {
+      "title": "Why Choose Us",
+      "subtitle": "We build commerce experiences that convert, retain, and scale.",
+      "scalable": "Scalable Infrastructure",
+      "scalableDesc": "Built to handle massive traffic spikes and grow seamlessly with your business.",
+      "fast": "Fast Deployment",
+      "fastDesc": "Launch your complete commerce ecosystem in days, not months.",
+      "ux": "Modern UX/UI",
+      "uxDesc": "Pixel-perfect, conversion-optimized interfaces that your customers will love.",
+      "secure": "Secure & Reliable",
+      "secureDesc": "Enterprise-grade security with 99.9% uptime guarantees.",
+      "support": "24/7 Support",
+      "supportDesc": "Dedicated team ready to help you at any time.",
+      "integrated": "Fully Integrated",
+      "integratedDesc": "All your tools in one unified platform."
+    },
+    "ecosystem": {
+      "title": "Complete Commerce Ecosystem",
+      "subtitle": "We build fully connected commerce experiences combining websites, mobile apps, AI systems, operations, and analytics into one scalable ecosystem.",
+      "mobileApps": "Mobile Commerce Apps",
+      "mobileAppsDesc": "iOS & Android shopping apps",
+      "ecommerceWebsites": "E-commerce Websites",
+      "ecommerceWebsitesDesc": "Modern scalable online stores.",
+      "adminDashboard": "Admin Dashboards",
+      "adminDashboardDesc": "Advanced analytics & management.",
+      "payment": "Payment & Shipping Integration",
+      "paymentDesc": "Seamless checkout systems.",
+      "conversion": "Conversion Optimization",
+      "conversionDesc": "Improve sales with smart user experiences.",
+      "multiVendor": "Multi-Vendor Marketplace Systems",
+      "multiVendorDesc": "Advanced scalable marketplace platforms."
+    },
+    "businessTypes": {
+      "title": "Built for Every Business Type",
+      "subtitle": "Flexible commerce solutions tailored for different industries and business models.",
+      "fashion": "Fashion Store",
+      "electronics": "Electronics Store",
+      "restaurant": "Restaurant & Food",
+      "beauty": "Beauty & Cosmetics",
+      "furniture": "Furniture Store",
+      "grocery": "Grocery Store",
+      "pharmacy": "Pharmacy",
+      "multiVendor": "Multi-Vendor"
+    },
+    "cta": {
+      "title": "Ready to Launch Your Commerce Platform?",
+      "description": "Let AI Cloud help you build a scalable digital commerce experience with powerful dashboards, mobile apps, and modern e-commerce solutions.",
+      "primary": "Start Your Project",
+      "secondary": "Contact Us"
+    }
   }
 }

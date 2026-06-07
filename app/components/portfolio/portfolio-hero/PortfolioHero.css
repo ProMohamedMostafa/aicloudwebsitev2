@@ -309,3 +309,46 @@
     max-width: 280px;
   }
 }
+
+/* === RTL Portfolio Hero === */
+.hero-inner--rtl {
+  /* flex-direction: row-reverse; */
+}
+
+[dir="rtl"] .hero-content {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-text-group h1,
+[dir="rtl"] .hero-text-group p {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-service-icons {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .service-icon-item {
+  text-align: center;
+}
+
+/* === Fix: prevent RTL gap leaking into LTR layout === */
+[dir="ltr"] .hero-inner {
+  direction: ltr;
+}
+
+[dir="ltr"] .hero-content {
+  text-align: left;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+[dir="ltr"] .hero-service-icons {
+  justify-content: flex-start;
+}
+
+[dir="ltr"] .hero-image-area {
+  margin-left: 0;
+  margin-right: 0;
+}
+

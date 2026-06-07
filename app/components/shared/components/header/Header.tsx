@@ -4,14 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import "./Header.css";
+import { useI18n } from "@/app/i18n/context";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const dropdownRef = useRef<HTMLLIElement | null>(null);
+  const langRef = useRef<HTMLDivElement | null>(null);
+  const { t, lang, setLang, dir } = useI18n();
 
   useEffect(() => {
     setIsMounted(true);
@@ -24,7 +28,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Keep scrolled state only for enhanced shadow depth
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -47,6 +50,12 @@ export default function Header() {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setProductsOpen(false);
+      }
+      if (
+        langRef.current &&
+        !langRef.current.contains(event.target as Node)
+      ) {
+        setLangOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -73,6 +82,11 @@ export default function Header() {
     document.body.style.overflow = nextState ? "hidden" : "unset";
   };
 
+  const handleLangSwitch = (newLang: "en" | "ar") => {
+    setLang(newLang);
+    setLangOpen(false);
+  };
+
   return (
     <header
       className={`header ${scrolled ? "scrolled" : ""} ${isMounted ? "mounted" : ""}`}
@@ -93,8 +107,56 @@ export default function Header() {
           </Link>
 
           <div className="nav-actions">
+            {/* Language Switcher */}
+            <div className="lang-switcher" ref={langRef}>
+              <button
+                className="lang-btn"
+                onClick={() => setLangOpen(!langOpen)}
+                aria-label="Switch language"
+                aria-expanded={langOpen}
+              >
+                <span className="lang-globe">🌐</span>
+                <span className="lang-label">{lang === "en" ? "EN" : "AR"}</span>
+                <svg
+                  className={`lang-chevron ${langOpen ? "open" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  width="14"
+                  height="14"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {langOpen && (
+                <div className={`lang-dropdown ${dir === "rtl" ? "lang-dropdown--rtl" : ""}`}>
+                  <button
+                    className={`lang-option ${lang === "en" ? "active" : ""}`}
+                    onClick={() => handleLangSwitch("en")}
+                  >
+                    <span className="lang-flag">🇺🇸</span>
+                    <span>English</span>
+                    {lang === "en" && <span className="lang-check">✓</span>}
+                  </button>
+                  <button
+                    className={`lang-option ${lang === "ar" ? "active" : ""}`}
+                    onClick={() => handleLangSwitch("ar")}
+                  >
+                    <span className="lang-flag">🇸🇦</span>
+                    <span>العربية</span>
+                    {lang === "ar" && <span className="lang-check">✓</span>}
+                  </button>
+                </div>
+              )}
+            </div>
+
             <Link href="/contact" className="contact-btn">
-              <span className="btn-text">Contact Us</span>
+              <span className="btn-text">{t("header.contact")}</span>
               <div className="btn-hover-effect"></div>
             </Link>
             <button
@@ -115,7 +177,7 @@ export default function Header() {
             <ul className="menu-list">
               <li className="menu-item">
                 <Link href="/" onClick={closeMobileMenu} className="menu-link">
-                  <span className="link-text">Home</span>
+                  <span className="link-text">{t("header.home")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
@@ -126,7 +188,7 @@ export default function Header() {
                   className="dropdown-btn menu-link"
                   aria-expanded={productsOpen}
                 >
-                  <span className="link-text">Products</span>
+                  <span className="link-text">{t("header.products")}</span>
                   <svg
                     className={`dropdown-icon ${productsOpen ? "open" : ""}`}
                     fill="none"
@@ -168,56 +230,15 @@ export default function Header() {
                       >
                         <div className="portfolio-nav-item">
                           <div className="portfolio-nav-icon">
-                            <svg
-                              width="22"
-                              height="22"
-                              viewBox="0 0 22 22"
-                              fill="none"
-                            >
-                              <rect
-                                x="1"
-                                y="1"
-                                width="8"
-                                height="8"
-                                rx="1.5"
-                                stroke="#0061B7"
-                                strokeWidth="1.8"
-                                fill="none"
-                              />
-                              <rect
-                                x="13"
-                                y="1"
-                                width="8"
-                                height="8"
-                                rx="1.5"
-                                stroke="#0061B7"
-                                strokeWidth="1.8"
-                                fill="none"
-                              />
-                              <rect
-                                x="13"
-                                y="13"
-                                width="8"
-                                height="8"
-                                rx="1.5"
-                                stroke="#0061B7"
-                                strokeWidth="1.8"
-                                fill="none"
-                              />
-                              <rect
-                                x="1"
-                                y="13"
-                                width="8"
-                                height="8"
-                                rx="1.5"
-                                stroke="#0061B7"
-                                strokeWidth="1.8"
-                                fill="none"
-                              />
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                              <rect x="1" y="1" width="8" height="8" rx="1.5" stroke="#0061B7" strokeWidth="1.8" fill="none" />
+                              <rect x="13" y="1" width="8" height="8" rx="1.5" stroke="#0061B7" strokeWidth="1.8" fill="none" />
+                              <rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#0061B7" strokeWidth="1.8" fill="none" />
+                              <rect x="1" y="13" width="8" height="8" rx="1.5" stroke="#0061B7" strokeWidth="1.8" fill="none" />
                             </svg>
                           </div>
                           <span className="portfolio-nav-label">
-                            E-Commerce
+                            {t("header.ecommerce")}
                           </span>
                         </div>
                         <div className="dropdown-link-underline"></div>
@@ -228,32 +249,20 @@ export default function Header() {
               </li>
 
               <li className="menu-item">
-                <Link
-                  href="/services"
-                  onClick={closeMobileMenu}
-                  className="menu-link"
-                >
-                  <span className="link-text">Services</span>
+                <Link href="/services" onClick={closeMobileMenu} className="menu-link">
+                  <span className="link-text">{t("header.services")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
               <li className="menu-item">
-                <Link
-                  href="/partners"
-                  onClick={closeMobileMenu}
-                  className="menu-link"
-                >
-                  <span className="link-text">Partners</span>
+                <Link href="/partners" onClick={closeMobileMenu} className="menu-link">
+                  <span className="link-text">{t("header.partners")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
               <li className="menu-item">
-                <Link
-                  href="/about"
-                  onClick={closeMobileMenu}
-                  className="menu-link"
-                >
-                  <span className="link-text">About Us</span>
+                <Link href="/about" onClick={closeMobileMenu} className="menu-link">
+                  <span className="link-text">{t("header.about")}</span>
                   <div className="link-underline"></div>
                 </Link>
               </li>
