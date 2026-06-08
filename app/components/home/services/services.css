@@ -429,7 +429,7 @@
 /* === RTL Services Home Section === */
 [dir="rtl"] .services-title,
 [dir="rtl"] .services-subtitle {
-  text-align: right;
+  text-align: center;
 }
 
 [dir="rtl"] .service-card {

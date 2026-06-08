@@ -35,6 +35,13 @@ body {
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Use Inter font for Arabic/RTL for better readability */
+[dir="rtl"] body,
+[lang="ar"] body {
+  font-family: var(--font-inter), "Inter", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 /* Ensure the root element takes full height */
 #__next {
   min-height: 100vh;

@@ -401,7 +401,7 @@
 /* === RTL CleanTech Contact === */
 [dir="rtl"] .cleantech-contact-intro h1,
 [dir="rtl"] .cleantech-contact-intro p {
-  text-align: right;
+  text-align: center;
 }
 
 [dir="rtl"] .cleantech-contact-hero h2,

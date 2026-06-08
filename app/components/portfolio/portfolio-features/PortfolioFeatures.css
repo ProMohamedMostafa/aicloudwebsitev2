@@ -307,7 +307,7 @@
 }
 /* === RTL Portfolio Features === */
 [dir="rtl"] .features-header {
-  text-align: right;
+  text-align: center;
 }
 [dir="rtl"] .feature-card {
   text-align: right;

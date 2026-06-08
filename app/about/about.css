@@ -258,7 +258,7 @@
 */
 [dir="rtl"] .about-title,
 [dir="rtl"] .about-subtitle {
-  text-align: right;
+  text-align: center;
 }
 
 [dir="rtl"] .about-description {

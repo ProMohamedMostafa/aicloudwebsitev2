@@ -400,6 +400,11 @@
 }
 
 /* === RTL Services Page === */
+[dir="rtl"] .services-description {
+  padding-right: 0;
+  padding-left: 2rem;
+}
+
 [dir="rtl"] .services-description h2,
 [dir="rtl"] .services-description p,
 [dir="rtl"] .key-benefits h3,
@@ -412,7 +417,22 @@
   padding-left: 0;
 }
 
+[dir="rtl"] .key-benefits li {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] .key-benefits li:before {
+  right: 0;
+  left: auto;
+}
+
 [dir="rtl"] .carousel__item-body .title,
 [dir="rtl"] .carousel__item-body .description {
   text-align: right;
 }
+
+[dir="rtl"] .services-main-content {
+  direction: rtl;
+}
+

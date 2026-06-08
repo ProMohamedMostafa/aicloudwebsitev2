@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/shared/components/header/Header";
 import Footer from "./components/shared/components/footer/Footer";
@@ -8,6 +8,12 @@ import { I18nProvider } from "./i18n/context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -28,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${inter.variable} antialiased`}>
         <I18nProvider>
           <div className="min-h-screen flex flex-col">
             <header className="layout-container">

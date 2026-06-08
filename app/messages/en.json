@@ -35,7 +35,7 @@
     "sitemap": "Sitemap",
     "rights": "All rights reserved.",
     "address": "Address",
-    "addressText": "Office No.6, 6th Floor Al Rossais Commercial Center – Al Olaya. Riyadh, 12211",
+    "addressText": "13 Ibrahim Nawar, Nasr City, Cairo, Egypt",
     "contactLabel": "Contact",
     "cookies": "Cookies"
   },
@@ -274,7 +274,34 @@
       "dashboardHeading": "Dashboard Features",
       "dashboardDesc": "Manage your entire business from a single, powerful command center.",
       "mobileHeading": "Mobile App Features",
-      "mobileDesc": "Engage users on the go with a native, seamless mobile shopping app."
+      "mobileDesc": "Engage users on the go with a native, seamless mobile shopping app.",
+      "badge": "Powerful Ecosystem Features",
+      "title": "Everything you need to scale",
+      "subtitle": "A complete, AI-powered toolkit designed for high-performance e-commerce brands.",
+      "websiteFeatures": [
+        "Smart Product Search",
+        "Secure Checkout",
+        "Reviews & Ratings",
+        "Real-time Order Tracking",
+        "SEO-Optimised Storefront",
+        "Responsive Design"
+      ],
+      "dashboardFeatures": [
+        "Orders Management",
+        "Inventory Tracking",
+        "Revenue Analytics",
+        "Customer Insights",
+        "Staff Permissions",
+        "Delivery Management"
+      ],
+      "mobileFeatures": [
+        "Push Notifications",
+        "Wishlist & Favourites",
+        "In-App Checkout",
+        "Order Tracking",
+        "Loyalty Rewards",
+        "Offline Mode"
+      ]
     },
     "whyUs": {
       "title": "Why Choose Us",

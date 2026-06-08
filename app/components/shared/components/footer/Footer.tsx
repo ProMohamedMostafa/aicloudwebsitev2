@@ -40,7 +40,7 @@ export default function Footer() {
               <h6 className="fw-bold">{t("footer.contactLabel")}</h6>
               <p>
                 <FontAwesomeIcon icon={faPhone} className="me-2" />
-                920013760
+                +20 10 24982487
               </p>
               <p>
                 <FontAwesomeIcon icon={faEnvelope} className="me-2" />
@@ -61,7 +61,7 @@ export default function Footer() {
                 <a href="https://www.instagram.com/aicloudtechads/" className="instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
-                <a href="https://www.tiktok.com/@aicloudtechads" className="tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@ai.cloud5" className="tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faTiktok} />
                 </a>
               </div>

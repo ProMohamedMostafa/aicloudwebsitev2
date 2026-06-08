@@ -45,9 +45,9 @@ const multiVendorIcon = (
 );
 
 const ecosystemImages = [
-  "/assets/images/ecommerce-hero-main-img.webp",
-  "/assets/images/ecommerce-hero-img-dashboard.webp",
-  "/assets/images/ecommerce-hero-img-app.webp",
+  "/assets/images/ecosystem-1.webp",
+  "/assets/images/ecosystem-2.webp",
+  "/assets/images/ecosystem-3.webp",
 ];
 
 export default function PortfolioEcosystem() {
