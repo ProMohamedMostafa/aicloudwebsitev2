@@ -242,7 +242,7 @@
 }
 
 /* Right-align text content */
-[dir="rtl"] .partners-title,
+
 [dir="rtl"] .partners-description {
   text-align: right;
 }

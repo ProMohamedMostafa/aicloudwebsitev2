@@ -1,3 +1,5 @@
+/* Hero.css - Complete Responsive with RTL Support */
+
 .hero-container {
   padding-top: var(--header-height);
   position: relative;
@@ -23,6 +25,7 @@
   inset: 0;
 }
 
+/* Orbs with RTL-aware positioning */
 .circle-1 {
   position: absolute;
   top: 25%;
@@ -34,6 +37,11 @@
   mix-blend-mode: multiply;
   filter: blur(64px);
   opacity: 0.2;
+}
+
+[dir="rtl"] .circle-1 {
+  left: auto;
+  right: 25%;
 }
 
 .circle-2 {
@@ -49,6 +57,11 @@
   opacity: 0.2;
 }
 
+[dir="rtl"] .circle-2 {
+  right: auto;
+  left: 25%;
+}
+
 .circle-3 {
   position: absolute;
   bottom: 25%;
@@ -60,6 +73,12 @@
   mix-blend-mode: multiply;
   filter: blur(64px);
   opacity: 0.2;
+}
+
+[dir="rtl"] .circle-3 {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .circle-4 {
@@ -75,6 +94,11 @@
   opacity: 0.15;
 }
 
+[dir="rtl"] .circle-4 {
+  left: auto;
+  right: 33.333%;
+}
+
 .circle-5 {
   position: absolute;
   bottom: 33.333%;
@@ -86,6 +110,11 @@
   mix-blend-mode: multiply;
   filter: blur(40px);
   opacity: 0.15;
+}
+
+[dir="rtl"] .circle-5 {
+  right: auto;
+  left: 33.333%;
 }
 
 .grid-overlay {
@@ -116,6 +145,21 @@
   padding-right: 1rem;
 }
 
+@media (min-width: 640px) {
+  .content-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Grid Layout - Responsive with RTL */
 .grid-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -123,9 +167,36 @@
   align-items: center;
 }
 
+@media (min-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  /* RTL grid reversal */
+  [dir="rtl"] .grid-layout {
+    direction: rtl;
+  }
+}
+
+/* Text Content */
 .text-content {
   text-align: center;
   padding-top: 2rem;
+}
+
+[dir="rtl"] .text-content {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .text-content {
+    text-align: left;
+  }
+  
+  [dir="rtl"] .text-content {
+    text-align: right;
+  }
 }
 
 .title {
@@ -134,6 +205,26 @@
   color: white;
   margin-bottom: 1.5rem;
   line-height: 1.25;
+}
+
+[dir="rtl"] .title {
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3.75rem;
+  }
+  
+  [dir="rtl"] .title {
+    text-align: right;
+  }
 }
 
 .gradient-text {
@@ -153,6 +244,31 @@
   line-height: 1.75;
 }
 
+[dir="rtl"] .subtitle {
+  text-align: right;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  [dir="rtl"] .subtitle {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+/* CTA Container */
 .cta-container {
   display: flex;
   flex-direction: column;
@@ -160,6 +276,27 @@
   justify-content: center;
 }
 
+[dir="rtl"] .cta-container {
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .cta-container {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-container {
+    justify-content: flex-start;
+  }
+  
+  [dir="rtl"] .cta-container {
+    justify-content: flex-start;
+  }
+}
+
+/* Visual Section */
 .visual-section {
   position: relative;
 }
@@ -173,6 +310,49 @@
   justify-content: center;
 }
 
+@media (min-width: 640px) {
+  .visual-container {
+    height: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .visual-container {
+    height: 24rem;
+  }
+}
+
+/* Visual Scene with RTL Flip */
+.visual-scene {
+  position: relative;
+  display: inline-block;
+}
+
+/* Mirror the entire visual scene for RTL */
+[dir="rtl"] .visual-scene {
+  transform: scaleX(-1);
+}
+
+/* Counter-flip ALL visible content inside the mirrored scene */
+[dir="rtl"] .visual-scene .card-value-large,
+[dir="rtl"] .visual-scene .card-value-medium,
+[dir="rtl"] .visual-scene .card-label,
+[dir="rtl"] .visual-scene .address-text,
+[dir="rtl"] .visual-scene .card-indicator,
+[dir="rtl"] .visual-scene .card-header,
+[dir="rtl"] .visual-scene .card-icon,
+[dir="rtl"] .visual-scene .card-icon svg,
+[dir="rtl"] .visual-scene .card-icon-bg,
+[dir="rtl"] .visual-scene .dashboard-header,
+[dir="rtl"] .visual-scene .window-controls,
+[dir="rtl"] .visual-scene .address-bar,
+[dir="rtl"] .visual-scene .analytics-card,
+[dir="rtl"] .visual-scene .chart-bar,
+[dir="rtl"] .visual-scene .activity-indicator {
+  transform: scaleX(-1);
+}
+
+/* Dashboard Preview */
 .dashboard-preview {
   position: relative;
   width: 20rem;
@@ -213,9 +393,11 @@
 .control-red {
   background-color: #ef4444;
 }
+
 .control-yellow {
   background-color: #eab308;
 }
+
 .control-green {
   background-color: #22c55e;
 }
@@ -238,6 +420,11 @@
   background-color: #475569;
   border-radius: 0.25rem;
   margin-right: 0.5rem;
+}
+
+[dir="rtl"] .address-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
 }
 
 .address-text {
@@ -323,6 +510,7 @@
   border-radius: 0.75rem;
 }
 
+/* Floating Cards with RTL positioning */
 .floating-card {
   position: absolute;
   width: 7rem;
@@ -344,6 +532,11 @@
   );
 }
 
+[dir="rtl"] .card-right {
+  right: auto;
+  left: -4rem;
+}
+
 .card-left {
   left: -4rem;
   bottom: 2rem;
@@ -352,6 +545,11 @@
     rgba(6, 182, 212, 0.9),
     rgba(37, 99, 235, 0.9)
   );
+}
+
+[dir="rtl"] .card-left {
+  left: auto;
+  right: -4rem;
 }
 
 .card-header {
@@ -422,78 +620,18 @@
   top: 50%;
 }
 
-/* Responsive styles */
-@media (min-width: 640px) {
-  .title {
-    font-size: 3rem;
-  }
-
-  .subtitle {
-    font-size: 1.25rem;
-  }
-
-  .visual-container {
-    height: 20rem;
-  }
-
-  .cta-container {
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .text-content {
-    text-align: left;
-  }
-
-  .subtitle {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .cta-container {
-    justify-content: flex-start;
-  }
-
-  .visual-container {
-    height: 24rem;
-  }
-
-  .title {
-    font-size: 3.75rem;
-  }
-}
-
-.content-container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .content-container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .content-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-/* ===== PERFORMANCE: CSS-only animations replacing framer-motion & particles.js ===== */
+/* ===== PERFORMANCE: CSS-only animations ===== */
 
 /* Fade-in for text/visual sections */
 @keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-fade-in {
@@ -504,9 +642,14 @@
 
 /* Dashboard float */
 @keyframes dashFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
+
 .dashboard-float {
   animation: dashFloat 3s ease-in-out infinite;
   will-change: transform;
@@ -514,20 +657,34 @@
 
 /* Dashboard glow pulse */
 @keyframes dashGlow {
-  0%, 100% { box-shadow: 0 0 0px rgba(59,130,246,0.2), 0 25px 50px -12px rgba(0,0,0,0.25); }
-  50%       { box-shadow: 0 0 28px rgba(59,130,246,0.5), 0 25px 50px -12px rgba(0,0,0,0.25); }
+  0%, 100% {
+    box-shadow: 0 0 0px rgba(59, 130, 246, 0.2), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(59, 130, 246, 0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
 }
+
 .dashboard-glow {
   animation: dashGlow 3s ease-in-out infinite;
 }
 
 /* Chart bars grow */
 @keyframes barGrow {
-  0%   { height: 0; }
-  60%  { height: var(--bar-height); }
-  75%  { height: calc(var(--bar-height) * 1.1); }
-  100% { height: var(--bar-height); }
+  0% {
+    height: 0;
+  }
+  60% {
+    height: var(--bar-height);
+  }
+  75% {
+    height: calc(var(--bar-height) * 1.1);
+  }
+  100% {
+    height: var(--bar-height);
+  }
 }
+
 .chart-bar-grow {
   height: 0;
   animation: barGrow 1.2s ease-out forwards;
@@ -536,179 +693,500 @@
 
 /* Analytics card pulse */
 @keyframes cardPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.04); }
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
 }
+
 .card-pulse {
   animation: cardPulse 2s ease-in-out infinite;
 }
 
 /* Activity bar sweep */
 @keyframes activitySweep {
-  0%         { transform: scaleX(0); opacity: 0; }
-  40%, 60%   { transform: scaleX(1); opacity: 1; }
-  100%       { transform: scaleX(0); opacity: 0; }
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  40%, 60% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
 }
+
 .activity-sweep {
   transform-origin: left;
   animation: activitySweep 2s ease-in-out infinite;
 }
 
+[dir="rtl"] .activity-sweep {
+  transform-origin: right;
+}
+
 /* Floating cards */
 @keyframes floatRight {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%       { transform: translateY(8px) rotate(2deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(2deg);
+  }
 }
+
 @keyframes floatLeft {
-  0%, 100% { transform: translateY(0) rotate(2deg); }
-  50%       { transform: translateY(-8px) rotate(-2deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
 }
-.card-float-right { animation: floatRight 4s ease-in-out infinite; }
-.card-float-left  { animation: floatLeft 3.5s ease-in-out infinite; }
+
+.card-float-right {
+  animation: floatRight 4s ease-in-out infinite;
+}
+
+.card-float-left {
+  animation: floatLeft 3.5s ease-in-out infinite;
+}
 
 /* Value pulse */
 @keyframes valuePulse {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.08); }
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }
-.value-pulse { animation: valuePulse 2s ease-in-out infinite; }
+
+.value-pulse {
+  animation: valuePulse 2s ease-in-out infinite;
+}
 
 @keyframes opacityPulse {
-  0%, 100% { opacity: 0.7; }
-  50%       { opacity: 1; }
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
-.opacity-pulse { animation: opacityPulse 1.5s ease-in-out infinite; }
 
-/* Orb drift — GPU-only (transform), replaces spring-animated motion.div */
+.opacity-pulse {
+  animation: opacityPulse 1.5s ease-in-out infinite;
+}
+
+/* Orb drift — GPU-only */
 @keyframes orbDrift1 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(12px, 8px); }
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12px, 8px);
+  }
 }
-@keyframes orbDrift2 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-18px, 12px); }
-}
-@keyframes orbDrift3 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(10px, -15px); }
-}
-.circle-1 { animation: orbDrift1 8s ease-in-out infinite; will-change: transform; }
-.circle-2 { animation: orbDrift2 10s ease-in-out infinite; will-change: transform; }
-.circle-3 { animation: orbDrift3 12s ease-in-out infinite; will-change: transform; }
 
-/* CSS-only particle system — replaces particles.js CDN script */
+@keyframes orbDrift2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-18px, 12px);
+  }
+}
+
+@keyframes orbDrift3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(10px, -15px);
+  }
+}
+
+.circle-1 {
+  animation: orbDrift1 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.circle-2 {
+  animation: orbDrift2 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+.circle-3 {
+  animation: orbDrift3 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* RTL orb drift adjustments */
+[dir="rtl"] .circle-1 {
+  animation-name: orbDrift2;
+}
+
+[dir="rtl"] .circle-2 {
+  animation-name: orbDrift1;
+}
+
+/* CSS-only particle system */
 .css-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
+
 .css-particle {
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   animation: particleFloat linear infinite;
   will-change: transform, opacity;
 }
+
 @keyframes particleFloat {
-  0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.4; }
-  100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
-}
-/* Stagger and randomize each particle via nth-child */
-.css-particle:nth-child(1)  { left:5%;   animation-duration:12s; animation-delay:0s;    width:2px; height:2px; }
-.css-particle:nth-child(2)  { left:10%;  animation-duration:18s; animation-delay:1s; }
-.css-particle:nth-child(3)  { left:18%;  animation-duration:14s; animation-delay:3s;    width:4px; height:4px; }
-.css-particle:nth-child(4)  { left:25%;  animation-duration:20s; animation-delay:0.5s; }
-.css-particle:nth-child(5)  { left:33%;  animation-duration:16s; animation-delay:2s; }
-.css-particle:nth-child(6)  { left:40%;  animation-duration:13s; animation-delay:4s;    width:2px; height:2px; }
-.css-particle:nth-child(7)  { left:48%;  animation-duration:19s; animation-delay:1.5s; }
-.css-particle:nth-child(8)  { left:55%;  animation-duration:15s; animation-delay:0s;    width:4px; height:4px; }
-.css-particle:nth-child(9)  { left:62%;  animation-duration:17s; animation-delay:2.5s; }
-.css-particle:nth-child(10) { left:70%;  animation-duration:11s; animation-delay:1s;    width:2px; height:2px; }
-.css-particle:nth-child(11) { left:78%;  animation-duration:21s; animation-delay:3.5s; }
-.css-particle:nth-child(12) { left:85%;  animation-duration:14s; animation-delay:0.8s;  width:4px; height:4px; }
-.css-particle:nth-child(13) { left:92%;  animation-duration:16s; animation-delay:2.2s; }
-.css-particle:nth-child(14) { left:8%;   animation-duration:22s; animation-delay:4.5s; }
-.css-particle:nth-child(15) { left:15%;  animation-duration:13s; animation-delay:1.8s;  width:2px; height:2px; }
-.css-particle:nth-child(16) { left:30%;  animation-duration:18s; animation-delay:3s; }
-.css-particle:nth-child(17) { left:52%;  animation-duration:15s; animation-delay:5s;    width:3px; height:3px; }
-.css-particle:nth-child(18) { left:67%;  animation-duration:20s; animation-delay:0.3s; }
-.css-particle:nth-child(19) { left:80%;  animation-duration:12s; animation-delay:2.8s;  width:2px; height:2px; }
-.css-particle:nth-child(20) { left:95%;  animation-duration:17s; animation-delay:1.2s; }
-
-/* === RTL Hero Visual Flip === */
-.visual-scene {
-  position: relative;
-  display: inline-block;
-}
-
-/* Mirror the entire visual scene so dashboard perspective flips to the right */
-.visual-scene--rtl {
-  transform: scaleX(-1);
-}
-
-/* Counter-flip ALL visible content inside the mirrored scene so it stays readable */
-.visual-scene--rtl .card-value-large,
-.visual-scene--rtl .card-value-medium,
-.visual-scene--rtl .card-label,
-.visual-scene--rtl .address-text,
-.visual-scene--rtl .card-indicator,
-.visual-scene--rtl .card-header,
-.visual-scene--rtl .card-icon,
-.visual-scene--rtl .card-icon svg,
-.visual-scene--rtl .card-icon-bg,
-.visual-scene--rtl .dashboard-header,
-.visual-scene--rtl .window-controls,
-.visual-scene--rtl .address-bar,
-.visual-scene--rtl .analytics-card,
-.visual-scene--rtl .chart-bar,
-.visual-scene--rtl .activity-indicator {
-  transform: scaleX(-1);
-}
-
-/* ── RTL Hero Layout ──
-   On desktop the grid is 2 columns: [text | visual]
-   In RTL we reverse it to:          [visual | text]
-   so the visual sits on the LEFT and text on the RIGHT.
-*/
-@media (min-width: 1024px) {
-  [dir="rtl"] .grid-layout {
-    direction: rtl;           /* CSS grid column order follows dir */
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(30px);
+    opacity: 0;
   }
 }
 
-/* Text-content alignment */
-[dir="rtl"] .text-content {
-  text-align: right;
+[dir="rtl"] .css-particle {
+  animation: particleFloatRTL linear infinite;
 }
 
-[dir="rtl"] .subtitle {
-  text-align: right;
-  margin-right: 0;
-  margin-left: auto;
-}
-
-[dir="rtl"] .title {
-  text-align: right;
-}
-
-/* CTA button row: flush right on mobile, flush right on desktop in RTL */
-[dir="rtl"] .cta-container {
-  justify-content: flex-end;
-}
-
-@media (min-width: 1024px) {
-  [dir="rtl"] .text-content {
-    text-align: right;
+@keyframes particleFloatRTL {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
   }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(-30px);
+    opacity: 0;
+  }
+}
 
-  /* On desktop in RTL the text column is on the right,
-     so the button row should align to the right as well */
-  [dir="rtl"] .cta-container {
-    justify-content: flex-start;
+/* Stagger and randomize each particle */
+.css-particle:nth-child(1) {
+  left: 5%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+  width: 2px;
+  height: 2px;
+}
+
+.css-particle:nth-child(2) {
+  left: 10%;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+
+.css-particle:nth-child(3) {
+  left: 18%;
+  animation-duration: 14s;
+  animation-delay: 3s;
+  width: 4px;
+  height: 4px;
+}
+
+.css-particle:nth-child(4) {
+  left: 25%;
+  animation-duration: 20s;
+  animation-delay: 0.5s;
+}
+
+.css-particle:nth-child(5) {
+  left: 33%;
+  animation-duration: 16s;
+  animation-delay: 2s;
+}
+
+.css-particle:nth-child(6) {
+  left: 40%;
+  animation-duration: 13s;
+  animation-delay: 4s;
+  width: 2px;
+  height: 2px;
+}
+
+.css-particle:nth-child(7) {
+  left: 48%;
+  animation-duration: 19s;
+  animation-delay: 1.5s;
+}
+
+.css-particle:nth-child(8) {
+  left: 55%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+  width: 4px;
+  height: 4px;
+}
+
+.css-particle:nth-child(9) {
+  left: 62%;
+  animation-duration: 17s;
+  animation-delay: 2.5s;
+}
+
+.css-particle:nth-child(10) {
+  left: 70%;
+  animation-duration: 11s;
+  animation-delay: 1s;
+  width: 2px;
+  height: 2px;
+}
+
+.css-particle:nth-child(11) {
+  left: 78%;
+  animation-duration: 21s;
+  animation-delay: 3.5s;
+}
+
+.css-particle:nth-child(12) {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 0.8s;
+  width: 4px;
+  height: 4px;
+}
+
+.css-particle:nth-child(13) {
+  left: 92%;
+  animation-duration: 16s;
+  animation-delay: 2.2s;
+}
+
+.css-particle:nth-child(14) {
+  left: 8%;
+  animation-duration: 22s;
+  animation-delay: 4.5s;
+}
+
+.css-particle:nth-child(15) {
+  left: 15%;
+  animation-duration: 13s;
+  animation-delay: 1.8s;
+  width: 2px;
+  height: 2px;
+}
+
+.css-particle:nth-child(16) {
+  left: 30%;
+  animation-duration: 18s;
+  animation-delay: 3s;
+}
+
+.css-particle:nth-child(17) {
+  left: 52%;
+  animation-duration: 15s;
+  animation-delay: 5s;
+  width: 3px;
+  height: 3px;
+}
+
+.css-particle:nth-child(18) {
+  left: 67%;
+  animation-duration: 20s;
+  animation-delay: 0.3s;
+}
+
+.css-particle:nth-child(19) {
+  left: 80%;
+  animation-duration: 12s;
+  animation-delay: 2.8s;
+  width: 2px;
+  height: 2px;
+}
+
+.css-particle:nth-child(20) {
+  left: 95%;
+  animation-duration: 17s;
+  animation-delay: 1.2s;
+}
+
+/* RTL particle position adjustments */
+[dir="rtl"] .css-particle:nth-child(1) { left: auto; right: 5%; }
+[dir="rtl"] .css-particle:nth-child(2) { left: auto; right: 10%; }
+[dir="rtl"] .css-particle:nth-child(3) { left: auto; right: 18%; }
+[dir="rtl"] .css-particle:nth-child(4) { left: auto; right: 25%; }
+[dir="rtl"] .css-particle:nth-child(5) { left: auto; right: 33%; }
+[dir="rtl"] .css-particle:nth-child(6) { left: auto; right: 40%; }
+[dir="rtl"] .css-particle:nth-child(7) { left: auto; right: 48%; }
+[dir="rtl"] .css-particle:nth-child(8) { left: auto; right: 55%; }
+[dir="rtl"] .css-particle:nth-child(9) { left: auto; right: 62%; }
+[dir="rtl"] .css-particle:nth-child(10) { left: auto; right: 70%; }
+[dir="rtl"] .css-particle:nth-child(11) { left: auto; right: 78%; }
+[dir="rtl"] .css-particle:nth-child(12) { left: auto; right: 85%; }
+[dir="rtl"] .css-particle:nth-child(13) { left: auto; right: 92%; }
+[dir="rtl"] .css-particle:nth-child(14) { left: auto; right: 8%; }
+[dir="rtl"] .css-particle:nth-child(15) { left: auto; right: 15%; }
+[dir="rtl"] .css-particle:nth-child(16) { left: auto; right: 30%; }
+[dir="rtl"] .css-particle:nth-child(17) { left: auto; right: 52%; }
+[dir="rtl"] .css-particle:nth-child(18) { left: auto; right: 67%; }
+[dir="rtl"] .css-particle:nth-child(19) { left: auto; right: 80%; }
+[dir="rtl"] .css-particle:nth-child(20) { left: auto; right: 95%; }
+
+/* Print Styles */
+@media print {
+  .hero-container {
+    background: #f5f5f5;
+    min-height: auto;
+  }
+  
+  .css-particles,
+  .animated-background,
+  .grid-overlay,
+  .mouse-gradient {
+    display: none;
+  }
+  
+  .dashboard-preview {
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+  
+  .floating-card {
+    border: 1px solid #ddd;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .circle-1,
+  .circle-2,
+  .circle-3,
+  .css-particle,
+  .dashboard-float,
+  .dashboard-glow,
+  .card-pulse,
+  .card-float-right,
+  .card-float-left,
+  .value-pulse,
+  .opacity-pulse {
+    animation: none;
+  }
+  
+  .hero-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .chart-bar-grow {
+    animation: none;
+    height: var(--bar-height);
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .hero-container {
+    background: #0f172a;
+  }
+  
+  .dashboard-preview {
+    border: 2px solid white;
+  }
+  
+  .floating-card {
+    border: 1px solid white;
+  }
+  
+  .gradient-text {
+    background: #67e8f9;
+    -webkit-text-fill-color: #0f172a;
+  }
+}
+
+/* Small Mobile Optimizations (below 480px) */
+@media (max-width: 480px) {
+  .hero-container {
+    min-height: 60vh;
+    padding-bottom: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .visual-container {
+    height: 14rem;
+  }
+  
+  .dashboard-preview {
+    width: 16rem;
+    height: 10rem;
+  }
+  
+  .floating-card {
+    width: 5.5rem;
+    height: 4rem;
+    padding: 0.5rem;
+  }
+  
+  .card-right {
+    right: -3rem;
+    top: 1rem;
+  }
+  
+  [dir="rtl"] .card-right {
+    right: auto;
+    left: -3rem;
+  }
+  
+  .card-left {
+    left: -3rem;
+    bottom: 1rem;
+  }
+  
+  [dir="rtl"] .card-left {
+    left: auto;
+    right: -3rem;
+  }
+  
+  .card-value-large {
+    font-size: 1rem;
+  }
+  
+  .card-value-medium {
+    font-size: 0.875rem;
+  }
+  
+  .grid-layout {
+    gap: 2rem;
   }
 }

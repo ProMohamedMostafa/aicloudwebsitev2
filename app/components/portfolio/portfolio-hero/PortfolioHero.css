@@ -13,11 +13,14 @@
 
 /* top-white-overlay removed — no longer needed with solid white header */
 
-/* SVG image positioned on the right side */
+/* SVG image positioned on the right side (LTR) or left side (RTL).
+   The exact `left` / `right` values are controlled via inline styles in the
+   component so both properties are always explicitly set on every render,
+   preventing a stale positional value from causing a phantom gap when the
+   language direction toggles. */
 .hero-decore {
   position: absolute;
   top: -10%;
-  right: -15%;
   width: 85%;
   height: 104%;
   z-index: 0;
@@ -351,4 +354,3 @@
   margin-left: 0;
   margin-right: 0;
 }
-

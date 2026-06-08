@@ -14,7 +14,11 @@ export default function PortfolioHero() {
       <div
         className="hero-decore"
         aria-hidden="true"
-        style={isRTL ? { right: "auto", left: "-15%", transform: "scaleX(-1)" } : undefined}
+        style={
+          isRTL
+            ? { right: "auto", left: "-15%", transform: "scaleX(-1)" }
+            : { left: "auto", right: "-15%", transform: "none" }
+        }
       >
         <Image
           src="/assets/images/hero-right.svg"
@@ -40,19 +44,37 @@ export default function PortfolioHero() {
           <div className="hero-service-icons">
             <div className="service-icon-item">
               <div className="service-icon-circle">
-                <Image src="/assets/images/ecommerce-hero-img-dashboard.webp" alt="Dashboard" width={80} height={80} className="object-contain" />
+                <Image
+                  src="/assets/images/ecommerce-hero-img-dashboard.webp"
+                  alt="Dashboard"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
               </div>
               <span>{t("portfolio.hero.dashboard")}</span>
             </div>
             <div className="service-icon-item">
               <div className="service-icon-circle">
-                <Image src="/assets/images/ecommerce-hero-img-app.webp" alt="Application" width={80} height={80} className="object-contain" />
+                <Image
+                  src="/assets/images/ecommerce-hero-img-app.webp"
+                  alt="Application"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
               </div>
               <span>{t("portfolio.hero.application")}</span>
             </div>
             <div className="service-icon-item">
               <div className="service-icon-circle">
-                <Image src="/assets/images/ecommerce-hero-img-website.webp" alt="Website" width={80} height={80} className="object-contain" />
+                <Image
+                  src="/assets/images/ecommerce-hero-img-website.webp"
+                  alt="Website"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
               </div>
               <span>{t("portfolio.hero.website")}</span>
             </div>

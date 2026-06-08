@@ -1,9 +1,9 @@
-/* PortfolioFeatures.css */
+/* PortfolioFeatures.css - Complete Responsive with Fixed RTL Support */
 
 .portfolio-features {
   width: 100%;
   background: #f4f4f4;
-  padding: 64px 32px;
+  padding: clamp(40px, 6vw, 64px) clamp(16px, 4vw, 32px);
 }
 
 .features-inner {
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: clamp(32px, 5vw, 48px);
 }
 
 /* ── Header ── */
@@ -32,25 +32,25 @@
   background: rgba(0, 97, 183, 0.08);
   border: 1px solid rgba(0, 97, 183, 0.3);
   border-radius: 999px;
-  font-size: 14px;
+  font-size: clamp(12px, 2vw, 14px);
   font-weight: 400;
   letter-spacing: 0.35px;
   color: #0061b7;
 }
 
 .features-title {
-  font-size: 40px;
+  font-size: clamp(28px, 5vw, 40px);
   font-weight: 700;
-  line-height: 66px;
+  line-height: clamp(38px, 6vw, 66px);
   letter-spacing: -1.2px;
   color: #0f172a;
   margin: 0;
 }
 
 .features-subtitle {
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: 400;
-  line-height: 28px;
+  line-height: clamp(24px, 4vw, 28px);
   color: #000000;
   margin: 0;
 }
@@ -59,7 +59,7 @@
 .features-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: clamp(20px, 3vw, 24px);
   width: 100%;
 }
 
@@ -68,13 +68,27 @@
   background: #ffffff;
   border: 1px solid #dbdfe4;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.04);
-  border-radius: 32px;
-  padding: 32px;
+  border-radius: clamp(24px, 4vw, 32px);
+  padding: clamp(20px, 4vw, 32px);
   display: flex;
   flex-direction: column;
   gap: 0;
   overflow: hidden;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+  animation: cardFadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.feature-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+  animation-delay: 0.3s;
 }
 
 .feature-card:hover {
@@ -82,7 +96,7 @@
   transform: translateY(-4px);
 }
 
-/* Top-right blur accent */
+/* Top-right blur accent - LTR */
 .feature-card::after {
   content: "";
   position: absolute;
@@ -110,24 +124,40 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover .feature-card-icon-bg {
+  transform: scale(1.05);
+}
+
+.feature-card-icon-bg svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card-icon-bg svg rect,
+.feature-card-icon-bg svg line,
+.feature-card-icon-bg svg path {
+  stroke: #0061B7;
 }
 
 /* Heading */
 .feature-card-heading {
-  font-size: 24px;
+  font-size: clamp(20px, 3vw, 24px);
   font-weight: 700;
-  line-height: 32px;
+  line-height: clamp(28px, 4vw, 32px);
   color: #000000;
   margin: 0 0 12px 0;
 }
 
 /* Description */
 .feature-card-desc {
-  font-size: 14px;
+  font-size: clamp(13px, 2vw, 14px);
   font-weight: 400;
-  line-height: 20px;
+  line-height: clamp(18px, 3vw, 20px);
   color: #1e4544;
-  margin: 0 0 32px 0;
+  margin: 0 0 clamp(24px, 4vw, 32px) 0;
 }
 
 /* Feature list */
@@ -144,9 +174,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
+  font-size: clamp(13px, 2vw, 14px);
   font-weight: 400;
-  line-height: 20px;
+  line-height: clamp(18px, 3vw, 20px);
   color: #000000;
 }
 
@@ -159,9 +189,40 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.feature-card:hover .feature-check {
+  background: rgba(0, 97, 183, 0.35);
+}
+
+.feature-check svg {
+  width: 12px;
+  height: 12px;
+}
+
+.feature-check svg path {
+  stroke: #0061B7;
+  stroke-width: 1.5;
 }
 
 /* ── Responsive Breakpoints ── */
+
+/* Desktop (1024px - 1200px) */
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .features-cards {
+    gap: 20px;
+  }
+  
+  .feature-card {
+    padding: 28px;
+  }
+  
+  .feature-card-heading {
+    font-size: 22px;
+  }
+}
+
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
   .features-cards {
@@ -173,6 +234,10 @@
     grid-column: span 2;
     max-width: 50%;
     margin: 0 auto;
+  }
+  
+  .feature-card {
+    padding: 28px 24px;
   }
 }
 
@@ -248,6 +313,11 @@
     height: 44px;
   }
   
+  .feature-card-icon-bg svg {
+    width: 20px;
+    height: 20px;
+  }
+  
   .feature-card-heading {
     font-size: 20px;
     line-height: 28px;
@@ -275,9 +345,51 @@
     height: 18px;
   }
   
+  .feature-check svg {
+    width: 10px;
+    height: 10px;
+  }
+  
   .feature-card::after {
     width: 100px;
     height: 100px;
+  }
+}
+
+/* Extra Small Devices (below 360px) */
+@media (max-width: 360px) {
+  .portfolio-features {
+    padding: 32px 12px;
+  }
+  
+  .features-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .features-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .feature-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  
+  .feature-card-heading {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .feature-card-desc {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .feature-list-item {
+    font-size: 12px;
+    gap: 8px;
   }
 }
 
@@ -293,6 +405,7 @@
   
   .feature-card {
     padding: 40px;
+    border-radius: 36px;
   }
   
   .feature-card-heading {
@@ -300,18 +413,369 @@
     line-height: 34px;
   }
   
+  .feature-card-desc {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  
   .feature-list-item {
     font-size: 15px;
     line-height: 22px;
   }
+  
+  .feature-card-icon-bg {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .feature-card-icon-bg svg {
+    width: 28px;
+    height: 28px;
+  }
 }
-/* === RTL Portfolio Features === */
+
+/* 2K Screens (1920px and above) */
+@media (min-width: 1920px) {
+  .features-inner {
+    max-width: 1600px;
+  }
+  
+  .features-cards {
+    gap: 40px;
+  }
+  
+  .feature-card {
+    padding: 48px;
+    border-radius: 40px;
+  }
+  
+  .feature-card-heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .feature-card-desc {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .feature-list {
+    gap: 16px;
+  }
+  
+  .feature-list-item {
+    font-size: 16px;
+    gap: 14px;
+  }
+  
+  .feature-card-icon-bg {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .feature-card-icon-bg svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ── RTL Portfolio Features - COMPLETE FIX ── */
+
+/* Container direction for RTL */
+[dir="rtl"] .features-cards {
+  direction: rtl;
+}
+
+/* Header stays centered */
 [dir="rtl"] .features-header {
   text-align: center;
 }
+
+/* Card text alignment */
 [dir="rtl"] .feature-card {
   text-align: right;
 }
+
+/* Blur accent moves to top-left for RTL */
+[dir="rtl"] .feature-card::after {
+  right: auto;
+  left: 1px;
+  border-radius: 32px 0 100% 0;
+}
+
+/* Icon wrapper alignment */
+[dir="rtl"] .feature-card-icon-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Icon SVG doesn't flip - maintain visual */
+[dir="rtl"] .feature-card-icon-bg svg {
+  transform: scaleX(1);
+}
+
+/* FIX: List items - icon on RIGHT side, text on LEFT side for RTL */
+[dir="rtl"] .feature-list {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 [dir="rtl"] .feature-list-item {
-  flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Move icon to the right side (order 2 = appears second/right) */
+[dir="rtl"] .feature-list-item .feature-check {
+  order: 2;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Move text to the left side (order 1 = appears first/left) */
+[dir="rtl"] .feature-list-item span:last-child {
+  order: 1;
+  text-align: right;
+  flex: 1;
+}
+
+/* Ensure proper spacing */
+[dir="rtl"] .feature-list-item {
+  gap: 12px;
+}
+
+[dir="rtl"] .feature-check {
+  flex-shrink: 0;
+}
+
+/* Hover effect adjustment for RTL */
+[dir="rtl"] .feature-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+  [dir="rtl"] .feature-card:last-child {
+    grid-column: span 2;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .feature-card:last-child {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  [dir="rtl"] .feature-list-item {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  [dir="rtl"] .feature-list-item {
+    gap: 8px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .portfolio-features {
+    background: white;
+    padding: 40px 20px;
+  }
+  
+  .feature-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    animation: none;
+    opacity: 1;
+  }
+  
+  .feature-card::after {
+    display: none;
+  }
+  
+  .feature-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .features-badge {
+    border: 1px solid #999;
+    background: none;
+  }
+  
+  .feature-check {
+    background: #e0e0e0;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card {
+    transition: none;
+    animation: none;
+    opacity: 1;
+  }
+  
+  .feature-card:hover {
+    transform: none;
+  }
+  
+  .feature-card-icon-bg {
+    transition: none;
+  }
+  
+  .feature-card:hover .feature-card-icon-bg {
+    transform: none;
+  }
+  
+  .feature-check {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .portfolio-features {
+    background: #ffffff;
+  }
+  
+  .feature-card {
+    border: 2px solid #000;
+  }
+  
+  .feature-card::after {
+    opacity: 0.3;
+  }
+  
+  .features-badge {
+    border: 1px solid #0061b7;
+    background: transparent;
+  }
+  
+  .feature-check {
+    background: #0061b7;
+  }
+  
+  .feature-check svg path {
+    stroke: #ffffff;
+  }
+  
+  .feature-card-icon-bg svg rect,
+  .feature-card-icon-bg svg line,
+  .feature-card-icon-bg svg path {
+    stroke: #004080;
+    stroke-width: 2.5;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .feature-card:hover {
+    transform: none;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.04);
+  }
+  
+  .feature-card:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 15px rgba(0, 97, 183, 0.08);
+  }
+  
+  .feature-card:hover .feature-card-icon-bg {
+    transform: none;
+  }
+  
+  .feature-card:hover .feature-check {
+    background: rgba(0, 97, 183, 0.2);
+  }
+}
+
+/* Focus Visible for Keyboard Navigation */
+.feature-card:focus-visible {
+  outline: 3px solid #0061b7;
+  outline-offset: 3px;
+  transform: translateY(-2px);
+}
+
+.feature-list-item:focus-visible {
+  outline: 2px solid #0061b7;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[dir="rtl"] .feature-card:focus-visible {
+  outline: 3px solid #0061b7;
+  outline-offset: 3px;
+}
+
+/* Card Fade In Animation */
+@keyframes cardFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading/Skeleton State */
+@keyframes featureShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.feature-card.loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #fafafa 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: featureShimmer 1.5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card.loading {
+    animation: none;
+  }
+}
+
+/* Responsive badge text */
+@media (max-width: 480px) {
+  .features-badge {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+}
+
+/* Hover effect enhancements for desktop */
+@media (min-width: 1025px) {
+  .feature-card {
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .feature-card-icon-bg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .feature-check {
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
