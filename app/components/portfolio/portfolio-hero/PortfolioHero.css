@@ -11,8 +11,6 @@
   padding-top: var(--header-height);
 }
 
-/* top-white-overlay removed — no longer needed with solid white header */
-
 /* SVG image positioned on the right side (LTR) or left side (RTL).
    The exact `left` / `right` values are controlled via inline styles in the
    component so both properties are always explicitly set on every render,
@@ -24,7 +22,6 @@
   width: 85%;
   height: 104%;
   z-index: 0;
-  /* Visible on desktop, hidden on tablet and mobile */
   display: block;
 }
 
@@ -168,10 +165,10 @@
   max-width: 600px;
 }
 
-/* ── Responsive: Tablet (769px - 1024px) ── */
-@media (max-width: 1024px) {
+/* ── Responsive: 1322px and below ── */
+@media (max-width: 1322px) {
+  /* Only hide the SVG decor, keep the main hero image */
   .hero-decore {
-    /* Hide SVG decoration on tablet */
     display: none;
   }
 
@@ -192,13 +189,15 @@
     max-width: 100%;
   }
 
-  .hero-image-area {
-    width: 100%;
-    max-width: 500px;
-  }
-
   .hero-image-placeholder {
     margin-top: 0;
+  }
+}
+
+/* ── Responsive: Tablet (769px - 1024px) ── */
+@media (max-width: 1024px) {
+  .hero-inner {
+    padding: 58px 32px;
   }
 }
 
@@ -207,11 +206,6 @@
   .portfolio-hero {
     min-height: auto;
     padding-bottom: 48px;
-  }
-
-  /* Ensure SVG remains hidden on mobile */
-  .hero-decore {
-    display: none;
   }
 
   .hero-inner {
@@ -254,18 +248,12 @@
   }
 
   .hero-image-placeholder {
-    margin-top: 0;
     max-width: 350px;
   }
 }
 
 /* ── Responsive: Small Mobile (< 480px) ── */
 @media (max-width: 480px) {
-  .hero-decore {
-    /* Explicitly hide on small mobile */
-    display: none;
-  }
-
   .hero-inner {
     padding: 32px 16px;
   }
@@ -311,11 +299,6 @@
   .hero-image-placeholder {
     max-width: 280px;
   }
-}
-
-/* === RTL Portfolio Hero === */
-.hero-inner--rtl {
-  /* flex-direction: row-reverse; */
 }
 
 [dir="rtl"] .hero-content {

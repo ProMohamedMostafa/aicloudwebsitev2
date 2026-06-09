@@ -31,17 +31,24 @@ export default function PortfolioHero() {
       const contentX = isRTL ? 60 : -60;
       const imageX = isRTL ? -60 : 60;
 
-      gsap.set([titleRef.current, descRef.current, btnRef.current, iconsRef.current], {
-        opacity: 0,
-        x: contentX,
-      });
+      gsap.set(
+        [titleRef.current, descRef.current, btnRef.current, iconsRef.current],
+        {
+          opacity: 0,
+          x: contentX,
+        },
+      );
       gsap.set(imageRef.current, { opacity: 0, x: imageX, scale: 0.96 });
 
       tl.to(titleRef.current, { opacity: 1, x: 0, duration: 0.75 })
         .to(descRef.current, { opacity: 1, x: 0, duration: 0.6 }, "-=0.45")
         .to(btnRef.current, { opacity: 1, x: 0, duration: 0.5 }, "-=0.35")
         .to(iconsRef.current, { opacity: 1, x: 0, duration: 0.6 }, "-=0.3")
-        .to(imageRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.8 }, "-=0.7");
+        .to(
+          imageRef.current,
+          { opacity: 1, x: 0, scale: 1, duration: 0.8 },
+          "-=0.7",
+        );
 
       // Subtle float on the hero image (runs forever, no ScrollTrigger needed)
       gsap.to(imageRef.current, {
@@ -54,7 +61,8 @@ export default function PortfolioHero() {
       });
 
       // Individual service icons stagger in
-      const iconItems = iconsRef.current?.querySelectorAll(".service-icon-item");
+      const iconItems =
+        iconsRef.current?.querySelectorAll(".service-icon-item");
       if (iconItems && iconItems.length) {
         gsap.fromTo(
           iconItems,
@@ -67,7 +75,7 @@ export default function PortfolioHero() {
             stagger: 0.12,
             ease: "back.out(1.6)",
             delay: 0.9,
-          }
+          },
         );
       }
     }, sectionRef);
@@ -100,8 +108,12 @@ export default function PortfolioHero() {
         {/* Text Content */}
         <div className="hero-content">
           <div className="hero-text-group">
-            <h1 className="hero-title" ref={titleRef}>{t("portfolio.hero.title")}</h1>
-            <p className="hero-description" ref={descRef}>{t("portfolio.hero.description")}</p>
+            <h1 className="hero-title" ref={titleRef}>
+              {t("portfolio.hero.title")}
+            </h1>
+            <p className="hero-description" ref={descRef}>
+              {t("portfolio.hero.description")}
+            </p>
           </div>
 
           <a href="#contact" className="hero-btn" ref={btnRef}>
