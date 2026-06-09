@@ -55,24 +55,24 @@ export default function NotFound() {
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <a
-              href="/docs"
+              href="/services"
               className="text-indigo-600 hover:text-indigo-500 transition-colors duration-200 hover:underline"
             >
-              Browse Documentation
+              Our Services
             </a>
             <span className="text-gray-300">•</span>
             <a
-              href="/blog"
+              href="/about"
               className="text-indigo-600 hover:text-indigo-500 transition-colors duration-200 hover:underline"
             >
-              Read Our Blog
+              About Us
             </a>
             <span className="text-gray-300">•</span>
             <a
-              href="/search"
+              href="/contact"
               className="text-indigo-600 hover:text-indigo-500 transition-colors duration-200 hover:underline"
             >
-              Search Site
+              Contact Us
             </a>
           </div>
         </div>

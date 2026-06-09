@@ -105,20 +105,22 @@ export function useServicesAnimation() {
       );
 
       // CTA button animation
-      mainTl.fromTo(
-        ctaRef.current,
-        {
-          opacity: 0,
-          scale: 0.5,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.8)",
-        },
-        "-=0.2"
-      );
+      if (ctaRef.current) {
+        mainTl.fromTo(
+          ctaRef.current,
+          {
+            opacity: 0,
+            scale: 0.5,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.8)",
+          },
+          "-=0.2"
+        );
+      }
     }, sectionRef);
 
     return () => ctx.revert();

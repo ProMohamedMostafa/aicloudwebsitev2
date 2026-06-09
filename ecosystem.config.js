@@ -10,7 +10,7 @@ module.exports = {
       name: "aicloud",
       script: "npm",
       args: "start",
-      cwd: "/var/www/aicloud",        // ← change to your deployment path
+      cwd: process.env.APP_DIR || "/var/www/aicloud",
       instances: "max",               // use all CPU cores
       exec_mode: "cluster",           // cluster mode for load balancing
       autorestart: true,

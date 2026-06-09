@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
 const securityHeaders = [
@@ -26,8 +27,8 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      // 'unsafe-inline' required for Next.js inline styles & GSAP; tighten with nonces in future
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      // 'unsafe-inline' required for Next.js inline styles & GSAP; 'unsafe-eval' dev-only for HMR
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob:",
@@ -54,7 +55,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ["framer-motion", "lucide-react"],
+    optimizePackageImports: ["framer-motion"],
   },
 
   async headers() {

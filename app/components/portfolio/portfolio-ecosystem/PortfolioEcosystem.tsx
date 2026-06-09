@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./PortfolioEcosystem.css";
 import { useI18n } from "@/app/i18n/context";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// ── Icons (original blue #0061B7 stroke, matching original file) ──────────
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Icons ──────────────────────────────────────────────────────────────
 const mobileIcon = (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
     <rect x="5" y="1" width="14" height="22" rx="2" stroke="#0061B7" strokeWidth="2" fill="none" />
@@ -50,11 +54,24 @@ const ecosystemImages = [
   "/assets/images/ecosystem-3.webp",
 ];
 
+// Helper to generate star elements
+const renderStars = () => {
+  const stars = [];
+  for (let i = 1; i <= 14; i++) {
+    stars.push(<div key={`star-${i}`} className={`star star-${i}`} />);
+  }
+  return stars;
+};
+
 export default function PortfolioEcosystem() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { t, dir } = useI18n();
 
-  // All 6 original service cards, now with translation keys
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
   const services = [
     { key: "mobileApps",        titleKey: "portfolio.ecosystem.mobileApps",        descKey: "portfolio.ecosystem.mobileAppsDesc",        icon: mobileIcon },
     { key: "ecommerceWebsites", titleKey: "portfolio.ecosystem.ecommerceWebsites", descKey: "portfolio.ecosystem.ecommerceWebsitesDesc",  icon: webIcon },
@@ -64,26 +81,70 @@ export default function PortfolioEcosystem() {
     { key: "multiVendor",       titleKey: "portfolio.ecosystem.multiVendor",        descKey: "portfolio.ecosystem.multiVendorDesc",        icon: multiVendorIcon },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const isRTL = dir === "rtl";
+
+      // Header fades up
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+          scrollTrigger: { trigger: headerRef.current, start: "top 85%", once: true },
+        }
+      );
+
+      // Mockup slides in from the left (or right in RTL)
+      gsap.fromTo(
+        mockupRef.current,
+        { opacity: 0, x: isRTL ? 60 : -60, scale: 0.95 },
+        {
+          opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: mockupRef.current, start: "top 82%", once: true },
+        }
+      );
+
+      // Service cards stagger in from the right (or left in RTL)
+      const cards = servicesRef.current?.querySelectorAll(".eco-service-card");
+      if (cards) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, x: isRTL ? -40 : 40, y: 20 },
+          {
+            opacity: 1, x: 0, y: 0, duration: 0.55,
+            stagger: 0.1, ease: "power2.out",
+            scrollTrigger: { trigger: servicesRef.current, start: "top 82%", once: true },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [dir]);
+
   return (
-    <section className="portfolio-ecosystem">
+    <section className="portfolio-ecosystem" ref={sectionRef}>
       <div className="ecosystem-inner">
         {/* Header */}
-        <div className="ecosystem-header">
+        <div className="ecosystem-header" ref={headerRef}>
           <h2 className="ecosystem-title">{t("portfolio.ecosystem.title")}</h2>
           <p className="ecosystem-subtitle">{t("portfolio.ecosystem.subtitle")}</p>
         </div>
 
-        {/* In RTL reverse the two-column layout so mockup goes right, cards go left */}
         <div className={`ecosystem-grid-layout ${dir === "rtl" ? "ecosystem-grid-layout--rtl" : ""}`}>
 
-          {/* Image carousel (left in LTR, right in RTL) */}
-          <div className="ecosystem-mockup">
+          {/* Image carousel */}
+          <div className="ecosystem-mockup" ref={mockupRef}>
             <div className="ecosystem-mockup-placeholder">
               <div className="mockup-image-container">
                 <Image
                   src={ecosystemImages[currentImageIndex]}
                   alt={`Ecosystem mockup ${currentImageIndex + 1}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ objectFit: "contain" }}
                   className="mockup-image"
                   priority={currentImageIndex === 0}
@@ -103,18 +164,18 @@ export default function PortfolioEcosystem() {
             </div>
           </div>
 
-          {/* Service cards grid — 2 columns × 3 rows = 6 cards (original layout) */}
-          <div className="ecosystem-services">
+          {/* Service cards grid */}
+          <div className="ecosystem-services" ref={servicesRef}>
             {services.map((service) => (
-              <div className="service-card" key={service.key}>
-                {/* Icon */}
-                <div className="service-card-icon">
-                  <div className="service-icon-bg">{service.icon}</div>
+              <div className="eco-service-card" key={service.key}>
+                {/* Stars effect - now visible on hover */}
+                {renderStars()}
+                <div className="eco-service-card-icon">
+                  <div className="eco-service-icon-bg">{service.icon}</div>
                 </div>
-                {/* Text */}
-                <div className="service-card-body">
-                  <h3 className="service-card-title">{t(service.titleKey)}</h3>
-                  <p className="service-card-desc">{t(service.descKey)}</p>
+                <div className="eco-service-card-body">
+                  <h3 className="eco-service-card-title">{t(service.titleKey)}</h3>
+                  <p className="eco-service-card-desc">{t(service.descKey)}</p>
                 </div>
               </div>
             ))}

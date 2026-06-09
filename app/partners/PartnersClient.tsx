@@ -1,8 +1,9 @@
 "use client";
 
-import { partners } from "../../data/partnersData";
+import Image from "next/image";
+import { partners } from "../data/partnersData";
 import "./partners.css";
-import { usePartnersAnimation } from "../../hooks/usePartnersAnimation";
+import { usePartnersAnimation } from "@/hooks/usePartnersAnimation";
 import { useI18n } from "@/app/i18n/context";
 
 export default function PartnersClient() {
@@ -29,7 +30,13 @@ export default function PartnersClient() {
                 style={{ opacity: 0, transform: "translateY(60px) rotateY(15deg)" }}
               >
                 <div className="partner-card-image">
-                  <img src={partner.img} alt={partner.title} className="partner-image" />
+                  <Image
+                    src={partner.img}
+                    alt={partner.title}
+                    width={160}
+                    height={80}
+                    className="partner-image"
+                  />
                 </div>
               </div>
             ))}

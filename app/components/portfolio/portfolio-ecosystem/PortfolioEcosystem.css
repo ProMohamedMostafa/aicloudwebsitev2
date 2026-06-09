@@ -128,7 +128,7 @@
 }
 
 /* ── Service Card ── */
-.service-card {
+.eco-service-card {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -143,106 +143,256 @@
     transform 0.25s ease;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
 }
 
-.service-card:hover {
+.eco-service-card:hover {
   background: #0061b7;
   border-color: #0061b7;
   box-shadow: 0px 4px 16px rgba(0, 97, 183, 0.35);
   transform: translateY(-2px);
 }
 
-/* ── Star Sparkles (updated to use actual star shapes) ── */
+/* ── Star Sparkles - FIXED to be visible ── */
 .star {
   position: absolute;
   opacity: 0;
-  transform: scale(0.3) rotate(0deg);
-  transition:
-    opacity 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
-    transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transform: scale(0) rotate(0deg);
+  transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
   pointer-events: none;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  width: 20px;
+  height: 20px;
 }
 
-.service-card:hover .star {
+.eco-service-card:hover .star {
   opacity: 1;
   transform: scale(1) rotate(15deg);
 }
 
-/* Staggered delays per star for a magical twinkle effect */
+/* Star shapes using pseudo-elements for actual stars */
+.star::before {
+  content: "★";
+  font-size: 18px;
+  color: #acd8ff;
+  text-shadow:
+    0 0 4px rgba(172, 216, 255, 0.8),
+    0 0 8px rgba(172, 216, 255, 0.4);
+  display: block;
+  line-height: 1;
+}
+
+/* Different star types for variety */
+.star-1::before {
+  content: "★";
+  font-size: 14px;
+}
+
+.star-2::before {
+  content: "✦";
+  font-size: 12px;
+  color: #d7ecff;
+}
+
+.star-3::before {
+  content: "☆";
+  font-size: 16px;
+  color: #bfe2ff;
+}
+
+.star-4::before {
+  content: "✧";
+  font-size: 10px;
+  color: #e8f5ff;
+}
+
+.star-5::before {
+  content: "★";
+  font-size: 8px;
+}
+
+.star-6::before {
+  content: "✦";
+  font-size: 14px;
+  color: #c8e6ff;
+}
+
+.star-7::before {
+  content: "☆";
+  font-size: 11px;
+  color: #d7ecff;
+}
+
+.star-8::before {
+  content: "★";
+  font-size: 9px;
+  color: #b5ddff;
+}
+
+.star-9::before {
+  content: "✧";
+  font-size: 13px;
+  color: #e8f5ff;
+}
+
+.star-10::before {
+  content: "✦";
+  font-size: 7px;
+  color: #c8e6ff;
+}
+
+.star-11::before {
+  content: "★";
+  font-size: 15px;
+  color: #e0f1ff;
+}
+
+.star-12::before {
+  content: "☆";
+  font-size: 12px;
+  color: #bfe2ff;
+}
+
+.star-13::before {
+  content: "✧";
+  font-size: 8px;
+  color: #d7ecff;
+}
+
+.star-14::before {
+  content: "✦";
+  font-size: 10px;
+  color: #c8e6ff;
+}
+
+/* Star positions - scattered around the card */
 .star-1 {
+  top: 5%;
+  left: 85%;
   transition-delay: 0s;
 }
 .star-2 {
+  top: 15%;
+  left: 10%;
   transition-delay: 0.04s;
 }
 .star-3 {
+  top: 30%;
+  left: 90%;
   transition-delay: 0.08s;
 }
 .star-4 {
+  top: 50%;
+  left: 5%;
   transition-delay: 0.02s;
 }
 .star-5 {
+  top: 70%;
+  left: 92%;
   transition-delay: 0.06s;
 }
 .star-6 {
+  top: 85%;
+  left: 15%;
   transition-delay: 0.1s;
 }
 .star-7 {
+  top: 10%;
+  left: 70%;
   transition-delay: 0.01s;
 }
 .star-8 {
+  top: 40%;
+  left: 95%;
   transition-delay: 0.09s;
 }
 .star-9 {
+  top: 60%;
+  left: 8%;
   transition-delay: 0.05s;
 }
 .star-10 {
+  top: 80%;
+  left: 80%;
   transition-delay: 0.11s;
 }
 .star-11 {
+  top: 20%;
+  left: 50%;
   transition-delay: 0.03s;
 }
 .star-12 {
+  top: 75%;
+  left: 45%;
   transition-delay: 0.07s;
 }
 .star-13 {
+  top: 45%;
+  left: 80%;
   transition-delay: 0.12s;
 }
 .star-14 {
+  top: 90%;
+  left: 60%;
   transition-delay: 0.04s;
 }
 
-/* Hover effect for star shapes - subtle rotation on each */
-.service-card:hover .star-1 { transform: scale(1) rotate(20deg); }
-.service-card:hover .star-2 { transform: scale(1) rotate(-15deg); }
-.service-card:hover .star-3 { transform: scale(1) rotate(25deg); }
-.service-card:hover .star-4 { transform: scale(1) rotate(-20deg); }
-.service-card:hover .star-5 { transform: scale(1) rotate(10deg); }
-.service-card:hover .star-6 { transform: scale(1) rotate(-25deg); }
-.service-card:hover .star-7 { transform: scale(1) rotate(30deg); }
-.service-card:hover .star-8 { transform: scale(1) rotate(-10deg); }
-.service-card:hover .star-9 { transform: scale(1) rotate(15deg); }
-.service-card:hover .star-10 { transform: scale(1) rotate(-30deg); }
-.service-card:hover .star-11 { transform: scale(1) rotate(5deg); }
-.service-card:hover .star-12 { transform: scale(1) rotate(-5deg); }
-.service-card:hover .star-13 { transform: scale(1) rotate(35deg); }
-.service-card:hover .star-14 { transform: scale(1) rotate(-35deg); }
+/* Different rotation on hover for each star */
+.eco-service-card:hover .star-1 {
+  transform: scale(1) rotate(20deg);
+}
+.eco-service-card:hover .star-2 {
+  transform: scale(1) rotate(-15deg);
+}
+.eco-service-card:hover .star-3 {
+  transform: scale(1) rotate(25deg);
+}
+.eco-service-card:hover .star-4 {
+  transform: scale(1) rotate(-20deg);
+}
+.eco-service-card:hover .star-5 {
+  transform: scale(1) rotate(10deg);
+}
+.eco-service-card:hover .star-6 {
+  transform: scale(1) rotate(-25deg);
+}
+.eco-service-card:hover .star-7 {
+  transform: scale(1) rotate(30deg);
+}
+.eco-service-card:hover .star-8 {
+  transform: scale(1) rotate(-10deg);
+}
+.eco-service-card:hover .star-9 {
+  transform: scale(1) rotate(15deg);
+}
+.eco-service-card:hover .star-10 {
+  transform: scale(1) rotate(-30deg);
+}
+.eco-service-card:hover .star-11 {
+  transform: scale(1) rotate(5deg);
+}
+.eco-service-card:hover .star-12 {
+  transform: scale(1) rotate(-5deg);
+}
+.eco-service-card:hover .star-13 {
+  transform: scale(1) rotate(35deg);
+}
+.eco-service-card:hover .star-14 {
+  transform: scale(1) rotate(-35deg);
+}
 
 /* ── Icon circle ── */
-.service-card-icon {
+.eco-service-card-icon {
   display: flex;
   position: relative;
   z-index: 2;
 }
 
-.service-icon-bg {
+.eco-service-icon-bg {
   width: 48px;
   height: 48px;
   background: #f1f5f9;
@@ -257,18 +407,18 @@
     border-color 0.25s ease;
 }
 
-.service-card:hover .service-icon-bg {
+.eco-service-card:hover .eco-service-icon-bg {
   background: #ffffff;
   border-color: #ffffff;
 }
 
 /* Icon SVG color via currentColor */
-.service-icon-bg svg {
+.eco-service-icon-bg svg {
   color: #0061b7;
 }
 
-/* ── Card body ── */
-.service-card-body {
+/* ── Card body - FIXED: no text size changes on hover ── */
+.eco-service-card-body {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -276,39 +426,33 @@
   z-index: 2;
 }
 
-.service-card-title {
+.eco-service-card-title {
   font-size: 16px;
   font-weight: 600;
   line-height: 28px;
   letter-spacing: -0.45px;
   color: #000000;
   margin: 0;
-  transition:
-    color 0.25s ease,
-    font-size 0.25s ease;
+  transition: color 0.25s ease;
 }
 
-.service-card:hover .service-card-title {
+.eco-service-card:hover .eco-service-card-title {
   color: #ffffff;
-  font-size: 18px;
+  /* No font-size change */
 }
 
-.service-card-desc {
+.eco-service-card-desc {
   font-size: 13px;
   font-weight: 400;
   line-height: 22px;
   color: #64748b;
   margin: 0;
-  transition:
-    color 0.25s ease,
-    font-size 0.25s ease,
-    line-height 0.25s ease;
+  transition: color 0.25s ease;
 }
 
-.service-card:hover .service-card-desc {
+.eco-service-card:hover .eco-service-card-desc {
   color: #ffffff;
-  font-size: 14px;
-  line-height: 23px;
+  /* No font-size or line-height change */
 }
 
 /* ── Responsive: Large Tablet (769px - 1024px) ── */
@@ -387,35 +531,30 @@
     gap: 12px;
   }
 
-  .service-card {
+  .eco-service-card {
     padding: 16px 20px;
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .service-icon-bg {
+  .eco-service-icon-bg {
     width: 44px;
     height: 44px;
   }
-  .service-icon-bg svg {
+  .eco-service-icon-bg svg {
     width: 20px;
     height: 20px;
   }
-  .service-card-title {
+  .eco-service-card-title {
     font-size: 15px;
     line-height: 24px;
   }
-  .service-card-desc {
+  .eco-service-card-desc {
     font-size: 12px;
     line-height: 20px;
   }
-  .service-card:hover .service-card-title {
-    font-size: 16px;
-  }
-  .service-card:hover .service-card-desc {
-    font-size: 13px;
-  }
+  /* No hover font-size changes in responsive */
 }
 
 /* ── Responsive: Small Mobile (320px - 480px) ── */
@@ -455,24 +594,24 @@
   .ecosystem-services {
     gap: 10px;
   }
-  .service-card {
+  .eco-service-card {
     padding: 14px 16px;
     gap: 12px;
     border-radius: 6px;
   }
-  .service-icon-bg {
+  .eco-service-icon-bg {
     width: 40px;
     height: 40px;
   }
-  .service-icon-bg svg {
+  .eco-service-icon-bg svg {
     width: 18px;
     height: 18px;
   }
-  .service-card-title {
+  .eco-service-card-title {
     font-size: 14px;
     line-height: 22px;
   }
-  .service-card-desc {
+  .eco-service-card-desc {
     font-size: 12px;
     line-height: 18px;
   }
@@ -502,23 +641,23 @@
     font-size: 13px;
     line-height: 20px;
   }
-  .service-card {
+  .eco-service-card {
     padding: 12px 14px;
     gap: 10px;
   }
-  .service-icon-bg {
+  .eco-service-icon-bg {
     width: 36px;
     height: 36px;
   }
-  .service-icon-bg svg {
+  .eco-service-icon-bg svg {
     width: 16px;
     height: 16px;
   }
-  .service-card-title {
+  .eco-service-card-title {
     font-size: 13px;
     line-height: 20px;
   }
-  .service-card-desc {
+  .eco-service-card-desc {
     font-size: 11px;
     line-height: 16px;
   }
@@ -538,12 +677,12 @@
 }
 
 /* Keep card content direction neutral inside RTL grid */
-[dir="rtl"] .service-card {
+[dir="rtl"] .eco-service-card {
   text-align: right;
   direction: rtl;
 }
 
-[dir="rtl"] .service-card-body {
+[dir="rtl"] .eco-service-card-body {
   text-align: right;
 }
 

@@ -2,6 +2,11 @@
 
 import "./PortfolioFeatures.css";
 import { useI18n } from "@/app/i18n/context";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const websiteIcon = (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -27,22 +32,77 @@ const mobileIcon = (
 export default function PortfolioFeatures() {
   const { t, tArr } = useI18n();
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
   const featureColumns = [
-    { key: "website", icon: websiteIcon, headingKey: "portfolio.features.websiteHeading", descKey: "portfolio.features.websiteDesc", featuresKey: "portfolio.features.websiteFeatures" },
+    { key: "website",   icon: websiteIcon,   headingKey: "portfolio.features.websiteHeading",   descKey: "portfolio.features.websiteDesc",   featuresKey: "portfolio.features.websiteFeatures" },
     { key: "dashboard", icon: dashboardIcon, headingKey: "portfolio.features.dashboardHeading", descKey: "portfolio.features.dashboardDesc", featuresKey: "portfolio.features.dashboardFeatures" },
-    { key: "mobile", icon: mobileIcon, headingKey: "portfolio.features.mobileHeading", descKey: "portfolio.features.mobileDesc", featuresKey: "portfolio.features.mobileFeatures" },
+    { key: "mobile",    icon: mobileIcon,    headingKey: "portfolio.features.mobileHeading",    descKey: "portfolio.features.mobileDesc",    featuresKey: "portfolio.features.mobileFeatures" },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      // Badge + title + subtitle slide up
+      const headerChildren = headerRef.current?.children;
+      if (headerChildren) {
+        gsap.fromTo(
+          Array.from(headerChildren),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.6,
+            stagger: 0.12, ease: "power3.out",
+            scrollTrigger: { trigger: headerRef.current, start: "top 85%", once: true },
+          }
+        );
+      }
+
+      // 3 feature cards slide up with stagger
+      const cards = cardsRef.current?.querySelectorAll(".feature-card");
+      if (cards) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0, duration: 0.65,
+            stagger: 0.15, ease: "power3.out",
+            scrollTrigger: { trigger: cardsRef.current, start: "top 82%", once: true },
+          }
+        );
+      }
+
+      // Feature list items inside each card cascade in after card appears
+      const listItems = cardsRef.current?.querySelectorAll(".feature-list-item");
+      if (listItems) {
+        gsap.fromTo(
+          listItems,
+          { opacity: 0, x: -16 },
+          {
+            opacity: 1, x: 0, duration: 0.35,
+            stagger: 0.04, ease: "power2.out",
+            scrollTrigger: { trigger: cardsRef.current, start: "top 75%", once: true },
+            delay: 0.3,
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="portfolio-features">
+    <section className="portfolio-features" ref={sectionRef}>
       <div className="features-inner">
-        <div className="features-header">
+        <div className="features-header" ref={headerRef}>
           <div className="features-badge">{t("portfolio.features.badge")}</div>
           <h2 className="features-title">{t("portfolio.features.title")}</h2>
           <p className="features-subtitle">{t("portfolio.features.subtitle")}</p>
         </div>
 
-        <div className="features-cards">
+        <div className="features-cards" ref={cardsRef}>
           {featureColumns.map((col) => {
             const features = tArr(col.featuresKey);
             return (

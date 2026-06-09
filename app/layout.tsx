@@ -19,11 +19,36 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ai-cloud.sa"
+  ),
   title: "AI Cloud",
   description:
     "Advanced solutions to manage your business and provide services powered by artificial intelligence",
   icons: {
     icon: "/favicon.jpeg",
+  },
+  openGraph: {
+    title: "AI Cloud",
+    description:
+      "Advanced solutions to manage your business and provide services powered by artificial intelligence",
+    url: "https://ai-cloud.sa",
+    siteName: "AI Cloud",
+    images: [
+      {
+        url: "/assets/images/ai_logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "AI Cloud",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Cloud",
+    description:
+      "Advanced solutions to manage your business and provide services powered by artificial intelligence",
   },
 };
 
@@ -33,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${inter.variable} antialiased`}>
         <I18nProvider>
           <div className="min-h-screen flex flex-col">

@@ -3,17 +3,21 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import "./PortfolioMobileCommerce.css";
 import { useI18n } from "@/app/i18n/context";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SCREENS = [
-  { src: "/assets/images/home.webp", label: "Home" },
-  { src: "/assets/images/products.webp", label: "Products" },
-  { src: "/assets/images/my-cart.webp", label: "My Cart" },
-  { src: "/assets/images/my-favourite.webp", label: "Favourites" },
-  { src: "/assets/images/my-favourite-2.webp", label: "Favourites 2" },
-  { src: "/assets/images/wallet-1.webp", label: "Wallet" },
-  { src: "/assets/images/wallet-2.webp", label: "Wallet 2" },
-  { src: "/assets/images/order-1.webp", label: "Orders" },
-  { src: "/assets/images/order-2.webp", label: "Orders 2" },
+  { src: "/assets/images/home.webp",          label: "Home" },
+  { src: "/assets/images/products.webp",      label: "Products" },
+  { src: "/assets/images/my-cart.webp",       label: "My Cart" },
+  { src: "/assets/images/my-favourite.webp",  label: "Favourites" },
+  { src: "/assets/images/my-favourite-2.webp",label: "Favourites 2" },
+  { src: "/assets/images/wallet-1.webp",      label: "Wallet" },
+  { src: "/assets/images/wallet-2.webp",      label: "Wallet 2" },
+  { src: "/assets/images/order-1.webp",       label: "Orders" },
+  { src: "/assets/images/order-2.webp",       label: "Orders 2" },
 ];
 
 const FRAME = "/assets/images/frame.webp";
@@ -29,13 +33,13 @@ const BASE_H = 420;
 const SLOTS = [
   { tx: -310, scale: 0.476, opacity: 0.4, zIndex: 0 },
   { tx: -200, scale: 0.714, opacity: 0.68, zIndex: 1 },
-  { tx: 0, scale: 1.0, opacity: 1.0, zIndex: 2 },
-  { tx: 200, scale: 0.714, opacity: 0.68, zIndex: 1 },
-  { tx: 310, scale: 0.476, opacity: 0.4, zIndex: 0 },
+  { tx: 0,    scale: 1.0,   opacity: 1.0, zIndex: 2 },
+  { tx: 200,  scale: 0.714, opacity: 0.68, zIndex: 1 },
+  { tx: 310,  scale: 0.476, opacity: 0.4, zIndex: 0 },
 ] as const;
 
-const OFF_LEFT = { tx: -520, scale: 0.38, opacity: 0, zIndex: -1 } as const;
-const OFF_RIGHT = { tx: 520, scale: 0.38, opacity: 0, zIndex: -1 } as const;
+const OFF_LEFT  = { tx: -520, scale: 0.38, opacity: 0, zIndex: -1 } as const;
+const OFF_RIGHT = { tx:  520, scale: 0.38, opacity: 0, zIndex: -1 } as const;
 
 type Slot = (typeof SLOTS)[number] | typeof OFF_LEFT | typeof OFF_RIGHT;
 
@@ -54,12 +58,46 @@ export default function PortfolioMobileCommerce() {
   const lockRef = useRef(false);
   const { t } = useI18n();
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const mockupsRef = useRef<HTMLDivElement>(null);
+
+  // Preload images
   useEffect(() => {
     [...SCREENS.map((s) => s.src), FRAME].forEach((src) => {
       const img = new Image();
       img.src = src;
       img.decode().catch(() => {});
     });
+  }, []);
+
+  // GSAP entrance animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      // Header fades up
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+          scrollTrigger: { trigger: headerRef.current, start: "top 85%", once: true },
+        }
+      );
+
+      // Carousel section scales up gently from slightly below
+      gsap.fromTo(
+        mockupsRef.current,
+        { opacity: 0, y: 50, scale: 0.97 },
+        {
+          opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: mockupsRef.current, start: "top 82%", once: true },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   const navigate = useCallback((dir: "left" | "right") => {
@@ -70,22 +108,20 @@ export default function PortfolioMobileCommerce() {
   }, []);
 
   return (
-    <section className="portfolio-mobile-commerce">
+    <section className="portfolio-mobile-commerce" ref={sectionRef}>
       <div aria-hidden="true" className="preload-sink">
         {SCREENS.map((s) => (<img key={s.src} src={s.src} alt="" />))}
         <img src={FRAME} alt="" />
       </div>
 
       <div className="mobile-commerce-inner">
-        <div className="mobile-commerce-header">
+        <div className="mobile-commerce-header" ref={headerRef}>
           <h2 className="mobile-commerce-title">{t("portfolio.mobileCommerce.title")}</h2>
           <p className="mobile-commerce-subtitle">{t("portfolio.mobileCommerce.subtitle")}</p>
         </div>
 
-        {/* IMPORTANT: carousel arrows use dir="ltr" to prevent RTL flipping.
-            The carousel is position-based (translateX), not flow-based, so
-            left/right arrows must always visually point left and right. */}
-        <div className="mobile-commerce-mockups" dir="ltr">
+        {/* dir="ltr" keeps carousel arrows visually correct in RTL layouts */}
+        <div className="mobile-commerce-mockups" dir="ltr" ref={mockupsRef}>
           <button
             className="mockup-arrow mockup-arrow--left"
             aria-label="Previous"

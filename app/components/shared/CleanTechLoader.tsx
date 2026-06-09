@@ -210,9 +210,10 @@ const CleanTechLoader = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <Image
-                    src="/assets/images/ai_logo.svg" // Update this path
+                    src="/assets/images/ai_logo.svg"
                     alt="AI Cloud"
                     fill
+                    sizes="128px"
                     className="object-contain drop-shadow-2xl"
                     priority
                   />
@@ -231,9 +232,10 @@ const CleanTechLoader = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <Image
-                    src="/assets/images/cleanTech-logo.svg" // Update this path
+                    src="/assets/images/cleanTech-logo.svg"
                     alt="CleanTech"
                     fill
+                    sizes="128px"
                     className="object-contain drop-shadow-2xl"
                     priority
                   />

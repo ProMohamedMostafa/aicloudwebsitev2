@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import "./clean-tech-about.css";
 import { useI18n } from "@/app/i18n/context";
+import Image from "next/image";
 
 export default function CleanTechAbout() {
   const sectionRef = useRef(null);
@@ -20,7 +21,9 @@ export default function CleanTechAbout() {
     const ctx = gsap.context(() => {
       const masterTl = gsap.timeline();
       masterTl.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" });
-      masterTl.fromTo(greenLineRef.current, { scaleY: 0, transformOrigin: "top center" }, { scaleY: 1, duration: 1.2, ease: "power3.out" });
+      if (greenLineRef.current) {
+        masterTl.fromTo(greenLineRef.current, { scaleY: 0, transformOrigin: "top center" }, { scaleY: 1, duration: 1.2, ease: "power3.out" });
+      }
       masterTl.fromTo(containerRef.current, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" });
       masterTl.fromTo(titleRef.current, { opacity: 0, y: 80, backgroundPosition: "200% 0%" }, { opacity: 1, y: 0, backgroundPosition: "0% 0%", duration: 1.2, ease: "power3.out" });
       masterTl.fromTo(missionRef.current, { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, "-=0.4");
@@ -59,7 +62,14 @@ export default function CleanTechAbout() {
               <div className="clean-tech-right-column">
                 <div className="clean-tech-image-container" ref={imageRef}>
                   <div className="clean-tech-image-wrapper">
-                    <img src="/assets/images/Smart-operating.png" alt="CleanTech System in Action" className="clean-tech-feature-image" />
+                    <Image
+                      src="/assets/images/Smart-operating.png"
+                      alt="CleanTech System in Action"
+                      width={600}
+                      height={450}
+                      className="clean-tech-feature-image"
+                      style={{ width: "100%", height: "auto" }}
+                    />
                   </div>
                 </div>
               </div>

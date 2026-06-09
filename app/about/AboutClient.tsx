@@ -1,7 +1,7 @@
 "use client";
 
 import "./about.css";
-import { useAboutAnimation } from "../../hooks/useAboutAnimation";
+import { useAboutAnimation } from "@/hooks/useAboutAnimation";
 import { useI18n } from "@/app/i18n/context";
 
 export default function AboutClient() {

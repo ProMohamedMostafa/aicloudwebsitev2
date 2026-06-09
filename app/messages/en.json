@@ -37,7 +37,9 @@
     "address": "Address",
     "addressText": "13 Ibrahim Nawar, Nasr City, Cairo, Egypt",
     "contactLabel": "Contact",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "portfolio": "E-Commerce",
+    "cleanTech": "Clean Tech"
   },
   "hero": {
     "title": "Advanced Solutions to manage",

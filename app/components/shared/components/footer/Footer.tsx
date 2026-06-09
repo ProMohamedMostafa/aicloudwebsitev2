@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -25,10 +26,12 @@ export default function Footer() {
             {/* Left Column */}
             <div className="footer-left">
               <Link href="/" className="navbar-brand">
-                <img
+                <Image
                   src="/assets/images/ai_logo.svg"
                   alt="AI Cloud Logo"
-                  width="150"
+                  width={150}
+                  height={50}
+                  style={{ width: "150px", height: "auto" }}
                 />
               </Link>
 
@@ -80,6 +83,12 @@ export default function Footer() {
               </p>
               <p className="text-uppercase fw-bold">
                 <Link href="/about" className="text-decoration-none">{t("footer.about")}</Link>
+              </p>
+              <p className="text-uppercase fw-bold">
+                <Link href="/portfolio" className="text-decoration-none">{t("footer.portfolio") || "E-Commerce"}</Link>
+              </p>
+              <p className="text-uppercase fw-bold">
+                <Link href="/clean-tech" className="text-decoration-none">{t("footer.cleanTech") || "Clean Tech"}</Link>
               </p>
             </div>
           </div>
