@@ -54,7 +54,7 @@ export default function CleanTechContact() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) { newErrors.email = t("cleanTech.contact.emailRequired"); isValid = false; }
     else if (!emailRegex.test(formData.email)) { newErrors.email = t("cleanTech.contact.emailInvalid"); isValid = false; }
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const phoneRegex = /^[\+]?[\d]{7,15}$/;
     if (formData.phone && !phoneRegex.test(formData.phone.replace(/[\s\-\(\)]/g, ""))) {
       newErrors.phone = t("cleanTech.contact.phoneInvalid"); isValid = false;
     }
@@ -68,7 +68,7 @@ export default function CleanTechContact() {
     e.preventDefault();
     if (honeypot) { setSubmitStatus({ type: "success", message: t("cleanTech.contact.success") }); return; }
     const elapsed = Date.now() - formRenderedAt.current;
-    if (elapsed < 3000) { setSubmitStatus({ type: "error", message: t("cleanTech.contact.slowDown") }); return; }
+    if (elapsed < 1000) { setSubmitStatus({ type: "error", message: t("cleanTech.contact.slowDown") }); return; }
     if (!validateForm()) return;
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
