@@ -1,0 +1,87 @@
+.alsalam-challenges {
+  isolation: isolate;
+}
+
+.alsalam-challenge-card {
+  transition: transform 0.3s ease;
+}
+
+.alsalam-challenge-card:hover {
+  transform: rotate(0deg) translateY(-4px) !important;
+}
+
+/* Fill layer: starts collapsed at the bottom edge and grows upward on hover */
+.alsalam-challenge-fill {
+  background: var(--accent, #006738);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.alsalam-challenge-card:hover .alsalam-challenge-fill {
+  transform: scaleY(1);
+}
+
+/* Text & divider colors flip to white once the fill reaches them */
+.alsalam-challenge-title,
+.alsalam-challenge-body,
+.alsalam-challenge-number {
+  transition: color 0.35s ease 0.1s;
+}
+
+.alsalam-challenge-line {
+  transition: border-color 0.35s ease 0.1s;
+}
+
+.alsalam-challenge-card:hover .alsalam-challenge-title,
+.alsalam-challenge-card:hover .alsalam-challenge-body,
+.alsalam-challenge-card:hover .alsalam-challenge-number {
+  color: #ffffff;
+}
+
+.alsalam-challenge-card:hover .alsalam-challenge-line {
+  border-color: #ffffff;
+}
+
+.alsalam-challenge-line {
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Accent variants */
+.alsalam-challenge-card--green {
+  --accent: #006738;
+  border-color: #a7d9c1;
+}
+
+.alsalam-challenge-card--green .alsalam-challenge-icon {
+  background: #f3fff9;
+  color: #006738;
+}
+
+.alsalam-challenge-card--blue {
+  --accent: #1a56db;
+  border-color: #aecbf7;
+}
+
+.alsalam-challenge-card--blue .alsalam-challenge-icon {
+  background: #f1f5f9;
+  color: #1a56db;
+}
+
+.alsalam-challenge-card--amber {
+  --accent: #f59e0b;
+  border-color: #f7d9a4;
+}
+
+.alsalam-challenge-card--amber .alsalam-challenge-icon {
+  background: #fffbf5;
+  color: #f59e0b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alsalam-challenges * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

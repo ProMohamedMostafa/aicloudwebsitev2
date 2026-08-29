@@ -1,0 +1,11 @@
+.alsalam-final-cta {
+  isolation: isolate;
+  background: linear-gradient(91.4deg, #006738 21.75%, #1a56db 122.66%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alsalam-final-cta * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

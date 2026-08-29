@@ -1,0 +1,10 @@
+.alsalam-hero {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alsalam-hero * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

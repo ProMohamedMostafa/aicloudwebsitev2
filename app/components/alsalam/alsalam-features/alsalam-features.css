@@ -1,0 +1,14 @@
+.alsalam-features {
+  isolation: isolate;
+}
+
+.alsalam-feature-image-frame {
+  filter: drop-shadow(0px 8px 32px rgba(0, 103, 56, 0.1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alsalam-features * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

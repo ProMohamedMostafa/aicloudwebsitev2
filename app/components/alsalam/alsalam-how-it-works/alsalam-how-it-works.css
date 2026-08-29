@@ -1,0 +1,10 @@
+.alsalam-how-it-works {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alsalam-how-it-works * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

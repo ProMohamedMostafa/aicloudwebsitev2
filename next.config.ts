@@ -45,6 +45,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Static HTML export (SPA-style build) -> outputs to ./out
+  output: "export",
+
   compress: true,
 
   // Never expose source maps to the browser in production
@@ -52,21 +55,31 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
+    // next/image optimization requires a server; disable for static export
+    unoptimized: true,
   },
 
   experimental: {
     optimizePackageImports: ["framer-motion"],
   },
 
-  async headers() {
-    return [
-      {
-        // Apply security headers to every route
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
-  },
+  // NOTE: `headers()` is not supported with `output: "export"` (there's no
+  // Next.js server to apply them at request time). Static exports are
+  // usually deployed behind a CDN/host (Nginx, Vercel static, Netlify, S3+CF,
+  // etc.) — set these same security headers there instead. Kept here for
+  // reference / non-export builds.
+  ...(process.env.NEXT_EXPORT
+    ? {}
+    : {
+        async headers() {
+          return [
+            {
+              source: "/(.*)",
+              headers: securityHeaders,
+            },
+          ];
+        },
+      }),
 };
 
 export default nextConfig;

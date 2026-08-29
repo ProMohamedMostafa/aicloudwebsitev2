@@ -479,6 +479,45 @@ export default function Header() {
                         <div className="dropdown-link-underline"></div>
                       </Link>
                     </li>
+                    <li className="dropdown-item">
+                      <Link
+                        href="/alsalam-international"
+                        onClick={closeMobileMenu}
+                        className="dropdown-link dropdown-link--portfolio"
+                      >
+                        <div className="portfolio-nav-item">
+                          <div
+                            className="portfolio-nav-icon"
+                            aria-hidden="true"
+                          >
+                            <svg
+                              width="22"
+                              height="22"
+                              viewBox="0 0 22 22"
+                              fill="none"
+                            >
+                              <path
+                                d="M2.5 13.5L4 8h14l1.5 5.5c0 2.2-1.8 3.5-4 3.5H6.5c-2.2 0-4-1.3-4-3.5z"
+                                stroke="#006738"
+                                strokeWidth="1.6"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M8 8V3.5h6V8"
+                                stroke="#006738"
+                                strokeWidth="1.6"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <span className="portfolio-nav-label">
+                            {t("header.alsalam")}
+                          </span>
+                        </div>
+                        <div className="dropdown-link-underline"></div>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </li>

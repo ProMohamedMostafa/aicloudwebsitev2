@@ -6,7 +6,8 @@
     "partners": "Partners",
     "about": "About Us",
     "contact": "Contact Us",
-    "ecommerce": "E-Commerce"
+    "ecommerce": "E-Commerce",
+  "alsalam": "Alsalam International"
   },
   "footer": {
     "description": "Leading provider of AI and cloud solutions for modern businesses.",
@@ -354,6 +355,115 @@
       "description": "Let AI Cloud help you build a scalable digital commerce experience with powerful dashboards, mobile apps, and modern e-commerce solutions.",
       "primary": "Start Your Project",
       "secondary": "Contact Us"
+    }
+  },
+  "alsalamPage": {
+    "hero": {
+      "title": "Everything You Need to Manage Import & Export Operations",
+      "description": "Manage shipments, products, suppliers, documents, compliance, and business insights from one connected platform.",
+      "primaryCta": "Start Your Project",
+      "secondaryCta": "Book a Demo",
+      "tagline": "Import & Export Management Platform"
+    },
+    "howItWorks": {
+      "title": "How Your Operations Work in One Platform",
+      "description": "A simple and connected workflow that helps your team manage products, suppliers, shipments, and company documents — all from one centralized dashboard.",
+      "step1": {
+        "title": "Manage Your Products & Suppliers",
+        "body": "Add and organize your products, manage supplier information, and keep all related data structured in one place."
+      },
+      "step2": {
+        "title": "Create & Track Shipments",
+        "body": "Create shipment requests, manage approvals and purchase orders, and track every shipment from request to arrival and stock."
+      },
+      "step3": {
+        "title": "Stay on Top of Documents & Performance",
+        "body": "Manage company and product documents, monitor registration requirements, and use reports to understand shipments, products, suppliers, and import performance."
+      }
+    },
+    "challenges": {
+      "title": "From Operational Challenges to Complete Control",
+      "description": "Identify the challenges slowing down your operations—and bring everything together in one connected platform.",
+      "card1": {
+        "title": "1. Shipment information is scattered",
+        "body": "Data trapped in legacy email chains, random spreadsheets, and disconnected carrier portals makes tracking impossible."
+      },
+      "card2": {
+        "title": "2. Documents are difficult to track",
+        "body": "Customs declarations, bills of lading, and commercial invoices are buried, leading to lost time and clearance blockages."
+      },
+      "card3": {
+        "title": "3. Supplier collaboration is manual",
+        "body": "Constant timezone differences, manual follow-ups, and unacknowledged messages stall production lines."
+      },
+      "card4": {
+        "title": "4. Expiring documents & delayed shipments",
+        "body": "Late alerts on permits, missed compliance deadlines, and unexpected demurrage fees compound operational risks."
+      }
+    },
+    "features": {
+      "title": "Built Around Your Import & Export Operations",
+      "description": "Simplify complex import & export workflows with a connected platform designed to give your team better visibility, stronger control, and faster decision-making.",
+      "feature1": {
+        "badge": "Shipment Command Center",
+        "title": "Manage Every Shipment From One Place",
+        "description": "Create, track, and manage your shipments from request to completion with clear status visibility, organized information, and a centralized workflow.",
+        "check1": "Streamlined shipment creation and approval",
+        "check2": "Clear visibility across every shipment stage",
+        "check3": "Centralized shipment information and documents"
+      },
+      "feature2": {
+        "badge": "Document & Compliance Control",
+        "title": "Stay on Top of Every Requirement",
+        "description": "Keep required documents and registration requirements organized while staying aware of expiry dates, document status, and outstanding requirements.",
+        "check1": "Track required and expiring documents",
+        "check2": "Clear visibility into document and registration status",
+        "check3": "Keep product requirements organized in one place"
+      },
+      "feature3": {
+        "badge": "Product & Supplier Management",
+        "title": "Connect Products, Suppliers & Requirements",
+        "description": "Manage products and suppliers together with their related information, documents, and registration requirements for a clearer view of every business relationship.",
+        "check1": "Centralized product and supplier information",
+        "check2": "Connect products with their related requirements",
+        "check3": "Keep supplier relationships organized and accessible"
+      },
+      "feature4": {
+        "badge": "System Control",
+        "title": "Control Access Across Your Organization",
+        "description": "Manage roles and permissions to ensure every team member has the right level of access across your platform.",
+        "check1": "Define roles and permissions",
+        "check2": "Control access to system modules",
+        "check3": "Keep your operations secure and organized"
+      }
+    },
+    "shipmentManagement": {
+      "eyebrow": "Shipment Management",
+      "title": "Complete Shipment Lifecycle Control",
+      "description": "From creation to delivery, manage every aspect of your import shipments. Track real-time KPIs - Total Shipments, In Transit, Arrived, Delivered, and Delayed - with a multi-step creation wizard and detailed shipment views.",
+      "feature1": {
+        "title": "Multi-Step Creation Wizard",
+        "description": "3-step guided flow: General Info → Products → Review & Submit"
+      },
+      "feature2": {
+        "title": "Real-Time Status Pipeline",
+        "description": "Track shipments through Created → Approved → In Transit → Arrived → Delivered"
+      },
+      "feature3": {
+        "title": "Detailed Shipment Views",
+        "description": "Overview, Documents, and Products tabs with full shipment timeline"
+      },
+      "feature4": {
+        "title": "Smart Filters & Export",
+        "description": "Filter by status, supplier, amount paid. Export and bulk manage 247+ shipments"
+      },
+      "statsBanner": "Active Fleet: 250 shipments tracked across 40 in transit, 60 arrived, 140 delivered"
+    },
+    "finalCta": {
+      "title": "Ready to Take Control of Your Import & Export Operations?",
+      "description": "Bring shipments, suppliers, products, documents and reporting together in one connected platform. Engineered to scale with global enterprise requirements.",
+      "primaryCta": "Start Your Project",
+      "secondaryCta": "Contact Us"
     }
   }
 }

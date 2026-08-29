@@ -1,5 +1,9 @@
 import { MetadataRoute } from "next";
 
+// Required for `output: "export"` (static export) — sitemap.xml is
+// generated at build time only, not per-request.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://ai-cloud.sa";
   const lastModified = new Date();
