@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/app/i18n/context";
@@ -53,18 +54,18 @@ export default function AlsalamFinalCTA() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-flex h-[41px] items-center justify-center rounded-lg bg-white px-7 text-sm font-semibold text-[#006738] transition-opacity hover:opacity-90"
           >
             {t("alsalamPage.finalCta.primaryCta")}
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/contact"
             className="inline-flex h-10 items-center justify-center rounded-lg border border-white px-6 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
             {t("alsalamPage.finalCta.secondaryCta")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

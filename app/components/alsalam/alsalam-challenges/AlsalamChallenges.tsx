@@ -86,7 +86,7 @@ export default function AlsalamChallenges() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
       });
 
-      const cardEls = cardsRef.current?.querySelectorAll(".alsalam-challenge-card");
+      const cardEls = cardsRef.current?.querySelectorAll(".alsalam-challenge-anim");
       if (cardEls && cardEls.length) {
         gsap.from(cardEls, {
           opacity: 0,
@@ -122,36 +122,40 @@ export default function AlsalamChallenges() {
         {/* Cards */}
         <div
           ref={cardsRef}
-          className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4"
         >
           {CARDS.map((card, index) => (
             <div
               key={card.key}
-              className={`alsalam-challenge-card alsalam-challenge-card--${card.accent} group relative flex h-[298px] w-full flex-col items-start gap-5 overflow-hidden rounded-xl border-[1.5px] border-dashed bg-white p-8 shadow-[0_10px_18px_-8px_rgba(15,23,42,0.05)]`}
+              className={`alsalam-challenge-card alsalam-challenge-card--${card.accent} group relative flex h-auto min-h-[240px] w-full flex-col items-start overflow-hidden rounded-xl border-[1.5px] border-dashed bg-white shadow-[0_10px_18px_-8px_rgba(15,23,42,0.05)] xl:h-[298px]`}
               style={{ transform: `rotate(${card.rotate}deg)` }}
             >
-              {/* Fill layer that rises from bottom on hover */}
-              <span className="alsalam-challenge-fill absolute inset-0 z-0" aria-hidden="true" />
+              {/* Animated wrapper: GSAP only ever touches this element's
+                  opacity/position, never the outer card's rotate transform */}
+              <div className="alsalam-challenge-anim relative flex h-full w-full flex-col items-start gap-4 p-6 sm:gap-5 sm:p-7 xl:p-8">
+                {/* Fill layer that rises from bottom on hover */}
+                <span className="alsalam-challenge-fill absolute inset-0 z-0" aria-hidden="true" />
 
-              <div className="relative z-10 flex h-full w-full flex-col items-start gap-5">
-                <div className="alsalam-challenge-icon flex h-12 w-12 flex-none items-center justify-center rounded-xl">
-                  {card.icon}
-                </div>
+                <div className="relative z-10 flex h-full w-full flex-col items-start gap-5">
+                  <div className="alsalam-challenge-icon flex h-12 w-12 flex-none items-center justify-center rounded-xl">
+                    {card.icon}
+                  </div>
 
-                <div className="flex flex-1 flex-col items-start gap-2">
-                  <h3 className="alsalam-challenge-title text-lg font-semibold leading-[1.3] text-[#0F172A]">
-                    {t(`alsalamPage.challenges.${card.key}.title`)}
-                  </h3>
-                  <p className="alsalam-challenge-body text-sm leading-[1.5] text-[#64748B]">
-                    {t(`alsalamPage.challenges.${card.key}.body`)}
-                  </p>
-                </div>
+                  <div className="flex flex-1 flex-col items-start gap-2">
+                    <h3 className="alsalam-challenge-title text-lg font-semibold leading-[1.3] text-[#0F172A]">
+                      {t(`alsalamPage.challenges.${card.key}.title`)}
+                    </h3>
+                    <p className="alsalam-challenge-body text-sm leading-[1.5] text-[#64748B]">
+                      {t(`alsalamPage.challenges.${card.key}.body`)}
+                    </p>
+                  </div>
 
-                <div className="alsalam-challenge-bottom flex w-full flex-col items-start gap-3 pt-2">
-                  <div className="alsalam-challenge-line h-px w-full" />
-                  <span className="alsalam-challenge-number self-end text-xs font-semibold leading-4 text-[#94A3B8]">
-                    0{index + 1}
-                  </span>
+                  <div className="alsalam-challenge-bottom flex w-full flex-col items-start gap-3 pt-2">
+                    <div className="alsalam-challenge-line h-px w-full" />
+                    <span className="alsalam-challenge-number self-end text-xs font-semibold leading-4 text-[#94A3B8]">
+                      0{index + 1}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

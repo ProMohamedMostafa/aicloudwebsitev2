@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useI18n } from "@/app/i18n/context";
@@ -65,7 +66,7 @@ export default function AlsalamHero() {
           <div className="flex flex-col items-start gap-6">
             <h1
               ref={titleRef}
-              className="max-w-[637px] text-[32px] font-bold leading-[1.15] text-[#0F172A] sm:text-[36px] lg:text-[40px]"
+              className="max-w-[637px] text-[26px] font-bold leading-[1.2] text-[#0F172A] sm:text-[32px] md:text-[36px] lg:text-[40px]"
             >
               {t("alsalamPage.hero.title")}
             </h1>
@@ -78,18 +79,18 @@ export default function AlsalamHero() {
           </div>
 
           <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="inline-flex h-10 items-center justify-center rounded-lg bg-[#006738] px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               {t("alsalamPage.hero.primaryCta")}
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/contact"
               className="inline-flex h-10 items-center justify-center rounded-lg border border-[#006738] px-5 text-sm font-semibold text-[#006738] transition-colors hover:bg-[#006738]/5"
             >
               {t("alsalamPage.hero.secondaryCta")}
-            </a>
+            </Link>
             <span
               className="flex h-[35px] w-[35px] flex-none items-center justify-center"
               aria-hidden="true"

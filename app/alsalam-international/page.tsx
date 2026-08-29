@@ -1,4 +1,4 @@
-import AlsalamPage from "../components/alsalam/AlsalamPage";
+import AlsalamClient from "./AlsalamClient";
 
 export const metadata = {
   title: "Alsalam International | AI Cloud",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function AlsalamInternationalPage() {
-  return <AlsalamPage />;
+  return <AlsalamClient />;
 }

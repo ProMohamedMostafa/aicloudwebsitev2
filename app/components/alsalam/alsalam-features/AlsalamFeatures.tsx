@@ -113,7 +113,7 @@ export default function AlsalamFeatures() {
       className="alsalam-features w-full bg-white px-6 py-16 md:px-12 md:py-20 lg:px-20"
       dir={dir}
     >
-      <div className="mx-auto flex w-full max-w-[1352px] flex-col items-center gap-20 lg:gap-28">
+      <div className="mx-auto flex w-full max-w-[1352px] flex-col items-center gap-14 lg:gap-28">
         {/* Header */}
         <div ref={headerRef} className="flex flex-col items-center gap-4 text-center">
           <h2 className="max-w-[1248px] text-[28px] font-extrabold leading-[1.2] text-[#0F172A] sm:text-3xl lg:text-[36px]">
@@ -125,12 +125,12 @@ export default function AlsalamFeatures() {
         </div>
 
         {/* Rows */}
-        <div ref={rowsRef} className="flex w-full flex-col gap-20 lg:gap-28">
+        <div ref={rowsRef} className="flex w-full flex-col gap-14 lg:gap-28">
           {FEATURES.map((feature) => (
             <div
               key={feature.key}
               data-reverse={feature.reverse}
-              className={`alsalam-feature-row flex w-full flex-col items-center gap-10 lg:gap-20 ${
+              className={`alsalam-feature-row flex w-full flex-col items-center gap-8 lg:gap-20 ${
                 feature.reverse ? "lg:flex-row-reverse" : "lg:flex-row"
               }`}
             >
